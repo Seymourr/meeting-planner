@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<!-- Notice the ng-app Angular directive. This tells Angular where the application starts and also
+which module to associate the app with. In app.js we create the "dinnerPlanner" module. -->
+<html lang="en" ng-app="meetingPlanner">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Meeting planner</title>
+
+      <!-- CSS -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css"
+>    <!-- jQuery -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <!-- Bootstrap JavaScript, needed if you want for instance tabs, models, popovers etc. -->
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- Angular JavaScript including routing and resource modules  -->
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/spin.js/spin.js"></script>
+    <script src="bower_components/angular-spinner/angular-spinner.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    
+    <!-- The application JavaScript code -->
+    <script src="js/app.js"></script>
+
+
+  </head>
+  <body ng-style="bodyStyle">
+    <!-- Here in index.html you should put only the layout that is shared among all the screens (e.g. header
+    ,footer, etc.). The rest of the view specific layout will go into the html partials (check partials folder) -->
+    
+    <!-- ng-view Angular directive is where the partials will be loaded. app.js configures the $routingProvider
+    where you specify which partial should be loaded when. -->
+    <div ng-view></div>
+  </body>
+</html>
