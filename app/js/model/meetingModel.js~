@@ -80,10 +80,9 @@ meetingPlannerApp.factory('Meeting', function ($resource) {
 		console.log("Day End: " + model.days[0].getEnd());
 		console.log("Day Length: " + model.days[0].getTotalLength() + " min");
 		$.each(ActivityType,function(index,type){
-		console.log("Day '" + ActivityType[index] + "' Length: " +  model.days		[0].getLengthByType(index) + " min");
+			console.log("Day '" + ActivityType[index] + "' Length: " +  model.days[0].getLengthByType(index) + " min");
 		});
 	}
-	
 	return this;
 });
 
