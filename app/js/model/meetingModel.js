@@ -11,7 +11,7 @@ meetingPlannerApp.factory('Meeting', function ($resource) {
 
 	// adds a new day. if startH and startM (start hours and minutes)
 	// are not provided it will set the default start of the day to 08:00
-	this.addDay = function (startH,startM) {
+	this.addDay = function (startH, startM) {
 		var day;
 		if(startH){
 			day = new Day(startH,startM);
@@ -23,7 +23,7 @@ meetingPlannerApp.factory('Meeting', function ($resource) {
 	};
 
 	// add an activity to model
-	this.addActivity = function (activity,day,position) {
+	this.addActivity = function (activity, day, position) {
 		if(day != null) {
 			this.days[day]._addActivity(activity,position);
 		} else {
@@ -35,7 +35,7 @@ meetingPlannerApp.factory('Meeting', function ($resource) {
 	}
 
 	// add an activity to parked activities
-	this.addParkedActivity = function(activity,position){
+	this.addParkedActivity = function(activity, position){
 		this.addActivity(activity,null,position);
 	};
 
@@ -66,13 +66,20 @@ meetingPlannerApp.factory('Meeting', function ($resource) {
 			this.days[newday]._addActivity(activity,newposition);
 		}
 	};
+
+	// Return all available activity types
 	this.getActivityTypes = function() {
 		return ActivityType;
 	}
 
+	// Return an acitivity type of a specific acitivity id
+	this.getActivityType = function(activityTypeId) {
+		return ActivityType[activityTypeId];
+	}
+
 	// you can use this method to create some test data and test your implementation
+	// Used to test parkedActivity.
 	this.createTestData = function (){
-		console.log("hej");
 		this.addDay();
 		this.addActivity(new Activity("Introduction",10,0,""));
 		this.addActivity(new Activity("Idea 1",30,0,""));
@@ -83,13 +90,15 @@ meetingPlannerApp.factory('Meeting', function ($resource) {
 		console.log("Day Start: " + this.days[0].getStart());
 		console.log("Day End: " + this.days[0].getEnd());
 		console.log("Day Length: " + this.days[0].getTotalLength() + " min");
-		//$.each(ActivityType, function(index,type) {
-		//	console.log("Day '" + ActivityType[index] + "' Length: " + this.days[0].getLengthByType(index) + " min");
-		//}
-	//);
-	}
-	this.createTestData();
 
+		/*
+		$.each(ActivityType, function(index,type) {
+			console.log("Day '" + ActivityType[index] + "' Length: " + this.days[0].getLengthByType(index) + " min");
+		});
+		*/
+	}
+
+	this.createTestData();
 
 	return this;
 });

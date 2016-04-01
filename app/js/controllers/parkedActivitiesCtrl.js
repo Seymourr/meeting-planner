@@ -2,4 +2,9 @@ meetingPlannerApp.controller('ParkedActivitiesCtrl', function ($scope,$routePara
   $scope.getParkedActivities = function() {
     return Meeting.parkedActivities;
   }
+  
+  // Returns an activity type of a specific activity id
+  $scope.getActivityType = function(activityTypeId){
+    return Meeting.getActivityType(activityTypeId);
+  }
 });

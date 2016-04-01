@@ -10,7 +10,6 @@ function Activity(name,length,typeid,description){
 	// sets the name of the activity
 	this.setName = function(name) {
 		_name = name;
-		model.notifyObservers();
 	}
 
 	// get the name of the activity
@@ -21,7 +20,6 @@ function Activity(name,length,typeid,description){
 	// sets the length of the activity
 	this.setLength = function(length) {
 		_length = length;
-		model.notifyObservers();
 	}
 
 	// get the name of the activity
@@ -32,7 +30,6 @@ function Activity(name,length,typeid,description){
 	// sets the typeid of the activity
 	this.setTypeId = function(typeid) {
 		_typeid = typeid;
-		model.notifyObservers();
 	}
 
 	// get the type id of the activity
@@ -43,7 +40,6 @@ function Activity(name,length,typeid,description){
 	// sets the description of the activity
 	this.setDescription = function(description) {
 		_description = description;
-		model.notifyObservers();
 	}
 
 	// get the description of the activity
@@ -51,9 +47,11 @@ function Activity(name,length,typeid,description){
 		return _description;
 	}
 	
+	/*
 	// This method returns the string representation of the
 	// activity type.
 	this.getType = function () {
 		return ActivityType[_typeid];
 	};
+	*/
 }
