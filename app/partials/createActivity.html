@@ -11,8 +11,7 @@
   <fieldset class="form-group">
     <label for="activityType">Type</label>
     <select class="form-control" id="ActivityType" ng-model="activityTypeID">
-      <option style="display:none" value="">Select type</option>
-      <option ng-repeat="type in getActivityTypes()" ng-value="$index"> {{type}}</option>
+      <option ng-repeat="type in getActivityTypes()" ng-value="$index">{{type}}</option>
     </select>
   </fieldset>
   <fieldset class="form-group">
