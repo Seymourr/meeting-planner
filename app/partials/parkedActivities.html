@@ -1,0 +1,9 @@
+<a href="#/createActivity" class="btn btn-default">Add activity</a>
+
+<div id="parkedActivityList">
+<div ng-repeat="activity in getParkedActivities()">
+  {{activity.getLength()}} min {{activity.getName()}} {{activity.getTypeId()}}
+</div>
+
+
+</div>

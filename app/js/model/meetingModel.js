@@ -8,7 +8,7 @@ meetingPlannerApp.factory('Meeting', function ($resource) {
 	// this is our main module that contians days and praked activites
 	this.days = [];
 	this.parkedActivities = [];
-	
+
 	// adds a new day. if startH and startM (start hours and minutes)
 	// are not provided it will set the default start of the day to 08:00
 	this.addDay = function (startH,startM) {
@@ -39,7 +39,7 @@ meetingPlannerApp.factory('Meeting', function ($resource) {
 		this.addActivity(activity,null,position);
 	};
 
-	// remove an activity on provided position from parked activites 
+	// remove an activity on provided position from parked activites
 	this.removeParkedActivity = function(position) {
 		act = this.parkedActivities.splice(position,1)[0];
 		return act;
@@ -66,24 +66,30 @@ meetingPlannerApp.factory('Meeting', function ($resource) {
 			this.days[newday]._addActivity(activity,newposition);
 		}
 	};
+	this.getActivityTypes = function() {
+		return ActivityType;
+	}
 
 	// you can use this method to create some test data and test your implementation
-	function createTestData(){
-		model.addDay();
-		model.addActivity(new Activity("Introduction",10,0,""),0);
-		model.addActivity(new Activity("Idea 1",30,0,""),0);
-		model.addActivity(new Activity("Working in groups",35,1,""),0);
-		model.addActivity(new Activity("Idea 1 discussion",15,2,""),0);
-		model.addActivity(new Activity("Coffee break",20,3,""),0);
-	
-		console.log("Day Start: " + model.days[0].getStart());
-		console.log("Day End: " + model.days[0].getEnd());
-		console.log("Day Length: " + model.days[0].getTotalLength() + " min");
-		$.each(ActivityType,function(index,type){
-		console.log("Day '" + ActivityType[index] + "' Length: " +  model.days		[0].getLengthByType(index) + " min");
-		});
+	this.createTestData = function (){
+		console.log("hej");
+		this.addDay();
+		this.addActivity(new Activity("Introduction",10,0,""));
+		this.addActivity(new Activity("Idea 1",30,0,""));
+		this.addActivity(new Activity("Working in groups",35,1,""));
+		this.addActivity(new Activity("Idea 1 discussion",15,2,""));
+		this.addActivity(new Activity("Coffee break",20,3,""));
+
+		console.log("Day Start: " + this.days[0].getStart());
+		console.log("Day End: " + this.days[0].getEnd());
+		console.log("Day Length: " + this.days[0].getTotalLength() + " min");
+		//$.each(ActivityType, function(index,type) {
+		//	console.log("Day '" + ActivityType[index] + "' Length: " + this.days[0].getLengthByType(index) + " min");
+		//}
+	//);
 	}
-	
+	this.createTestData();
+
+
 	return this;
 });
-

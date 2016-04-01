@@ -1,0 +1,25 @@
+<h1> Create new activity</h1>
+<form>
+  <fieldset class="form-group">
+    <label for="title">Title</label>
+    <input type="text" class="form-control" id="title" ng-model="activityTitle"></input>
+  </fieldset>
+  <fieldset class="form-group">
+    <label for="length">Length</label>
+    <input type="number" class="form-control" id="length" ng-model="activityLength"></input> min
+  </fieldset>
+  <fieldset class="form-group">
+    <label for="activityType">Type</label>
+    <select class="form-control" id="ActivityType" ng-model="activityTypeID">
+      <option style="display:none" value="">Select type</option>
+      <option ng-repeat="type in getActivityTypes()" ng-value="$index"> {{type}}</option>
+    </select>
+  </fieldset>
+  <fieldset class="form-group">
+    <label for="description">Description</label>
+    <textarea class="form-control" id="description" rows="3" ng-model="activityDescription"></textarea>
+  </fieldset>
+
+  <a href="#/parkedActivities" class="btn btn-warning">Cancel</a>
+  <a ng-click="saveActivity(activityTitle, activityLength, activityTypeID, activityDescription)" class="btn btn-default">Save</a>
+</form>
