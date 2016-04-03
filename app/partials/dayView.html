@@ -1,0 +1,20 @@
+<div class="dayview">
+    <div class="dayview-info">
+        <div class="dayview-time">
+        <h1>Start Time: <p class="dayview-startTime">{{getDayTimeStart()}}</p></h1>
+        <h1>End time: {{getDayTimeEnd()}}</h1>
+        <h1>Total length: {{getDayLength()}} min</h1>
+        </div>
+        <div class="activityGraphics">
+            <!-- TODO -->
+        </div>
+    </div>
+
+    
+    <div class="dayview-main">
+        <div ng-repeat="activity in getDayActivies()">
+            <h1>{{getActivityTime(activity.getLength(), $index)}}</h1>
+            <a ng-href="" class="btn">{{activity.getName()}}</a>
+        </div>
+    </div>
+</div>
