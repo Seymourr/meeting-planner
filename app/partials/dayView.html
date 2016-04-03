@@ -1,7 +1,17 @@
 <div class="dayview">
     <div class="dayview-info">
         <div class="dayview-time">
-        <h1>Start Time: <p class="dayview-startTime">{{getDayTimeStart()}}</p></h1>
+            <div class ="dayview-inputTime">
+                <h1>Start Time: 
+                    <input type="number" class="dayview-startTime" ng-model="dayStartTimeHours" ng-change="setDayTimeStart(dayStartTimeHours, dayStartTimeMinutes" min="0" max="23">
+                        {{getDayTimeStartHours()}}
+                    </input>
+                    :
+                    <input type="number" class="dayview-startTime" ng-model="dayStartTimeMinutes" ng-change="setDayTimeStart(dayStartTimeHours, dayStartTimeMinutes" min="0" max="59">
+                        {{getDayTimeStartMinutes()}}
+                    </input>
+                </h1>
+            </div>
         <h1>End time: {{getDayTimeEnd()}}</h1>
         <h1>Total length: {{getDayLength()}} min</h1>
         </div>

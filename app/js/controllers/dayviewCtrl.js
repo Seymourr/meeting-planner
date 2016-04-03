@@ -1,8 +1,19 @@
 meetingPlannerApp.controller('dayviewCtrl', function ($scope,$routeParams,Meeting) {
+
     $scope.dayID = $routeParams.dayID; //The id of the day for this controller object
 
-    $scope.getDayTimeStart = function() {
-        return Meeting.days[dayID].getStart();
+    $scope.setDayTimeStart = function(changeH, changeM) {
+        Meeting.days[dayID].setStart(changeH, changeM);
+    };
+
+    $scope.getDayTimeStartHours = function() {
+        var t = Meeting.days[dayID].getStart();
+        return t.split(":")[0];
+    };
+
+    $scope.getDayTimeStartMinutes= function() {
+        var t = Meeting.days[dayID].getStart();
+        return t.split(":")[1];
     };
 
     $scope.getDayTimeEnd = function() {
