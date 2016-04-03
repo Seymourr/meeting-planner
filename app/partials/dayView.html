@@ -12,8 +12,8 @@
 
     
     <div class="dayview-main">
-        <div ng-repeat="activity in getDayActivies()">
-            <h1>{{getActivityTime(activity.getLength(), $index)}}</h1>
+        <div ng-repeat="activity in getDayActivities()">
+            <h1>{{getActivityTime($index)}}</h1>
             <a ng-href="" class="btn">{{activity.getName()}}</a>
         </div>
     </div>

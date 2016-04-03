@@ -45,6 +45,10 @@ function Day(startH,startM) {
 		return length;
 	};
 	
+	//  returns the activies set for this day
+	this.getActivities = function() {
+		return _activities;
+	};
 	// adds an activity to specific position
 	// if the position is not provided then it will add it to the 
 	// end of the list
@@ -74,5 +78,14 @@ function Day(startH,startM) {
 		}
 		var activity = this._removeActivity(oldposition);
 		this._addActivity(activity, newposition);
+	};
+
+	this.getActivityStart = function(index){
+		var counter = this._start;
+		for(var i = 0; i < _activities.length; i++) {
+			if(i == index) break;
+			counter += _activities[i].getLength();
+		}
+		return Math.floor(counter/60) + ":" + counter % 60;
 	};
 }
