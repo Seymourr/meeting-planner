@@ -1,0 +1,7 @@
+<ng-include src="'partials/parkedActivities.html'" ng-controller="ParkedActivitiesCtrl"></ng-include>
+
+<div>
+    <div ng-repeat="day in getDays()">
+        <ng-include src="'partials/dayView.html'" onload="setID($index)" ng-controller="DayviewCtrl"></ng-include>
+    </div>
+<div>

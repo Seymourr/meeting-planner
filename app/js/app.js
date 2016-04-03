@@ -37,9 +37,9 @@ var meetingPlannerApp = angular.module('meetingPlanner', ['ngRoute','ngResource'
 meetingPlannerApp.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider.
-      when('/parkedActivities', {
-        templateUrl: 'partials/parkedActivities.html',
-        controller: 'ParkedActivitiesCtrl'
+      when('/', {
+        templateUrl: 'partials/mainView.html',
+        controller: 'MainViewCtrl'
       }).
       when('/createActivity', {
         templateUrl: 'partials/createActivity.html',
@@ -47,6 +47,6 @@ meetingPlannerApp.config(['$routeProvider',
       }).
       // TODO in Lab 5: add more conditions for the last two screens (overview and preparation)
       otherwise({
-        redirectTo: '/parkedActivities'
+        redirectTo: '/'
       });
   }]);

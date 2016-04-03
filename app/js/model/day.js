@@ -8,7 +8,6 @@ function Day(startH,startM) {
 	// sets the start time to new value
 	this.setStart = function(startH,startM) {
 		this._start = startH * 60 + startM;
-		model.notifyObservers();
 	}
 
 	// returns the total length of the acitivities in 
@@ -47,7 +46,7 @@ function Day(startH,startM) {
 	
 	//  returns the activies set for this day
 	this.getActivities = function() {
-		return _activities;
+		return this._activities;
 	};
 	// adds an activity to specific position
 	// if the position is not provided then it will add it to the 
@@ -82,9 +81,9 @@ function Day(startH,startM) {
 
 	this.getActivityStart = function(index){
 		var counter = this._start;
-		for(var i = 0; i < _activities.length; i++) {
+		for(var i = 0; i < this._activities.length; i++) {
 			if(i == index) break;
-			counter += _activities[i].getLength();
+			counter += this._activities[i].getLength();
 		}
 		return Math.floor(counter/60) + ":" + counter % 60;
 	};
