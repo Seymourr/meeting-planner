@@ -9,17 +9,14 @@ html, body {
   background-color: rgba(134, 78, 255, 0.11);
 }
 
-.dayview, ng-include, #days {
+.dayview, ng-include, #days, #main {
   height: 100%;
   width: 100%;
 }
 
-.dayview {
-  border: solid;
-}
-
 .dayview-info {
   height: 10%;
+  margin-bottom: 30px;
 }
 
 .dayview-time {
@@ -30,4 +27,8 @@ html, body {
   height: 90%;
   border-radius: 10px;
   background-color: white;
+}
+
+.container-fluid {
+  height: 100%;
 }

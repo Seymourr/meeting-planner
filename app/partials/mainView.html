@@ -1,9 +1,5 @@
-<div class="row">
-	<ng-include class="col-lg-2" src="'partials/parkedActivities.html'"
-	            ng-controller="ParkedActivitiesCtrl"></ng-include>
-
-	<div id="days" ng-repeat="day in getDays()">
-		<ng-include class="col-lg-2" src="'partials/dayView.html'" onload="setID($index)"
-		            ng-controller="DayviewCtrl"></ng-include>
-	</div>
+<div id="main" class="row">
+	<div ng-include class="col-lg-2" src="'partials/parkedActivities.html'" ng-controller="ParkedActivitiesCtrl"></div>
+	<ng-include ng-repeat="day in getDays()" class="day col-lg-2" src="'partials/dayView.html'" onload="setID($index)"
+	            ng-controller="DayviewCtrl"></ng-include>
 </div>
