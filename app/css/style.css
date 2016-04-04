@@ -3,6 +3,27 @@
   background-color: blue;
   color: yellow;
 }
-body {
+
+html, body {
   height:100%;
+  background-color: rgba(134, 78, 255, 0.11);
+}
+
+.dayview, ng-include, #days {
+  height: 100%;
+  width: 100%;
+}
+
+.dayview {
+  border: solid;
+}
+
+.dayview-info {
+  height: 10%;
+}
+
+.dayview-main {
+  height: 90%;
+  border-radius: 10px;
+  background-color: white;
 }
