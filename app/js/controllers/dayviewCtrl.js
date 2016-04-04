@@ -6,7 +6,13 @@ meetingPlannerApp.controller('DayviewCtrl', function ($scope,$routeParams,Meetin
         dayID = id;
     };
 
-    $scope.setDayTimeStart = function(changeH, changeM) {
+    $scope.setDayTimeStart = function (timestamp) {
+        var changeH = timestamp.getHours();
+        var changeM = timestamp.getMinutes();
+
+        console.log(changeH);
+        console.log(changeM);
+
         Meeting.days[dayID].setStart(changeH, changeM);
     };
 

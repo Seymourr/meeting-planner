@@ -22,6 +22,10 @@ html, body {
   height: 10%;
 }
 
+.dayview-time {
+  padding: 5px;
+}
+
 .dayview-main {
   height: 90%;
   border-radius: 10px;

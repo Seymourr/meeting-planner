@@ -1,16 +1,27 @@
 <div class="dayview">
     <div class="dayview-info">
-        <div class="dayview-time">
-            <div class ="dayview-inputTime">
-                <h1>Start Time: 
-                    <input id="test" type="number" class="dayview-startTime" ng-model="dayStartTimeHours" ng-change="setDayTimeStart(dayStartTimeHours, dayStartTimeMinutes)" min="0" max="23"/>
-                    :
-                    <input type="number" class="dayview-startTime" ng-model="dayStartTimeMinutes" ng-change="setDayTimeStart(dayStartTimeHours, dayStartTimeMinutes)" min="0" max="59"/>
-                </h1>
-            </div>
-        <h1>End time: {{getDayTimeEnd()}}</h1>
-        <h1>Total length: {{getDayLength()}} min</h1>
-        </div>
+	    <!-- Should probably not appear until input is finished. -->
+	    <div class="alert alert-warning" ng-show="timeForm.input.$error.time">Please enter starting time on the form
+		    <strong>HH:MM</strong>.
+	    </div>
+	    <table class="dayview-time">
+		    <tr>
+			    <td>Start time</td>
+			    <td>
+				    <form name="timeForm"><input id="start-time" name="input" type="time" class="dayview-startTime"
+				                                 placeholder="08:00" ng-model="dayStartTime"
+				                                 ng-change="setDayTimeStart(dayStartTime)"></form>
+			    </td>
+		    </tr>
+		    <tr>
+			    <td>End time</td>
+			    <td>{{getDayTimeEnd()}}</td>
+		    </tr>
+		    <tr>
+			    <td>Total length</td>
+			    <td>{{getDayLength()}} min</td>
+		    </tr>
+	    </table>
         <div class="activityGraphics">
             <!-- TODO -->
         </div>
