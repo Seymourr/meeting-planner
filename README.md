@@ -1,4 +1,10 @@
-Interaction Programing - Project assignment - HTML
+Meeting planner
 =================================================
 
-This project contains the startup code for HTML version of the Interaction Programing project assignment. For more details on how to complete the assignment follow the instructions on the [course website](https://www.kth.se/social/course/DH2641).
+Meeting planner based on the [proposed idea](https://www.kth.se/social/upload/51219c3df276546f7b36c56d/DH2641-2013-Project-Idea1.pptx).
+
+#Installation instructions
+
+1. Make sure you have [Node](https://nodejs.org/) installed.
+
+2. Run `npm install`.
