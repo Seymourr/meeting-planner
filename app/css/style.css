@@ -32,3 +32,7 @@ html, body {
 .container-fluid {
   height: 100%;
 }
+
+#activity-view {
+  height: 100%;
+}
