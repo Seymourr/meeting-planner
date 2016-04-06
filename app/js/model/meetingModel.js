@@ -32,7 +32,7 @@ meetingPlannerApp.factory('Meeting', function ($resource) {
 			}
 			else this.parkedActivities.push(activity);
 		}
-	}
+	};
 
 	// add an activity to parked activities
 	this.addParkedActivity = function(activity, position){

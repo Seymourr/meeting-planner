@@ -36,3 +36,8 @@ html, body {
 #activity-view {
   height: 100%;
 }
+/** Distribution diagram */
+#bar-divider {
+  border-style:solid;
+  height:30px;
+}

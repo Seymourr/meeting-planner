@@ -23,11 +23,16 @@
 		    </tr>
 	    </table>
         <div class="activityGraphics">
-            <!-- TODO -->
+          <div class="progress" id="distribution-diagram">
+            <span class="distribution-component" ng-repeat="component in getDistributionComponents() track by $index">
+              <div class="progress-bar progress-bar-{{getComponentStyle($index)}}" role="progressbar" style="width:{{component}}%">
+              </div>
+            </span>
+          </div>
         </div>
     </div>
 
-    
+
     <div class="dayview-main">
         <div ng-repeat="activity in getDayActivities()">
             <h1>{{getActivityTime($index)}}</h1>

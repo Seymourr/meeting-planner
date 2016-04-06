@@ -47,6 +47,23 @@ meetingPlannerApp.controller('DayviewCtrl', function ($scope,$routeParams,Meetin
         return Meeting.days[dayID].getActivityStart(index);
     };
 
+    $scope.getDistributionComponents = function() {
+        // Get the total length of the day
+        var totalLength = Meeting.days[dayID].getTotalLength();
+
+        // Get the lengths of each of the types, and normalize by the total length.
+        var distributionComponents = [];
+
+        $.each(Meeting.getActivityTypes(), function(index, type) {
+          distributionComponents.unshift(Meeting.days[dayID].getLengthByType(index) * 100 / totalLength);
+        });
+        return distributionComponents;
+    };
+    $scope.getComponentStyle = function(type) {
+      var styles = ["warning","success","info","danger"];
+      return styles[type];
+    };
+
     $scope.dayStartTimeHours = $scope.getDayTimeStartHours();
     $scope.dayStartTimeMinutes = $scope.getDayTimeStartMinutes();
 
