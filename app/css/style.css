@@ -38,13 +38,15 @@ html, body {
 }
 .activityGraphics {
   position:relative;
+  padding-top:10px;
+  padding-bottom: 1px;
 }
 /** Distribution diagram */
-#distribution-diagram::after {
+#distribution-divider::after {
   content:"";
   position: absolute;
   top: 10%;
-  bottom: 10%;
+  bottom: 30%;
   left: 30%;
   border-left: 2px solid #ff0000;
 }

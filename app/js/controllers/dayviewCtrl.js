@@ -54,9 +54,12 @@ meetingPlannerApp.controller('DayviewCtrl', function ($scope,$routeParams,Meetin
         // Get the lengths of each of the types, and normalize by the total length.
         var distributionComponents = [];
 
-        $.each(Meeting.getActivityTypes(), function(index, type) {
-          distributionComponents.unshift(Meeting.days[dayID].getLengthByType(index) * 100 / totalLength);
-        });
+        // Check that we dont divide by zero (if we only have zero-length components this would happen)
+        if (totalLength != 0) {
+          $.each(Meeting.getActivityTypes(), function(index, type) {
+            distributionComponents.unshift(Meeting.days[dayID].getLengthByType(index) * 100 / totalLength);
+          });
+        }
         return distributionComponents;
     };
     $scope.getComponentStyle = function(type) {

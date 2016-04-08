@@ -84,8 +84,8 @@ meetingPlannerApp.factory('Meeting', function ($resource) {
 		this.addActivity(new Activity("Introduction",10,0,""));
 		this.addActivity(new Activity("Idea 1",30,0,""));
 		this.addActivity(new Activity("Working in groups",35,1,""));
-		this.addActivity(new Activity("Idea 1 discussion",15,2,""),0);
-		this.addActivity(new Activity("Coffee break",20,3,""), 0);
+		//this.addActivity(new Activity("Idea 1 discussion",15,2,""),0);
+		//this.addActivity(new Activity("Coffee break",20,3,""), 0);
 
 		console.log("Day Start: " + this.days[0].getStart());
 		console.log("Day End: " + this.days[0].getEnd());
