@@ -36,8 +36,15 @@ html, body {
 #activity-view {
   height: 100%;
 }
+.activityGraphics {
+  position:relative;
+}
 /** Distribution diagram */
-#bar-divider {
-  border-style:solid;
-  height:30px;
+#distribution-diagram::after {
+  content:"";
+  position: absolute;
+  top: 10%;
+  bottom: 10%;
+  left: 30%;
+  border-left: 2px solid #ff0000;
 }

@@ -23,7 +23,8 @@
 		    </tr>
 	    </table>
         <div class="activityGraphics">
-          <div class="progress" id="distribution-diagram">
+          <div class="progress">
+            <span id="distribution-diagram"></span>
             <span class="distribution-component" ng-repeat="component in getDistributionComponents() track by $index">
               <div class="progress-bar progress-bar-{{getComponentStyle($index)}}" role="progressbar" style="width:{{component}}%">
               </div>
