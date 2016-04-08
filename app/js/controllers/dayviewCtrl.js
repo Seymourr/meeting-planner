@@ -60,10 +60,16 @@ meetingPlannerApp.controller('DayviewCtrl', function ($scope,$routeParams,Meetin
             distributionComponents.unshift(Meeting.days[dayID].getLengthByType(index) * 100 / totalLength);
           });
         }
+        // If we only have zero lengths on all activities, add 0's to all
+        else {
+          $.each(Meeting.getActivityTypes(), function(index, type) {
+            distributionComponents.unshift(0);
+          });
+        }
         return distributionComponents;
     };
     $scope.getComponentStyle = function(type) {
-      var styles = ["warning","success","info","danger"];
+      var styles = ["warning","success","danger","info"];
       return styles[type];
     };
 
