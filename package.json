@@ -11,8 +11,10 @@
   },
   "scripts": {
     "postinstall": "bower install",
-
     "prestart": "npm install",
     "start": "http-server app/ -a 0.0.0.0 -p 8000"
+  },
+  "dependencies": {
+    "ng-dialog": "^0.6.0"
   }
 }

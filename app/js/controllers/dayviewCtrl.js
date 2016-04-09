@@ -1,4 +1,4 @@
-meetingPlannerApp.controller('DayviewCtrl', function ($scope,$routeParams,Meeting) {
+meetingPlannerApp.controller('DayviewCtrl', function ($scope,$routeParams, ngDialog, Meeting) {
 
     var dayID = 0; //The id of the day for this controller object
 
@@ -72,6 +72,18 @@ meetingPlannerApp.controller('DayviewCtrl', function ($scope,$routeParams,Meetin
       var styles = ["warning","success","danger","info"];
       return styles[type];
     };
+
+    $scope.openDialog = function (activity, index) {
+        activity.position = index;
+        activity.day = dayID;
+        ngDialog.open({
+            template: 'partials/createActivity.html', 
+            className: 'ngdialog-theme-plain',
+            controller: 'CreateActivityCtrl',
+            data: activity
+        });
+    };
+
 
     $scope.dayStartTimeHours = $scope.getDayTimeStartHours();
     $scope.dayStartTimeMinutes = $scope.getDayTimeStartMinutes();

@@ -1,4 +1,4 @@
-<h1> Create new activity</h1>
+<h1> Activity options</h1>
 <form>
   <fieldset class="form-group">
     <label for="title">Title</label>
@@ -11,7 +11,7 @@
   <fieldset class="form-group">
     <label for="activityType">Type</label>
     <select class="form-control" id="ActivityType" ng-model="activityTypeID">
-      <option ng-repeat="type in getActivityTypes()" ng-value="$index">{{type}}</option>
+      <option ng-repeat="type in getActivityTypes()">{{type}}</option>
     </select>
   </fieldset>
   <fieldset class="form-group">
@@ -19,6 +19,6 @@
     <textarea class="form-control" id="description" rows="3" ng-model="activityDescription"></textarea>
   </fieldset>
 
-  <a href="#/parkedActivities" class="btn btn-warning">Cancel</a>
-  <a ng-click="saveActivity(activityTitle, activityLength, activityTypeID, activityDescription)" class="btn btn-default">Save</a>
+  <a ng-click="closeThisDialog()" class="btn btn-warning">Cancel</a>
+  <a ng-click="saveActivity(activityTitle, activityLength, activityTypeID, activityDescription); closeThisDialog();" class="btn btn-default">Save</a>
 </form>

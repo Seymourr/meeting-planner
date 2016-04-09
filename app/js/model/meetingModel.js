@@ -22,6 +22,20 @@ meetingPlannerApp.factory('Meeting', function ($resource) {
 		return day;
 	};
 
+	this.replaceActivity = function(activity, day, position) {
+		if(activity != null && position != null) {
+			if(day != null) {
+				this.days[day]._addActivity(activity, position);
+				this.days[day]._removeActivity(position +1); //Check if works
+			} else {
+				this.parkedActivities.splice(position, 1, activity);
+			}
+		} else {	
+			//error message
+			console.log("error in replaceactivity");
+		}
+	};
+
 	// add an activity to model
 	this.addActivity = function (activity, day, position) {
 		if(day != null) {
@@ -81,15 +95,15 @@ meetingPlannerApp.factory('Meeting', function ($resource) {
 	// Used to test parkedActivity.
 	this.createTestData = function (){
 		this.addDay();
-		this.addActivity(new Activity("Introduction",10,0,""));
-		this.addActivity(new Activity("Idea 1",30,0,""));
-		this.addActivity(new Activity("Working in groups",35,1,""));
-		this.addActivity(new Activity("Idea 1 discussion",15,2,""),0);
-		this.addActivity(new Activity("Coffee break",20,3,""), 0);
+		this.addActivity(new Activity("Introduction",10,0,"Some description"));
+		this.addActivity(new Activity("Idea 1",30,0,"Some description"));
+		this.addActivity(new Activity("Working in groups",35,1,"Some description"));
+		this.addActivity(new Activity("Idea 1 discussion",15,2,"Some description"),0);
+		this.addActivity(new Activity("Coffee break",20,3,"Some description"), 0);
 
 
-		this.addActivity(new Activity("Something",20,0,""), 0);
-		this.addActivity(new Activity("Something",20,1,""), 0);
+		this.addActivity(new Activity("Something",20,0,"Some description"), 0);
+		this.addActivity(new Activity("Something",20,1,"Some description"), 0);
 
 		console.log("Day Start: " + this.days[0].getStart());
 		console.log("Day End: " + this.days[0].getEnd());

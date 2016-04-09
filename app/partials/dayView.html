@@ -37,7 +37,7 @@
     <div class="dayview-main">
         <div ng-repeat="activity in getDayActivities()">
             <h1>{{getActivityTime($index)}}</h1>
-            <a ng-href="" type="button" class="btn btn-default">{{activity.getName()}}</a>
+            <a ng-href="" type="button" class="btn btn-default" ng-click="openDialog(activity, $index)">{{activity.getName()}}</a>
         </div>
     </div>
 </div>
