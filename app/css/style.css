@@ -37,6 +37,7 @@ td{
 
 .dayview-main, #parkedActivityList {
   min-height: 20%;
+  max-height: 80%;
   border-radius: 5px;
   background-color: #FFF;
   padding: 10px;
