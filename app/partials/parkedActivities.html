@@ -3,7 +3,8 @@
 </div>
 
 <div id="parkedActivityList">
-  <div ng-repeat="activity in getParkedActivities()" ng-click="openDialog(activity, $index)" id="activityItem">
+	<div ng-drag="true" ng-drag-data="activity" ng-drag-success="onDragComplete($data,$event)"
+	     ng-repeat="activity in getParkedActivities()" ng-click="openDialog(activity, $index)" id="activityItem">
     {{activity.getLength()}} min <span id="activityItemName" ng-class="{'color-blue': activity.getTypeId() === 0, 'color-red': activity.getTypeId() === 1, 'color-green': activity.getTypeId() === 2, 'color-yellow': activity.getTypeId() === 3}">{{activity.getName()}}</span>
   </div>
 </div>
