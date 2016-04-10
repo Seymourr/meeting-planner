@@ -2,4 +2,8 @@ meetingPlannerApp.controller('MainViewCtrl', function ($scope,$routeParams,Meeti
   $scope.getDays = function() {
     return Meeting.days;
   };
+
+  $scope.addDay = function () {
+    Meeting.addDay();
+  };
 });

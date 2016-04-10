@@ -71,6 +71,13 @@ td{
   font-weight: 600;
 }
 
+#new-day {
+  min-width: 100vh;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
 .btn-danger, .progress-bar-danger, .color-red{
   background-color: #ED5565;
 }
