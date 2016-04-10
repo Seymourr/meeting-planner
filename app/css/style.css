@@ -20,7 +20,7 @@ html, body {
   margin-top: 10px;
 }
 
-#parkedActivityHeader {
+#parkedActivityHeader, #new-day {
   text-align: center;
   position: relative;
   top: 5%;
@@ -41,14 +41,14 @@ td{
 
 .dayview-main, #parkedActivityList {
   min-height: 20%;
-  max-height: 80%;
+  height: 90%;
   border-radius: 5px;
   background-color: #FFF;
   padding: 10px;
 }
 
 .container-fluid {
-  height: 100%;
+  height: 90%;
   width: 100%;
 }
 
@@ -73,12 +73,6 @@ td{
   margin-left: 10px;
   border-radius: 5px;
   font-weight: 600;
-}
-
-#new-day {
-  display: flex;
-  align-items: center;
-  height: 10%;
 }
 
 .btn-danger, .progress-bar-danger, .color-red{

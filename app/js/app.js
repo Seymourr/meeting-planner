@@ -41,6 +41,15 @@ meetingPlannerApp.config(['$routeProvider',
         templateUrl: 'partials/mainView.html',
         controller: 'MainViewCtrl'
       }).
+      when('/test', {
+        templateUrl: 'partials/parkedActivities.html',
+      }).
+      when('/test2', {
+        templateUrl: 'partials/createActivity.html',
+      }).
+      when('/test3', {
+        templateUrl: 'partials/dayView.html',
+      }).
       // TODO in Lab 5: add more conditions for the last two screens (overview and preparation)
       otherwise({
         redirectTo: '/'
