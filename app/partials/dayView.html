@@ -34,7 +34,7 @@
     </div>
 
 
-	<div ng-drop="true" ng-drop-success="onDropComplete($data, $event)" class="dayview-main">
+	<div ng-drop="true" ng-drop-success="onDropComplete($data, $event, null)" class="dayview-main">
       <div ng-repeat="activity in getDayActivities()" ng-click="openDialog(activity, $index)" id="activityItem">
           {{getActivityTime($index)}}
           <span id="activityItemName" ng-class="{'color-blue': activity.getTypeId() === 0, 'color-red': activity.getTypeId() === 1, 'color-green': activity.getTypeId() === 2, 'color-yellow': activity.getTypeId() === 3}">{{activity.getName()}}</div>
