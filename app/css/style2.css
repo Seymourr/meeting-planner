@@ -7,10 +7,15 @@ html, body {
   height:100%;
   background-color: blue;
   color: yellow;
+
 }
 
 #main {
   height: 100%;
+
+  white-space:nowrap;
+    overflow-x: scroll;
+  overflow-y: hidden;
 }
 
 .container-fluid {
@@ -21,3 +26,6 @@ html, body {
   height: 95%;
 }
 
+.day {
+      display:inline-block;
+}
