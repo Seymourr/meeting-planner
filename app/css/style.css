@@ -73,10 +73,9 @@ td{
 }
 
 #new-day {
-  min-width: 100vh;
-  min-height: 100vh;
   display: flex;
   align-items: center;
+  height: 10%;
 }
 
 .btn-danger, .progress-bar-danger, .color-red{
