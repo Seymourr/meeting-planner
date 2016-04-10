@@ -35,6 +35,10 @@ td{
   font-weight: 600;
 }
 
+.glyphicon-pencil {
+  float: right;
+}
+
 .dayview-main, #parkedActivityList {
   min-height: 20%;
   max-height: 80%;
