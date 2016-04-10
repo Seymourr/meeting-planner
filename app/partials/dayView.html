@@ -6,38 +6,38 @@
 	    </div>
 	    <table class="dayview-time">
 		    <tr>
-			    <td>Start time</td>
+			    <td><span class="bold">Start time</span></td>
 			    <td>
-				    <form name="timeForm"><input id="start-time" name="input" type="time" class="dayview-startTime"
-				                                 placeholder="08:00" ng-model="dayStartTime"
-				                                 ng-change="setDayTimeStart(dayStartTime)"></form>
+				    <form name="timeForm"><input id="start-time" name="input" type="time" class="dayview-startTime" placeholder="08:00" ng-model="dayStartTime" ng-change="setDayTimeStart(dayStartTime)"></form>
 			    </td>
 		    </tr>
 		    <tr>
-			    <td>End time</td>
+			    <td><span class="bold">End time</span></td>
 			    <td>{{getDayTimeEnd()}}</td>
 		    </tr>
 		    <tr>
-			    <td>Total length</td>
+			    <td><span class="bold">Total length</span></td>
 			    <td>{{getDayLength()}} min</td>
 		    </tr>
 	    </table>
-        <div class="activityGraphics">
-          <div id="distribution-bar" class="progress">
-            <span id="distribution-divider"></span>
-            <span class="distribution-component" ng-repeat="component in getDistributionComponents() track by $index">
-              <div class="progress-bar progress-bar-{{getComponentStyle($index)}}" role="progressbar" style="width:{{component}}%">
-              </div>
-            </span>
-          </div>
-        </div>
+
+	    <!-- Distribution graph -->
+	    <div class="activityGraphics">
+	      <div id="distribution-bar" class="progress">
+	        <span id="distribution-divider"></span>
+	        <span class="distribution-component" ng-repeat="component in getDistributionComponents() track by $index">
+	          <div class="progress-bar progress-bar-{{getComponentStyle($index)}}" role="progressbar" style="width:{{component}}%">
+	          </div>
+	        </span>
+	      </div>
+	    </div>
     </div>
 
 
     <div class="dayview-main">
-        <div ng-repeat="activity in getDayActivities()">
-            <h1>{{getActivityTime($index)}}</h1>
-            <a ng-href="" type="button" class="btn btn-default" ng-click="openDialog(activity, $index)">{{activity.getName()}}</a>
-        </div>
+      <div ng-repeat="activity in getDayActivities()" ng-click="openDialog(activity, $index)" id="activityItem">
+          {{getActivityTime($index)}}
+          <span id="activityItemName" ng-class="{'color-blue': activity.getTypeId() === 0, 'color-red': activity.getTypeId() === 1, 'color-green': activity.getTypeId() === 2, 'color-yellow': activity.getTypeId() === 3}">{{activity.getName()}}</div>
+      </div>
     </div>
 </div>

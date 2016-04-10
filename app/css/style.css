@@ -1,12 +1,12 @@
-#parkedActivityList {
-  height:100%;
-  background-color: blue;
-  color: yellow;
-}
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
 
 html, body {
   height:100%;
-  background-color: rgba(134, 78, 255, 0.11);
+  background-color: #FFF7E9;
+  font-family: Open Sans, Arial, sans-serif;
+  font-size: 14px;
+  color: #434A54;
+  font-weight: 400;
 }
 
 .dayview, ng-include, #days, #main {
@@ -14,33 +14,79 @@ html, body {
   width: 100%;
 }
 
-.dayview-info {
+.dayview-info, #parkedActivityHeader {
   height: 10%;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
+  margin-top: 10px;
 }
 
-.dayview-time {
-  padding: 5px;
+#parkedActivityHeader {
+  text-align: center;
+  position: relative;
+  top: 5%;
+  transform: translateY(-5%);
 }
 
-.dayview-main {
+td{
+  padding-right: 10px;
+}
+
+.bold {
+  font-weight: 600;
+}
+
+.dayview-main, #parkedActivityList {
   height: 90%;
-  border-radius: 10px;
-  background-color: white;
+  border-radius: 5px;
+  background-color: #FFF;
+  padding: 10px;
 }
 
 .container-fluid {
   height: 100%;
+  width: 100%;
 }
 
-#activity-view {
-  height: 100%;
-}
 .activityGraphics {
   position:relative;
   padding-top:10px;
   padding-bottom: 1px;
 }
+
+#activityItem {
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+#activityItem:hover{
+  cursor: pointer;
+}
+
+#activityItemName{
+  padding: 10px;
+  margin-left: 10px;
+  border-radius: 5px;
+  font-weight: 600;
+}
+
+.btn-danger, .progress-bar-danger, .color-red{
+  background-color: #ED5565;
+}
+
+/** Break */
+.btn-warning, .progress-bar-warning, .color-yellow{
+  background-color: #FFCE54;
+}
+
+.btn-success, .progress-bar-success, .color-green{
+  background-color: #A0D468;
+}
+
+.btn-info, .progress-bar-info, .color-blue {
+  background-color: #4FC1E9;
+}
+
 /** Distribution diagram */
 #distribution-divider::after {
   content:"";
@@ -50,3 +96,5 @@ html, body {
   left: 30%;
   border-left: 2px solid #ff0000;
 }
+
+

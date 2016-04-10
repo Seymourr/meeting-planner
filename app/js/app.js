@@ -41,10 +41,6 @@ meetingPlannerApp.config(['$routeProvider',
         templateUrl: 'partials/mainView.html',
         controller: 'MainViewCtrl'
       }).
-      when('/createActivity', {
-        templateUrl: 'partials/createActivity.html',
-        controller: 'CreateActivityCtrl'
-      }).
       // TODO in Lab 5: add more conditions for the last two screens (overview and preparation)
       otherwise({
         redirectTo: '/'

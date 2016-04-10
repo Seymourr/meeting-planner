@@ -66,8 +66,10 @@ meetingPlannerApp.controller('DayviewCtrl', function ($scope,$routeParams, ngDia
             distributionComponents.unshift(0);
           });
         }
+        
         return distributionComponents;
     };
+
     $scope.getComponentStyle = function(type) {
       var styles = ["warning","success","danger","info"];
       return styles[type];
