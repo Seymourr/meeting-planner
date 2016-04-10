@@ -23,4 +23,9 @@ meetingPlannerApp.controller('ParkedActivitiesCtrl', function ($scope,$routePara
     $scope.onDragComplete = function ($data, $event) {
         // TODO: Remove activity from parked activities
     };
+
+    $scope.getDataWithPos = function(activity, index) {
+      activity.position = index;
+      return activity;
+    }
 });
