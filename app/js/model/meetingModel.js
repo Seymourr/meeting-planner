@@ -95,6 +95,7 @@ meetingPlannerApp.factory('Meeting', function ($resource) {
 	// Used to test parkedActivity.
 	this.createTestData = function (){
 		this.addDay();
+		
 		this.addActivity(new Activity("Introduction",10,0,"Some description"));
 		this.addActivity(new Activity("Idea 1",30,0,"Some description"));
 		this.addActivity(new Activity("Working in groups",35,1,"Some description"));

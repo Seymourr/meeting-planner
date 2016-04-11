@@ -90,8 +90,19 @@ meetingPlannerApp.controller('DayviewCtrl', function ($scope,$routeParams, ngDia
     $scope.dayStartTimeHours = $scope.getDayTimeStartHours();
     $scope.dayStartTimeMinutes = $scope.getDayTimeStartMinutes();
 
-    $scope.onDropComplete = function (activity, $event, day) {
+    $scope.onDropComplete = function (activity, $event, index) {
         // TODO: Make orderable
-        Meeting.moveActivity(day, activity.position, dayID, null);
+        var day = activity.oldDay;
+        if(day === undefined) {
+            day = null;
+        }
+
+        Meeting.moveActivity(day, activity.position, dayID, index);
+    }
+
+     $scope.getDataWithPos = function(activity, index) {
+      activity.position = index;
+      activity.oldDay = dayID;
+      return activity;
     }
 });
