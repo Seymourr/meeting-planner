@@ -72,12 +72,12 @@ td{
 #activityLabel{
   display: table-cell;
   white-space: nowrap;
-  padding: 10px;
+  padding-right: 10px;
 }
 
 #activityIcon{
   display: table-cell;
-  padding: 10px;
+  padding-left: 10px;
 }
 
 #activityName{
@@ -91,19 +91,23 @@ td{
 
 .btn-danger, .progress-bar-danger, .color-red{
   background-color: #ED5565;
+  border: 0 none;
 }
 
 /** Break */
 .btn-warning, .progress-bar-warning, .color-yellow{
   background-color: #FFCE54;
+  border: 0 none;
 }
 
 .btn-success, .progress-bar-success, .color-green{
   background-color: #A0D468;
+  border: 0 none;
 }
 
 .btn-info, .progress-bar-info, .color-blue {
   background-color: #4FC1E9;
+  border: 0 none;
 }
 
 /** Distribution diagram */

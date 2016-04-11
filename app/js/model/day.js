@@ -85,6 +85,19 @@ function Day(startH,startM) {
 			if(i == index) break;
 			counter += this._activities[i].getLength();
 		}
-		return Math.floor(counter/60) + ":" + counter % 60;
+
+		if(Math.floor(counter/60) < 10) {
+			if(counter % 60 < 10) 
+				return "0" + Math.floor(counter/60) + ":0" + counter % 60;
+			 else {
+				return "0" + Math.floor(counter/60) + ":" + counter % 60;
+			}
+		} else {
+			if(counter % 60 < 10) {
+				return Math.floor(counter/60) + ":0" + counter % 60;
+			} else {
+				return Math.floor(counter/60) + ":" + counter % 60;
+			}
+		}		
 	};
 }
