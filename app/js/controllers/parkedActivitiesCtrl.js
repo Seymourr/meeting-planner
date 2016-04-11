@@ -20,21 +20,24 @@ meetingPlannerApp.controller('ParkedActivitiesCtrl', function ($scope,$routePara
         });
   };
 
-  
+  $scope.getDataWithPos = function(activity, index) {
+    activity.position = index;
+    activity.oldDay = null;
+    return activity;
+  }
 
-    $scope.getDataWithPos = function(activity, index) {
-      activity.position = index;
-      activity.oldDay = null;
-      return activity;
-    }
+  $scope.onDropComplete = function (activity, $event, index) {
+      // TODO: Make orderable
+      var day = activity.oldDay;
+      if(day === undefined) {
+        day = null;
+      }
+  //    console.log("TO: " + dayID);
+      Meeting.moveActivity(day, activity.position, null, index);
+  }
 
-    $scope.onDropComplete = function (activity, $event, index) {
-        // TODO: Make orderable
-        var day = activity.oldDay;
-        if(day === undefined) {
-          day = null;
-        }
-    //    console.log("TO: " + dayID);
-        Meeting.moveActivity(day, activity.position, null, index);
-    }
+  $scope.getColor = function(id) {
+    var style = ["blue", "red", "green", "yellow"];
+    return style[id];
+  }
 });

@@ -1,48 +1,46 @@
 <div class="dayview">
-    <div class="dayview-info">
-	    <!-- Should probably not appear until input is finished. -->
-	    <div class="alert alert-warning" ng-show="timeForm.input.$error.time">Please enter starting time on the form
-		    <strong>HH:MM</strong>.
-	    </div>
-	    <table class="dayview-time">
-		    <tr>
-			    <td><span class="bold">Start time</span></td>
-			    <td>
-				    <form name="timeForm"><input id="start-time" name="input" type="time" class="dayview-startTime" placeholder="08:00" ng-model="dayStartTime" ng-change="setDayTimeStart(dayStartTime)"></form>
-			    </td>
-		    </tr>
-		    <tr>
-			    <td><span class="bold">End time</span></td>
-			    <td>{{getDayTimeEnd()}}</td>
-		    </tr>
-		    <tr>
-			    <td><span class="bold">Total length</span></td>
-			    <td>{{getDayLength()}} min</td>
-		    </tr>
-	    </table>
-
-	    <!-- Distribution graph -->
-	    <div class="activityGraphics">
-	      <div id="distribution-bar" class="progress">
-	        <span id="distribution-divider"></span>
-	        <span class="distribution-component" ng-repeat="component in getDistributionComponents() track by $index">
-	          <div class="progress-bar progress-bar-{{getComponentStyle($index)}}" role="progressbar" style="width:{{component}}%">
-	          </div>
-	        </span>
-	      </div>
-	    </div>
+  <div class="dayview-info">
+    <!-- Should probably not appear until input is finished. -->
+    <div class="alert alert-warning" ng-show="timeForm.input.$error.time">Please enter starting time on the form
+	    <strong>HH:MM</strong>.
     </div>
 
-    <div ng-if="getDayActivities().length == 0"class="dayview-main" ng-drop="true" ng-drop-success="onDropComplete($data, $event, null)">
+    <table class="dayview-time">
+	    <tr>
+		    <td><span class="bold">Start time</span></td>
+		    <td>
+			    <form name="timeForm"><input id="start-time" name="input" type="time" class="dayview-startTime" placeholder="08:00" ng-model="dayStartTime" ng-change="setDayTimeStart(dayStartTime)"></form>
+		    </td>
+	    </tr>
+	    <tr>
+		    <td><span class="bold">End time</span></td>
+		    <td>{{getDayTimeEnd()}}</td>
+	    </tr>
+	    <tr>
+		    <td><span class="bold">Total length</span></td>
+		    <td>{{getDayLength()}} min</td>
+	    </tr>
+    </table>
+
+    <!-- Distribution graph -->
+    <div class="activityGraphics">
+      <div id="distribution-bar" class="progress">
+        <span id="distribution-divider"></span>
+        <span class="distribution-component" ng-repeat="component in getDistributionComponents() track by $index">
+          <div class="progress-bar progress-bar-{{getComponentStyle($index)}}" role="progressbar" style="width:{{component}}%">
+          </div>
+        </span>
+      </div>
     </div>
+  </div>
+
+  <div ng-if="getDayActivities().length == 0"class="dayview-main" ng-drop="true" ng-drop-success="onDropComplete($data, $event, null)"></div>
 
 	<div ng-if="getDayActivities().length > 0" class="dayview-main">
 		<div ng-drag="true" ng-drag-data="getDataWithPos(activity, $index)" ng-repeat="activity in getDayActivities()" id="activityItem" ng-drop="true" ng-drop-success="onDropComplete($data, $event, $index)">
-          {{getActivityTime($index)}}
-			<span id="activityItemName"
-			      ng-class="{'color-blue': activity.getTypeId() === 0, 'color-red': activity.getTypeId() === 1, 'color-green': activity.getTypeId() === 2, 'color-yellow': activity.getTypeId() === 3}">{{activity.getName()}}</span>
-			<span class="glyphicon glyphicon-pencil" ng-click="openDialog(activity, $index)"></span>
+	    <span id="activityLabel">{{getActivityTime($index)}}</span>
+			<span id="activityName" class="color-{{getColor(activity.getTypeId())}}">{{activity.getName()}}</span>
+			<span id="activityIcon"><span class="glyphicon glyphicon-pencil" ng-click="openDialog(activity, $index)"></span></span>
 		</div>
-      </div>
-    </div>
+  </div>
 </div>

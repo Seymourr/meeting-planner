@@ -99,12 +99,24 @@ meetingPlannerApp.factory('Meeting', function ($resource) {
 		this.addActivity(new Activity("Introduction",10,0,"Some description"));
 		this.addActivity(new Activity("Idea 1",30,0,"Some description"));
 		this.addActivity(new Activity("Working in groups",35,1,"Some description"));
+
 		this.addActivity(new Activity("Idea 1 discussion",15,2,"Some description"),0);
 		this.addActivity(new Activity("Coffee break",20,3,"Some description"), 0);
-
-
 		this.addActivity(new Activity("Something",20,0,"Some description"), 0);
 		this.addActivity(new Activity("Something",20,1,"Some description"), 0);
+		this.addActivity(new Activity("Idea 1 discussion",15,2,"Some description"),0);
+		this.addActivity(new Activity("Coffee break",20,3,"Some description"), 0);
+		this.addActivity(new Activity("Something",20,0,"Some description"), 0);
+		this.addActivity(new Activity("Something",20,1,"Some description"), 0);
+		this.addActivity(new Activity("Idea 1 discussion",15,2,"Some description"),0);
+		this.addActivity(new Activity("Coffee break",20,3,"Some description"), 0);
+		this.addActivity(new Activity("Something",20,0,"Some description"), 0);
+		this.addActivity(new Activity("Something",20,1,"Some description"), 0);
+		this.addActivity(new Activity("Idea 1 discussion",15,2,"Some description"),0);
+		this.addActivity(new Activity("Coffee break",20,3,"Some description"), 0);
+		this.addActivity(new Activity("Something",20,0,"Some description"), 0);
+		this.addActivity(new Activity("Something",20,1,"Some description"), 0);
+
 
 		console.log("Day Start: " + this.days[0].getStart());
 		console.log("Day End: " + this.days[0].getEnd());

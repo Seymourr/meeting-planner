@@ -15,9 +15,9 @@ html, body {
 }
 
 .dayview-info, #parkedActivityHeader {
+  margin-top: 10px;
   height: 10%;
   margin-bottom: 20px;
-  margin-top: 10px;
 }
 
 #parkedActivityHeader, #new-day {
@@ -45,6 +45,7 @@ td{
   border-radius: 5px;
   background-color: #FFF;
   padding: 10px;
+  overflow-y: scroll;
 }
 
 .container-fluid {
@@ -59,21 +60,34 @@ td{
 }
 
 #activityItem {
-  padding: 10px;
-  padding-bottom: 20px;
+  margin-bottom: 10px;
   border-radius: 5px;
   position: relative;
+  display: block;
 }
 
 #activityItem:hover{
   cursor: pointer;
 }
 
-#activityItemName{
+#activityLabel{
+  display: table-cell;
+  white-space: nowrap;
+  padding: 10px;
+}
+
+#activityIcon{
+  display: table-cell;
+  padding: 10px;
+}
+
+#activityName{
   padding: 10px;
   margin-left: 10px;
   border-radius: 5px;
   font-weight: 600;
+  display: table-cell;
+  width: 100%;
 }
 
 .btn-danger, .progress-bar-danger, .color-red{
