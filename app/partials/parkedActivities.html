@@ -2,10 +2,12 @@
 	<a ng-click="openDialog()" class="btn btn-default">Add activity</a>
 </div>
 
-<div ng-if="getParkedActivities().length == 0" ng-drop="true" ng-drop-success="onDropComplete($data, $event, null)" id = "parkedActivityList"></div>
-
-<div id="parkedActivityList">
-	<div ng-if="getParkedActivities().length > 0" ng-drag="true" ng-drag-data="getDataWithPos(activity, $index)" ng-drop="true", ng-drop-success="onDropComplete($data,$event, $index)" ng-repeat="activity in getParkedActivities()" id="activityItem">
+<div ng-if="getParkedActivities().length == 0" ng-drop="true" ng-drop-success="onDropComplete($data, $event, null)"
+     id="parkedActivityList"></div>
+<div ng-if="getParkedActivities().length > 0" id="parkedActivityList">
+	<div ng-drag="true" ng-drag-data="getDataWithPos(activity, $index)" ng-drop="true" ,
+	     ng-drop-success="onDropComplete($data,$event, $index)" ng-repeat="activity in getParkedActivities()"
+	     id="activityItem">
     <span id="activityLabel">{{activity.getLength()}} min </span>
     <span id="activityName" class="color-{{getColor(activity.getTypeId())}}">{{activity.getName()}}</span>
 		<span id="activityIcon"><span class="glyphicon glyphicon-pencil" ng-click="openDialog(activity, $index)"></span></span>
