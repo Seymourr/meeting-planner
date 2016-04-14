@@ -1,6 +1,4 @@
 <!DOCTYPE html>
-<!-- Notice the ng-app Angular directive. This tells Angular where the application starts and also
-which module to associate the app with. In app.js we create the "dinnerPlanner" module. -->
 <html lang="en" ng-app="meetingPlanner">
   <head>
     <meta charset="utf-8">
@@ -19,17 +17,15 @@ which module to associate the app with. In app.js we create the "dinnerPlanner" 
     <!-- jQuery -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
 
-    <!-- Bootstrap JavaScript, needed if you want for instance tabs, models, popovers etc. -->
+    <!-- Bootstrap JavaScript -->
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-   
 
-    <!-- Angular JavaScript including routing and resource modules  -->
+    <!-- Angular -->
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-resource/angular-resource.js"></script>
     <script src="bower_components/ngDraggable/ngDraggable.js"></script>
     <script src="lib/ngDialog.min.js"></script>
-
 
     <!-- The application JavaScript code -->
     <script src="js/app.js"></script>
@@ -42,15 +38,9 @@ which module to associate the app with. In app.js we create the "dinnerPlanner" 
     <script src="js/controllers/parkedActivitiesCtrl.js"></script>
     <script src="js/controllers/createActivityCtrl.js"></script>
     <script src="js/controllers/dayviewCtrl.js"></script>
-
-
   </head>
-  <body ng-style="bodyStyle">
-    <!-- Here in index.html you should put only the layout that is shared among all the screens (e.g. header
-    ,footer, etc.). The rest of the view specific layout will go into the html partials (check partials folder) -->
 
-    <!-- ng-view Angular directive is where the partials will be loaded. app.js configures the $routingProvider
-    where you specify which partial should be loaded when. -->
+  <body ng-style="bodyStyle">
     <div ng-view class="container-fluid" id="main-content"></div>
   </body>
 </html>
