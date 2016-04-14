@@ -1,0 +1,21 @@
+<div class="homeDiv">
+    <div class="row">
+        <br>
+        <div class="col-xs-8 col-xs-offset-2">
+            <img src="images/background_temporary.jpg" alt="Logga" class="img-responsive">
+        </div>
+    </div>
+<br>
+    <div class="row">
+        <div class="col-xs-2 col-xs-offset-5">
+            <form ng-submit="login()">
+                <div class="input-group input-group-lg col-centered">
+                    <input type="text" ng-model="email" placeholder="Email" />
+                    <input type="password" ng-model="password" placeholder="Password" />
+                </div>
+            </form>
+            <button class="btn btn-block" ng-click="login()">Login</button>
+            <button class="btn btn-block" ng-click="createUser()">Register</button>
+        </div>
+    </div>
+</div>

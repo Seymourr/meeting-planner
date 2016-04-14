@@ -1,4 +1,5 @@
 <div id="main" class="row">
+    <div><button class="btn" ng-click="logout()">Log out</button></div>
 	<ng-include class="col-lg-2 col-md-3 col-sm-6" src="'partials/parkedActivities.html'" ng-controller="ParkedActivitiesCtrl" id="activity-view"></ng-include>
 	<ng-include class="day col-lg-2 col-md-3 col-sm-6" src="'partials/dayView.html'" ng-controller="DayviewCtrl"
 	            ng-repeat="day in getDays()" onload="setID($index)"></ng-include>

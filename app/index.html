@@ -36,14 +36,19 @@ which module to associate the app with. In app.js we create the "dinnerPlanner" 
     <script src="js/model/meetingModel.js"></script>
     <script src="js/model/day.js"></script>
     <script src="js/model/activity.js"></script>
+    <script src="js/model/loginService.js"></script>
 
     <!-- Controllers -->
     <script src="js/controllers/mainViewCtrl.js"></script>
     <script src="js/controllers/parkedActivitiesCtrl.js"></script>
     <script src="js/controllers/createActivityCtrl.js"></script>
     <script src="js/controllers/dayviewCtrl.js"></script>
+    <script src="js/controllers/homeCtrl.js"></script>
 
-
+    <!-- Firebase -->
+    <script src="bower_components/firebase/firebase.js"></script>
+    <script src="bower_components/angularfire/dist/angularfire.min.js"></script>
+    
   </head>
   <body ng-style="bodyStyle">
     <!-- Here in index.html you should put only the layout that is shared among all the screens (e.g. header

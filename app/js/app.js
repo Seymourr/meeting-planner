@@ -8,7 +8,7 @@
 // also see that we included separate JavaScript files for these modules. Angular
 // has other core modules that you might want to use and explore when you go deeper
 // into developing Angular applications. For this lab, these two will suffice.
-var meetingPlannerApp = angular.module('meetingPlanner', ['ngRoute', 'ngResource', 'ngDialog', 'ngDraggable']);
+var meetingPlannerApp = angular.module('meetingPlanner', ['ngRoute', 'ngResource', 'ngDialog', 'ngDraggable', 'firebase']);
 
 
 // Here we configure our application module and more specifically our $routeProvider.
@@ -34,23 +34,36 @@ var meetingPlannerApp = angular.module('meetingPlanner', ['ngRoute', 'ngResource
 // the path we use the ":" sign. For instance, our '/dish/:dishId' will be triggered when we access
 // 'http://localhost:8000/#/dish/12345'. The 12345 value will be stored in a dishId parameter, which we can
 // then access through $routeParams service. More information on this in the dishCtrl.js
+meetingPlannerApp.run(["$rootScope", "$location", function($rootScope, $location) {
+$rootScope.$on("$routeChangeError", function(event, next, previous, error) {
+  // We can catch the error thrown when the $requireAuth promise is rejected
+  // and redirect the user back to the home page
+  if (error === "AUTH_REQUIRED") {
+    console.log("AUTH REQUIRED");
+    $location.path("/home");
+  }
+});
+}]);
+
 meetingPlannerApp.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider.
       when('/', {
+        templateUrl: 'partials/home.html',
+        controller: 'HomeCtrl'
+      }).
+      when('/main', {
         templateUrl: 'partials/mainView.html',
-        controller: 'MainViewCtrl'
+        controller: 'MainViewCtrl',
+        resolve: {
+          // controller will not be loaded until $requireAuth resolves
+          "currentAuth": ["Auth", function(Auth) {
+          // $requireAuth returns a promise so the resolve waits for it to complete
+          // If the promise is rejected, it will throw a $stateChangeError (see above)
+          return Auth.$requireAuth();
+          }]
+        }
       }).
-      when('/test', {
-        templateUrl: 'partials/parkedActivities.html',
-      }).
-      when('/test2', {
-        templateUrl: 'partials/createActivity.html',
-      }).
-      when('/test3', {
-        templateUrl: 'partials/dayView.html',
-      }).
-      // TODO in Lab 5: add more conditions for the last two screens (overview and preparation)
       otherwise({
         redirectTo: '/'
       });
