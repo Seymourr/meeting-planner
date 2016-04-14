@@ -129,4 +129,7 @@ td{
   border-left: 2px solid #ff0000;
 }
 
+#parkedActivityList .drag-enter:not(.dragging), .dayview .drag-enter:not(.dragging) {
+  padding-top: 60px;
+}
 
