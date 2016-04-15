@@ -19,7 +19,7 @@ html, body {
   overflow-x: scroll;
   overflow-y: hidden;
   white-space: nowrap;
-}    
+}
 
 #main-content > .row [class*="col-lg"], #main-content > .row [class*="col-md"], #main-content > .row [class*="col-sm"] {
   float: none;
@@ -33,7 +33,7 @@ html, body {
 
 .dayview-info, #parkedActivityHeader {
   padding-top: 10px;
-  height: 12%;
+  height: 20%;
 }
 
 #parkedActivityHeader, #new-day {
@@ -128,5 +128,29 @@ td{
   left: 30%;
   border-left: 2px solid #ff0000;
 }
-
-
+/** Hide timepicker buttons **/
+tr.text-center:nth-child(1) > td:nth-child(2) {
+  display:none;
+}
+tr.text-center:nth-child(3) > td:nth-child(2) {
+  display:none;
+}
+.datepicker-container input {
+  margin-bottom: 0px;
+}
+.timepicker-container .uib-increment, .uib-decrement {
+  display: none;
+}
+.timepicker-container input {
+  height:30px;
+  font-size:12px;
+}
+.uib-separator {
+  padding-right:3px;
+}
+.form-group.uib-time.hours {
+  padding-right: 3px;
+}
+.meeting-info-row input {
+  margin-bottom: 4px;
+}

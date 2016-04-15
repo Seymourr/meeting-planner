@@ -2,14 +2,31 @@
 // but there is also a specific function in the Model that adds
 // days to the model, so you don't need call this yourself.
 function Day(startH,startM) {
-	this._start = startH * 60 + startM;
+	this._title = "";
+	this._startTime = new Date();
+	this._startTime.setHours(startH);
+	this._startTime.setMinutes(startM);
 	this._activities = [];
 
-	// sets the start time to new value
-	this.setStart = function(startH,startM) {
-		this._start = startH * 60 + startM;
-	}
-
+	this.setTitle = function(newTitle) {
+		this._title = newTitle;
+	};
+	this.getTitle = function() {
+		return this._title;
+	};
+	this.getDate = function() {
+		return this._startTime;
+	};
+	this.setDate = function(date) {
+		if (date != null)
+			this._startTime = date;
+	};
+	this.getTime = function() {
+		return this._startTime;
+	};
+	this.setTime = function(newTime) {
+		this._startTime = newTime;
+	};
 	// returns the total length of the acitivities in
 	// a day in minutes
 	this.getTotalLength = function () {
@@ -20,17 +37,16 @@ function Day(startH,startM) {
 		return totalLength;
 	};
 
-	// returns the string representation Hours:Minutes of
 	// the end time of the day
 	this.getEnd = function() {
-		var end = this._start + this.getTotalLength();
-		return Math.floor(end/60) + ":" + end % 60;
+		if (this._startTime != null)
+			return new Date(this._startTime.getFullYear(), this._startTime.getMonth(), this._startTime.getDate(), this._startTime.getHours(), (this._startTime.getMinutes() + this.getTotalLength()));
 	};
 
 	// returns the string representation Hours:Minutes of
 	// the start time of the day
 	this.getStart = function() {
-		return Math.floor(this._start/60) + ":" + this._start % 60;
+		return this._date;
 	};
 
 	// returns the length (in minutes) of activities of certain type
@@ -80,24 +96,13 @@ function Day(startH,startM) {
 	};
 
 	this.getActivityStart = function(index){
-		var counter = this._start;
+		if (this._startTime != null) {
+		var counter = 0;
 		for(var i = 0; i < this._activities.length; i++) {
 			if(i == index) break;
 			counter += this._activities[i].getLength();
 		}
-
-		if(Math.floor(counter/60) < 10) {
-			if(counter % 60 < 10) 
-				return "0" + Math.floor(counter/60) + ":0" + counter % 60;
-			 else {
-				return "0" + Math.floor(counter/60) + ":" + counter % 60;
-			}
-		} else {
-			if(counter % 60 < 10) {
-				return Math.floor(counter/60) + ":0" + counter % 60;
-			} else {
-				return Math.floor(counter/60) + ":" + counter % 60;
-			}
-		}		
+		return new Date(this._startTime.getFullYear(), this._startTime.getMonth(), this._startTime.getDate(), this._startTime.getHours(), (this._startTime.getMinutes() + counter));
+	}
 	};
 }

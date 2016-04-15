@@ -2,39 +2,13 @@ meetingPlannerApp.controller('DayviewCtrl', function ($scope,$routeParams, ngDia
 
   var dayID = 0; //The id of the day for this controller object
 
+  $scope.title = Meeting._title;
   $scope.setID = function(id) {
       dayID = id;
   };
-
-  $scope.setDayTimeStart = function (timestamp) {
-    var changeH = timestamp.getHours();
-    var changeM = timestamp.getMinutes();
-
-    console.log(changeH);
-    console.log(changeM);
-
-    Meeting.days[dayID].setStart(changeH, changeM);
+  $scope.endTime = function() {
+    return Meeting.days[dayID].getEnd();
   };
-
-  $scope.getDayTimeStartHours = function() {
-    var t = Meeting.days[dayID].getStart();
-    return parseInt(t.split(":")[0]);
-  };
-
-  $scope.getDayTimeStartMinutes= function() {
-    var t = Meeting.days[dayID].getStart();
-    return parseInt(t.split(":")[1]);
-  };
-
-  $scope.getDayTimeEnd = function() {
-    var t = Meeting.days[dayID].getEnd();
-    var ts = t.split(":");
-    if(ts[0].length == 1) ts[0] = "0" + ts[0];
-    if(ts[1].length == 1) ts[1] = "0" + ts[1];
-    t = ts[0] + ":" + ts[1];
-    return t;
-  };
-
   $scope.getDayLength = function() {
     return Meeting.days[dayID].getTotalLength();
   };
@@ -66,7 +40,7 @@ meetingPlannerApp.controller('DayviewCtrl', function ($scope,$routeParams, ngDia
         distributionComponents.unshift(0);
       });
     }
-    
+
     return distributionComponents;
   };
 
@@ -79,16 +53,13 @@ meetingPlannerApp.controller('DayviewCtrl', function ($scope,$routeParams, ngDia
     activity.position = index;
     activity.day = dayID;
     ngDialog.open({
-        template: 'partials/createActivity.html', 
+        template: 'partials/createActivity.html',
         className: 'ngdialog-theme-plain',
         controller: 'CreateActivityCtrl',
         data: activity
     });
   };
 
-
-  $scope.dayStartTimeHours = $scope.getDayTimeStartHours();
-  $scope.dayStartTimeMinutes = $scope.getDayTimeStartMinutes();
 
   $scope.onDropComplete = function (activity, $event, index) {
     // TODO: Make orderable
@@ -109,5 +80,25 @@ meetingPlannerApp.controller('DayviewCtrl', function ($scope,$routeParams, ngDia
   $scope.getColor = function(id) {
     var style = ["blue", "red", "green", "yellow"];
     return style[id];
-  }
+  };
+  $scope.dt = {
+    date: function(newDate) {
+     return arguments.length ? (Meeting.days[dayID].setDate(newDate)) : Meeting.days[dayID].getDate();
+   },
+    time: function(newTime) {
+      return arguments.length ? (Meeting.days[dayID].setTime(newTime)) : Meeting.days[dayID].getTime();
+    }
+  };
+  $scope.popup = {
+    opened: false
+  };
+  $scope.dateOptions = {
+    formatYear: 'yy',
+    maxDate: new Date(2020, 5, 22),
+    startingDay: 1
+  };
+  $scope.open = function() {
+    $scope.popup.opened = true;
+  };
+  $scope.format = 'yyyy/MM/dd';
 });
