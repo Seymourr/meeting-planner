@@ -53,7 +53,7 @@ td{
 
 .dayview-main, #parkedActivityList {
   min-height: 20%;
-  max-height: calc(88%-10px);
+  max-height: calc(88% - 10px);
   //height: calc(88% - 10px);
   border-radius: 5px;
   background-color: #FFF;
@@ -153,4 +153,10 @@ tr.text-center:nth-child(3) > td:nth-child(2) {
 }
 .meeting-info-row input {
   margin-bottom: 4px;
+}
+#parkedActivityList .drag-enter:not(.dragging), .dayview .drag-enter:not(.dragging) {
+  padding-top: 60px;
+}
+.dragging {
+  height: 0;
 }
