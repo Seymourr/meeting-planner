@@ -12,12 +12,12 @@ html, body {
 
 .container-fluid {
   height: 100%;
-  width: 100%;
+  width: 100;
   padding: 0;
   margin: 0;
 }
 
-/* Horizontal scroll, that works ish
+
 #main-content > .row {
   overflow-x: scroll;
   overflow-y: hidden;
@@ -27,7 +27,7 @@ html, body {
 #main-content > .row [class*="col-lg"], #main-content > .row [class*="col-md"], #main-content > .row [class*="col-sm"] {
   float: none;
   display: inline-block;
-}*/
+}
 
 .dayview, ng-include, #days, #main {
   height: 100%;
@@ -36,22 +36,38 @@ html, body {
   margin: 0;
 }
 
-.dayview-info, #parkedActivityHeader {
-  padding-top: 10px;
-  height: 20%;
+#activity-view, .dayview {
+  height: 100%;
+  display: table;
+  width: 100%;
 }
 
-#parkedActivityHeader, #new-day {
-  text-align: center;
+.dayview > .dayview-info {
+  display: table-row;
 }
 
-.dayview-main, #parkedActivityList {
-  height: calc(80% - 10px);
-  border-radius: 5px;
+.dayview > .dayview-main {
+  display: table-row;
   background-color: #FFF;
+  height: 100%;
   padding: 10px;
-  margin-bottom: 10px;
-  overflow-y: scroll;
+}
+
+#activity-view > #parkedActivityHeader {
+  text-align: center;
+  display: table-row;
+}
+
+#parkedActivityHeader > #asdf {
+  display: table-cell;
+  padding: 10px 0 10px 0;
+}
+
+#activity-view  > #parkedActivityList {
+  display: table-row;
+  background-color: #FFF;
+  height: 100%;
+  padding: 10px;
 }
 
 .activityGraphics {
