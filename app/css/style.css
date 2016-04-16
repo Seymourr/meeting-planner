@@ -2,8 +2,8 @@
 
 html, body {
   height: 100%;
-  //background-color: #FFF7E9;
-  background-color: #000;
+  background-color: #FFF7E9;
+  //background-color: #000;
   font-family: Open Sans, Arial, sans-serif;
   font-size: 14px;
   color: #434A54;
@@ -17,7 +17,7 @@ html, body {
   margin: 0;
 }
 
-
+/** For horizontal scrolling */
 #main-content > .row {
   overflow-x: scroll;
   overflow-y: hidden;
@@ -27,8 +27,10 @@ html, body {
 #main-content > .row [class*="col-lg"], #main-content > .row [class*="col-md"], #main-content > .row [class*="col-sm"] {
   float: none;
   display: inline-block;
+  padding: 10px;
 }
 
+/** parkedActivities and dayView */
 .dayview, ng-include, #days, #main {
   height: 100%;
   width: 100%;
@@ -38,36 +40,28 @@ html, body {
 
 #activity-view, .dayview {
   height: 100%;
-  display: table;
   width: 100%;
+  display: table;
 }
 
-.dayview > .dayview-info {
+.dayview-info, #parkedActivityHeader  {
   display: table-row;
 }
 
-.dayview > .dayview-main {
-  display: table-row;
-  background-color: #FFF;
-  height: 100%;
-  padding: 10px;
-}
-
-#activity-view > #parkedActivityHeader {
+#parkedActivityHeader {
   text-align: center;
-  display: table-row;
 }
 
-#parkedActivityHeader > #asdf {
+.table-background {
   display: table-cell;
-  padding: 10px 0 10px 0;
+  border-radius: 5px;
+  background-color: #FFF;
 }
 
-#activity-view  > #parkedActivityList {
+.dayview-main, #parkedActivityList {
   display: table-row;
   background-color: #FFF;
   height: 100%;
-  padding: 10px;
 }
 
 .activityGraphics {
@@ -107,6 +101,15 @@ html, body {
   width: 100%;
 }
 
+.table-background {
+  background-color: #FFF;
+}
+
+#new-day{
+  vertical-align: top;
+  text-align: center;
+}
+
 td{
   padding-right: 10px;
 }
@@ -115,7 +118,7 @@ td{
   font-weight: 600;
 }
 
-
+/** Buttons and colors */
 .btn-danger, .progress-bar-danger, .color-red{
   background-color: #ED5565;
   border: 0 none;
@@ -136,7 +139,6 @@ td{
   background-color: #4FC1E9;
   border: 0 none;
 }
-
 
 /** Distribution diagram */
 #distribution-divider::after {
@@ -178,4 +180,10 @@ tr.text-center:nth-child(3) > td:nth-child(2) {
 }
 .dragging {
   height: 0;
+}
+
+@media (min-width: 1200px) and (max-width: 1400px){
+  .col-md-3{
+    width: 25%;
+  }
 }
