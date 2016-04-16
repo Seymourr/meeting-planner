@@ -2,7 +2,8 @@
 
 html, body {
   height: 100%;
-  background-color: #FFF7E9;
+  //background-color: #FFF7E9;
+  background-color: #000;
   font-family: Open Sans, Arial, sans-serif;
   font-size: 14px;
   color: #434A54;
@@ -12,6 +13,8 @@ html, body {
 .container-fluid {
   height: 100%;
   width: 100%;
+  padding: 0;
+  margin: 0;
 }
 
 /* Horizontal scroll, that works ish
@@ -29,6 +32,8 @@ html, body {
 .dayview, ng-include, #days, #main {
   height: 100%;
   width: 100%;
+  padding: 0;
+  margin: 0;
 }
 
 .dayview-info, #parkedActivityHeader {
@@ -38,27 +43,15 @@ html, body {
 
 #parkedActivityHeader, #new-day {
   text-align: center;
-  position: relative;
-  top: 5%;
-  transform: translateY(-5%);
-}
-
-td{
-  padding-right: 10px;
-}
-
-.bold {
-  font-weight: 600;
 }
 
 .dayview-main, #parkedActivityList {
-  min-height: 20%;
-  max-height: calc(88% - 10px);
-  //height: calc(88% - 10px);
+  height: calc(80% - 10px);
   border-radius: 5px;
   background-color: #FFF;
   padding: 10px;
   margin-bottom: 10px;
+  overflow-y: scroll;
 }
 
 .activityGraphics {
@@ -98,6 +91,15 @@ td{
   width: 100%;
 }
 
+td{
+  padding-right: 10px;
+}
+
+.bold {
+  font-weight: 600;
+}
+
+
 .btn-danger, .progress-bar-danger, .color-red{
   background-color: #ED5565;
   border: 0 none;
@@ -118,6 +120,7 @@ td{
   background-color: #4FC1E9;
   border: 0 none;
 }
+
 
 /** Distribution diagram */
 #distribution-divider::after {
