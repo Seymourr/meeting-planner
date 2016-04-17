@@ -43,13 +43,17 @@
     </div>
   </div>
 
+  
   <div ng-if="getDayActivities().length == 0"class="dayview-main" ng-drop="true" ng-drop-success="onDropComplete($data, $event, null)"></div>
-
-	<div ng-if="getDayActivities().length > 0" class="dayview-main">
-		<div ng-drag="true" ng-drag-data="getDataWithPos(activity, $index)" ng-repeat="activity in getDayActivities()" id="activityItem" ng-drop="true" ng-drop-success="onDropComplete($data, $event, $index)">
-	    <span id="activityLabel">{{getActivityTime($index) | date: 'HH:mm'}}</span>
-			<span id="activityName" class="color-{{getColor(activity.getTypeId())}}">{{activity.getName()}}</span>
-			<span id="activityIcon"><span class="glyphicon glyphicon-pencil" ng-click="openDialog(activity, $index)"></span></span>
-		</div>
+  <div class="test-cell">
+    <div class="test-table">
+    	<div ng-if="getDayActivities().length > 0" class="dayview-main">
+    		<div ng-drag="true" ng-drag-data="getDataWithPos(activity, $index)" ng-repeat="activity in getDayActivities()" id="activityItem" ng-drop="true" ng-drop-success="onDropComplete($data, $event, $index)">
+    	    <span id="activityLabel">{{getActivityTime($index) | date: 'HH:mm'}}</span>
+    			<span id="activityName" class="color-{{getColor(activity.getTypeId())}}">{{activity.getName()}}</span>
+    			<span id="activityIcon"><span class="glyphicon glyphicon-pencil" ng-click="openDialog(activity, $index)"></span></span>
+    		</div>
+      </div>
+    </div>
   </div>
 </div>

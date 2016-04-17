@@ -1,17 +1,35 @@
 <div id="activity-view">
 	<div id="parkedActivityHeader">
-		<div id="asdf">
-			<a ng-click="openDialog()" class="btn btn-default">Add activity</a>
-		</div>
+		<a ng-click="openDialog()" class="btn btn-default">Add activity</a>
+
+		<table id="cheat-sheet">
+			<tr>
+				<td><div class="color-blue color-box"></div></td>
+				<td> Presentation </td>
+				<td><div class="color-red color-box"></div></td>
+				<td> Group work </td>
+			</tr>
+			<tr>
+				<td><div class="color-green color-box"></div></td>
+				<td> Discussion </td>
+				<td><div class="color-yellow color-box"></div></td>
+				<td> Break </td>
+			</tr>
+		</table>
 	</div>
 
-	<div ng-if="getParkedActivities().length == 0" ng-drop="true" ng-drop-success="onDropComplete($data, $event, null)"
-	     id="parkedActivityList"></div>
-	<div ng-if="getParkedActivities().length > 0" id="parkedActivityList">
-		<div ng-drag="true" ng-drag-data="getDataWithPos(activity, $index)" ng-drop="true", ng-drop-success="onDropComplete($data,$event, $index)" ng-repeat="activity in getParkedActivities()" id="activityItem">
-	    <span id="activityLabel">{{activity.getLength()}} min </span>
-	    <span id="activityName" class="color-{{getColor(activity.getTypeId())}}">{{activity.getName()}}</span>
-			<span id="activityIcon"><span class="glyphicon glyphicon-pencil" ng-click="openDialog(activity, $index)"></span></span>
-	  </div>
+	<div ng-if="getParkedActivities().length == 0" ng-drop="true" ng-drop-success="onDropComplete($data, $event, null)" id="parkedActivityList"></div>
+
+		<div class="test-cell">
+			<div class="test-table">
+				<div ng-if="getParkedActivities().length > 0" id="parkedActivityList">
+					<div ng-drag="true" ng-drag-data="getDataWithPos(activity, $index)" ng-drop="true", ng-drop-success="onDropComplete($data,$event, $index)" ng-repeat="activity in getParkedActivities()" id="activityItem">
+				    <span id="activityLabel">{{activity.getLength()}} min </span>
+				    <span id="activityName" class="color-{{getColor(activity.getTypeId())}}">{{activity.getName()}}</span>
+						<span id="activityIcon"><span class="glyphicon glyphicon-pencil" ng-click="openDialog(activity, $index)"></span></span>
+				  </div>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>
