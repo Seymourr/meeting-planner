@@ -173,6 +173,7 @@ td{
   border-left: 2px solid #ff0000;
 }
 
+
 /** Hide timepicker buttons **/
 tr.text-center:nth-child(1) > td:nth-child(2) {
   display:none;
@@ -204,6 +205,13 @@ tr.text-center:nth-child(3) > td:nth-child(2) {
 }
 .dragging {
   height: 0;
+}
+
+.col-centered {
+    float: none;
+    margin: 0 auto;
+    /* reset the text-align */
+    text-align:left;
 }
 
 @media (min-width: 1200px) and (max-width: 1400px){

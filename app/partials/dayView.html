@@ -4,7 +4,7 @@
     <table class="dayview-time">
       <tr class="meeting-info-row">
         <td><span class="bold">Title</span></td>
-        <td><input type="text" ng-model="title" class="form-control input-sm"></td>
+        <td><input type="text" ng-change="setTitle(title)" ng-model="title" class="form-control input-sm"></td>
       </tr>
       <tr class="meeting-info-row">
         <td class="datepicker-container"><span class="bold">Date</span></td>

@@ -2,7 +2,18 @@ meetingPlannerApp.controller('DayviewCtrl', function ($scope,$routeParams, ngDia
 
   var dayID = 0; //The id of the day for this controller object
 
-  $scope.title = Meeting._title;
+  $scope.init = function(id) {
+    $scope.setID(id);
+    $scope.getTitle();
+  }
+  $scope.getTitle = function() {
+    $scope.title = Meeting.days[dayID]._title;
+  }
+
+  $scope.setTitle = function(title) {
+    Meeting.days[dayID].setTitle(title);
+  }
+
   $scope.setID = function(id) {
       dayID = id;
   };
