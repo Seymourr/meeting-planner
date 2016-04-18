@@ -129,4 +129,11 @@ td{
   border-left: 2px solid #ff0000;
 }
 
+.col-centered {
+    float: none;
+    margin: 0 auto;
+    /* reset the text-align */
+    text-align:left;
+
+}
 
