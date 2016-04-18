@@ -144,7 +144,12 @@ meetingPlannerApp.factory('Meeting', function ($resource, Auth) {
             for(var i = 0; i < d.length; i++) {
                 newD.push(new Day(1, 1));
 
-                newD[newD.length - 1]._start = d[i].dayTime; //Must have..
+                newD[newD.length - 1]._startTime = new Date(d[i].dayTime); //Must have..
+
+                var title = d[i].dayTitle;
+                if(title == null || title == undefined) title = "";
+                newD[newD.length - 1]._title = title;
+
                 if(d[i].dayActivities == undefined || d[i].dayActivities == null) continue;
                 var activities = d[i].dayActivities;  //Array
                 var localAct = [];
@@ -196,8 +201,12 @@ meetingPlannerApp.factory('Meeting', function ($resource, Auth) {
                     "description": aList[j].getDescription()
                 });
             }
-            
-            data.push({"dayTime": this.days[i]._start, "dayActivities": activities});
+            console.log(this.days[i]._startTime.getUTCMilliseconds());
+            data.push({
+                "dayTitle": this.days[i]._title,
+                "dayTime": this.days[i]._startTime.getUTCMilliseconds(),
+                "dayActivities": activities
+            });
         }
         ref.child("days").set(data);
     };

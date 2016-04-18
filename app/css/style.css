@@ -205,6 +205,7 @@ tr.text-center:nth-child(3) > td:nth-child(2) {
 }
 .dragging {
   height: 0;
+}
 
 .col-centered {
     float: none;

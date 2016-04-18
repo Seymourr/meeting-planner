@@ -18,6 +18,7 @@ meetingPlannerApp.controller('MainViewCtrl', function ($scope,$routeParams, $loc
   Meeting.getDaysData().then(function() {
     Meeting.getParkedData().then(function() {
       $scope.status = "ready";
+      console.log("JABADABADOO");
       $scope.$apply();
 
     }, function(error) {
