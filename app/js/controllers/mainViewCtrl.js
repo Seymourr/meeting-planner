@@ -11,11 +11,15 @@ meetingPlannerApp.controller('MainViewCtrl', function ($scope,$routeParams, $loc
   $scope.addDay = function () {
     Meeting.addDay();
   };
+  $scope.status = "loading";
 
   Meeting.loginUser();
+
   Meeting.getDaysData().then(function() {
     Meeting.getParkedData().then(function() {
+      $scope.status = "ready";
       $scope.$apply();
+
     }, function(error) {
       console.log("Could not get parked data");
     });

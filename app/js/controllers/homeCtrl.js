@@ -18,25 +18,36 @@ meetingPlannerApp.controller('HomeCtrl', function ($scope, $location, Auth) {
         password: $scope.password
       }).then(function(userData){
           $scope.message = "User profile created! Please log in to proceed!";
-          console.log($scope.message);
+          $scope.error = null;
       }).catch(function(error) {
-          console.log("Could not create user..", error);
-          $scope.error = "Could not register.. Either the email is in use or you typed in no credentials";
+         if($scope.email == null || $scope.email == "") {
+          $scope.error = "You must specify an email address.";
+         } else if($scope.password == null || $scope.password == "") {
+          $scope.error = "You must specify a password.";
+         } else {
+          $scope.error = "The email is either occupied or in the wrong format.";
+         }
+         $scope.message = null;
       });
     };
 
     $scope.login = function() {
       $scope.error = null;
-      
       Auth.$authWithPassword({
         email: $scope.email,
         password: $scope.password
       }).then(function(authData) {
         console.log("Logged in as:", authData.uid);
         $location.path("/main");
-      }).catch(function(error) {
-        console.error(error);
-        $scope.error = "Could not login with the specified credentials, please try again";
+      }, function(error) {
+         if($scope.email == null || $scope.email == "") {
+          $scope.error = "You must specify a registered email address.";
+         } else if($scope.password == null || $scope.password == "") {
+          $scope.error = "You must specify a password.";
+         } else {
+          $scope.error = "Your credentials are incorrect, please correct them and try again.";
+         }
+         $scope.message = null;
       });
     };
 });

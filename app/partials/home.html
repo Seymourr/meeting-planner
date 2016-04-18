@@ -36,8 +36,8 @@
     </div>
     <div class="row">
         <div class="col-xs-4 col-xs-offset-4 col-lg-2 col-lg-offset-5">
-            <div>{{error}}</div>
-            <div>{{message}}</div>
+            <div ng-show="message != null && message != ''"class="alert alert-success">{{message}}</div>
+            <div ng-show="error != null && error != ''" class="alert alert-danger"><strong>Error: </strong> {{error}}</div>
         </div>
     </div>
     
