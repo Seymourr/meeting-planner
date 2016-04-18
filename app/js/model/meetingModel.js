@@ -2,10 +2,14 @@
 
 // The possible activity types
 
-meetingPlannerApp.factory('Meeting', function ($resource) {
+meetingPlannerApp.factory('Meeting', function ($resource, Auth) {
 	var ActivityType = ["Presentation","Group Work","Discussion","Break"];
 
 	// this is our main module that contians days and praked activites
+    var firebaseString = "https://torrid-fire-6359.firebaseio.com/users/";
+	var ref; //Contains a database reference for a specific user
+    
+
 	this.days = [];
 	this.parkedActivities = [];
 
@@ -19,6 +23,7 @@ meetingPlannerApp.factory('Meeting', function ($resource) {
 			day = new Day(8,0);
 		}
 		this.days.push(day);
+		this.updateDayDatabase();
 		return day;
 	};
 
@@ -34,6 +39,8 @@ meetingPlannerApp.factory('Meeting', function ($resource) {
 			//error message
 			console.log("error in replaceactivity");
 		}
+        this.updateDayDatabase();
+        this.updateParkedDatabase();
 	};
 
 	// add an activity to model
@@ -46,16 +53,20 @@ meetingPlannerApp.factory('Meeting', function ($resource) {
 			}
 			else this.parkedActivities.push(activity);
 		}
+        this.updateDayDatabase();
+        this.updateParkedDatabase();
 	};
 
 	// add an activity to parked activities
 	this.addParkedActivity = function(activity, position){
 		this.addActivity(activity,null,position);
+        this.updateParkedDatabase();
 	};
 
 	// remove an activity on provided position from parked activites
 	this.removeParkedActivity = function(position) {
 		act = this.parkedActivities.splice(position,1)[0];
+        this.updateParkedDatabase();
 		return act;
 	};
 
@@ -79,6 +90,8 @@ meetingPlannerApp.factory('Meeting', function ($resource) {
 			var activity = this.days[oldday]._removeActivity(oldposition);
 			this.days[newday]._addActivity(activity,newposition);
 		}
+        this.updateDayDatabase();
+        this.updateParkedDatabase();
 	};
 
 	// Return all available activity types
@@ -116,15 +129,105 @@ meetingPlannerApp.factory('Meeting', function ($resource) {
 		console.log("Day Start: " + this.days[0].getStart());
 		console.log("Day End: " + this.days[0].getEnd());
 		console.log("Day Length: " + this.days[0].getTotalLength() + " min");
-
-		/*
-		$.each(ActivityType, function(index,type) {
-			console.log("Day '" + ActivityType[index] + "' Length: " + this.days[0].getLengthByType(index) + " min");
-		});
-		*/
 	}
 
-	this.createTestData();
+	//Should only be called once in every client visit!
+    this.getDaysData = function() {
+        var d;
+        var parent = this;
+        return ref.child("days").once("value").then(function(data) {
+            var newD = [];
+            d = data.val();
+
+            if(d == null) return;
+
+            for(var i = 0; i < d.length; i++) {
+                newD.push(new Day(1, 1));
+
+                newD[newD.length - 1]._start = d[i].dayTime; //Must have..
+                if(d[i].dayActivities == undefined || d[i].dayActivities == null) continue;
+                var activities = d[i].dayActivities;  //Array
+                var localAct = [];
+                for(var j = 0; j < activities.length; j++) {
+                    var name = activities[j].name;
+                    var len = activities[j].length;
+                    var type = activities[j].typeid;
+                    var desc = activities[j].description;
+                    localAct.push(new Activity(name, len, type, desc));
+                }
+                newD[newD.length - 1]._activities = localAct;
+            }
+            parent.days = newD;
+        });
+    };
+
+    //Should only be called once in every client visit!
+    this.getParkedData = function() {
+        var activities;
+        var localAct = [];
+        var parent = this;
+        return ref.child("parkedActivities").once("value").then(function(data) {
+            activities = data.val();
+
+            if(activities == undefined || activities == null) return;
+            for(var j = 0; j < activities.length; j++) {
+                var name = activities[j].name;
+                var len = activities[j].length;
+                var type = activities[j].typeid;
+                var desc = activities[j].description;
+                localAct.push(new Activity(name, len, type, desc));
+            }
+              
+            parent.parkedActivities = localAct;
+        });
+    };    
+
+    //Days.. TODO: Day by day ?
+    this.updateDayDatabase = function() {
+        var data = [];
+        for(var i = 0; i < this.days.length; i++) {
+            var activities = [];
+            var aList = this.days[i]._activities;
+            for(var j = 0; j < aList.length; j++) {
+                activities.push({
+                    "name": aList[j].getName(), 
+                    "length": aList[j].getLength(),
+                    "typeid": aList[j].getTypeId(),
+                    "description": aList[j].getDescription()
+                });
+            }
+            
+            data.push({"dayTime": this.days[i]._start, "dayActivities": activities});
+        }
+        ref.child("days").set(data);
+    };
+
+    //Parked activities..
+    this.updateParkedDatabase = function() {
+        var activities = [];
+        for(var i = 0; i < this.parkedActivities.length; i++) {
+            activities.push({
+                    "name": this.parkedActivities[i].getName(), 
+                    "length": this.parkedActivities[i].getLength(),
+                    "typeid": this.parkedActivities[i].getTypeId(),
+                    "description": this.parkedActivities[i].getDescription()
+            });    
+        }
+        ref.child("parkedActivities").set(activities);
+    };
+
+    this.reset = function() {
+        this.parkedActivities = [];
+        this.days = [];
+    };
+
+    this.loginUser = function() {
+        var userstr = Auth.$getAuth().uid + "/";
+        ref = new Firebase(firebaseString + userstr);
+    };
+
+
+  //  this.loginUser(); //Login the current user in Auth (Sets ref to new firebase db)
 
 	return this;
 });

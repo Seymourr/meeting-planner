@@ -1,7 +1,7 @@
 meetingPlannerApp.controller('MainViewCtrl', function ($scope,$routeParams, $location, Meeting, Auth) {
-  console.log(Auth.$getAuth());
   $scope.logout = function() {
     Auth.$unauth();
+    Meeting.reset();
     $location.path("/home");
   }
   $scope.getDays = function() {
@@ -11,4 +11,16 @@ meetingPlannerApp.controller('MainViewCtrl', function ($scope,$routeParams, $loc
   $scope.addDay = function () {
     Meeting.addDay();
   };
+
+  Meeting.loginUser();
+  Meeting.getDaysData().then(function() {
+    Meeting.getParkedData().then(function() {
+      $scope.$apply();
+    }, function(error) {
+      console.log("Could not get parked data");
+    });
+  }, function(error) {
+    console.log("Could not get days data");
+  });
+
 });

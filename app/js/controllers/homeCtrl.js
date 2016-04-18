@@ -21,7 +21,7 @@ meetingPlannerApp.controller('HomeCtrl', function ($scope, $location, Auth) {
           console.log($scope.message);
       }).catch(function(error) {
           console.log("Could not create user..", error);
-          $scope.error = error;
+          $scope.error = "Could not register.. Either the email is in use or you typed in no credentials";
       });
     };
 
@@ -35,8 +35,8 @@ meetingPlannerApp.controller('HomeCtrl', function ($scope, $location, Auth) {
         console.log("Logged in as:", authData.uid);
         $location.path("/main");
       }).catch(function(error) {
-        console.error("Authentication failed:", error);
-        $scope.error = error;
+        console.error(error);
+        $scope.error = "Could not login with the specified credentials, please try again";
       });
     };
 });
