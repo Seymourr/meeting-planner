@@ -14,6 +14,9 @@
     "angular-animate": "^1.x",
     "angular-cookies": "^1.x",
     "ngDraggable": ">=0.1.8",
-    "ng-dialog": "^0.6.0"
+    "ng-dialog": "^0.6.0",
+    "firebase": "2.4.1",
+    "angularfire": "1.2.0",
+    "angular-spinner":"0.x.x"
   }
 }
