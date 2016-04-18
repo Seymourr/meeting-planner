@@ -6,4 +6,9 @@ meetingPlannerApp.controller('MainViewCtrl', function ($scope,$routeParams,Meeti
   $scope.addDay = function () {
     Meeting.addDay();
   };
+
+  $scope.getColor = function (id) {
+    var style = ["blue", "red", "green", "yellow"];
+    return style[id];
+  }
 });
