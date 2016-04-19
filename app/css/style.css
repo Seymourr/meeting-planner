@@ -21,7 +21,6 @@ html, body {
 #main-content > .row {
   overflow-x: auto;
   overflow-y: hidden;
-  white-space: nowrap;
 }
 
 #main-content > .row [class*="col-lg"], #main-content > .row [class*="col-md"], #main-content > .row [class*="col-sm"] {
