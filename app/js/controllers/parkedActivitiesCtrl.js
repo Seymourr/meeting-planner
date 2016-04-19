@@ -24,7 +24,7 @@ meetingPlannerApp.controller('ParkedActivitiesCtrl', function ($scope,$routePara
     activity.position = index;
     activity.oldDay = null;
     return activity;
-  }
+  };
 
   $scope.onDropComplete = function (activity, $event, index) {
       // TODO: Make orderable
@@ -34,10 +34,5 @@ meetingPlannerApp.controller('ParkedActivitiesCtrl', function ($scope,$routePara
       }
   //    console.log("TO: " + dayID);
       Meeting.moveActivity(day, activity.position, null, index);
-  }
-
-  $scope.getColor = function(id) {
-    var style = ["blue", "red", "green", "yellow"];
-    return style[id];
   }
 });

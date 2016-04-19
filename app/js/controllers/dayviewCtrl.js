@@ -5,14 +5,14 @@ meetingPlannerApp.controller('DayviewCtrl', function ($scope,$routeParams, ngDia
   $scope.init = function(id) {
     $scope.setID(id);
     $scope.getTitle();
-  }
+  };
   $scope.getTitle = function() {
     $scope.title = Meeting.days[dayID]._title;
-  }
+  };
 
   $scope.setTitle = function(title) {
     Meeting.days[dayID].setTitle(title);
-  }
+  };
 
   $scope.setID = function(id) {
       dayID = id;
@@ -80,18 +80,14 @@ meetingPlannerApp.controller('DayviewCtrl', function ($scope,$routeParams, ngDia
     }
 
     Meeting.moveActivity(day, activity.position, dayID, index);
-  }
+  };
 
   $scope.getDataWithPos = function(activity, index) {
     activity.position = index;
     activity.oldDay = dayID;
     return activity;
-  }
-
-  $scope.getColor = function(id) {
-    var style = ["blue", "red", "green", "yellow"];
-    return style[id];
   };
+
   $scope.dt = {
     date: function(newDate) {
      return arguments.length ? (Meeting.days[dayID].setDate(newDate)) : Meeting.days[dayID].getDate();
