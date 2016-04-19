@@ -39,7 +39,7 @@ $rootScope.$on("$routeChangeError", function(event, next, previous, error) {
   // and redirect the user back to the home page
   if (error === "AUTH_REQUIRED") {
     console.log("AUTH REQUIRED");
-    $location.path("/home");
+    $location.path("/login");
   }
 });
 }]);
@@ -48,8 +48,8 @@ meetingPlannerApp.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider.
       when('/', {
-        templateUrl: 'partials/home.html',
-        controller: 'HomeCtrl'
+        templateUrl: 'partials/login.html',
+        controller: 'LoginCtrl'
       }).
       when('/main', {
         templateUrl: 'partials/mainView.html',

@@ -1,7 +1,7 @@
 <div id="activity-view">
 	<div id="parkedActivityHeader">
 		<a ng-click="openDialog()" class="btn btn-default">Add activity</a>
-		<button class="btn" ng-click="logout()">Log out</button>
+		<button ng-controller="LoginCtrl" class="btn" ng-click="logout()">Log out</button>
 		<table id="cheat-sheet">
 			<tr>
 				<td><div class="color-blue color-box"></div></td>

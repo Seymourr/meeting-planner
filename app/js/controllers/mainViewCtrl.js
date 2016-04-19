@@ -1,9 +1,5 @@
 meetingPlannerApp.controller('MainViewCtrl', function ($scope,$routeParams, $location, Meeting, Auth) {
-  $scope.logout = function() {
-    Auth.$unauth();
-    Meeting.reset();
-    $location.path("/home");
-  }
+
   $scope.getDays = function() {
     return Meeting.days;
   };
@@ -13,12 +9,10 @@ meetingPlannerApp.controller('MainViewCtrl', function ($scope,$routeParams, $loc
   };
   $scope.status = "loading";
 
-  Meeting.loginUser();
-
+  Meeting.loginUser(); //Must be here..not in loginctrl (Must be synchronous)
   Meeting.getDaysData().then(function() {
     Meeting.getParkedData().then(function() {
       $scope.status = "ready";
-      console.log("JABADABADOO");
       $scope.$apply();
 
     }, function(error) {
