@@ -1,4 +1,10 @@
-<h1> Activity options</h1>
+<h1 class="text-center"> Activity options</h1>
+<div class="quote-container text-center">
+  <span us-spinner  spinner-on="showSpinner"></span>
+  <div>{{qStatus}}</div>
+  <em><div ng-bind-html="quote"></div></em>
+  <div class="author-container"><strong>{{author}}</strong></div>
+</div>
 <form>
   <fieldset class="form-group">
     <label for="title">Title</label>
@@ -18,7 +24,6 @@
     <label for="description">Description</label>
     <textarea class="form-control" id="description" rows="3" ng-model="activityDescription"></textarea>
   </fieldset>
-
   <a ng-click="closeThisDialog()" class="btn btn-warning">Cancel</a>
   <a ng-click="saveActivity(activityTitle, activityLength, activityTypeID, activityDescription); closeThisDialog();" class="btn btn-default">Save</a>
 </form>

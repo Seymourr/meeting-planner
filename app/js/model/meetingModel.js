@@ -131,8 +131,12 @@ meetingPlannerApp.factory('Meeting', function ($resource, Auth) {
 		console.log("Day Length: " + this.days[0].getTotalLength() + " min");
 	}
 	// Quote API resource
-	this.Quote = $resource('http://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=:numQuotes&callback=my_function');
+	this.Quote = $resource('http://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1?nonce=:'+Math.random());
 
+	// Refreshes the quote by adding a new nonce to the URL, to prevent browser caching
+	this.refreshQuote = function() {
+		this.Quote = $resource('http://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1?nonce=:'+Math.random());
+	};
 	//Should only be called once in every client visit!
     this.getDaysData = function() {
         var d;
