@@ -1,7 +1,7 @@
-meetingPlannerApp.controller('HomeCtrl', function ($scope, $location, Auth) {
+meetingPlannerApp.controller('HomeCtrl', function ($scope, $location, Auth, Meeting) {
         var offAuth = Auth.$onAuth(function(authData) {
           if (authData) {
-            console.log("Authdata changed positive state..", authData);  
+            console.log("Authdata changed positive state..", authData);
             $location.path("/main");
           } else {
             console.log("Logged out");
@@ -50,4 +50,32 @@ meetingPlannerApp.controller('HomeCtrl', function ($scope, $location, Auth) {
          $scope.message = null;
       });
     };
+
+    // Quote status, list of quotes for slides, and authors
+    $scope.qStatus = "";
+    $scope.quotes = [];
+    $scope.authors = [];
+    this.getQuote = function(index) {
+      if (index < quotes.length) {
+        console.log($scope.quotes[index]);
+        return $scope.quotes[index];
+      }
+      else return "";
+    };
+    // Load n quotes
+    this.loadQuotes = function(n) {
+      $scope.qStatus = "Loading quote...";
+      Meeting.Quote.query({numQuotes:n},function(data) {
+        for (var i = 0; i < data.length; i++) {
+          $scope.quotes.push(data[i].content);
+          $scope.authors.push("- "+data[i].title);
+          $scope.qStatus = "";
+        }
+      },function(data){
+        console.log(data);
+        $scope.qStatus = "There was an error getting the quote";
+      });
+    };
+    this.loadQuotes(4);
+
 });
