@@ -17,6 +17,7 @@
     "ng-dialog": "^0.6.0",
     "firebase": "2.4.1",
     "angularfire": "1.2.0",
-    "angular-spinner":"0.x.x"
+    "angular-spinner":"0.x.x",
+    "angular-sanitize": "1.5.x"
   }
 }

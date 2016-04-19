@@ -8,7 +8,7 @@ meetingPlannerApp.factory('Meeting', function ($resource, Auth) {
 	// this is our main module that contians days and praked activites
     var firebaseString = "https://torrid-fire-6359.firebaseio.com/users/";
 	var ref; //Contains a database reference for a specific user
-    
+
 
 	this.days = [];
 	this.parkedActivities = [];
@@ -35,7 +35,7 @@ meetingPlannerApp.factory('Meeting', function ($resource, Auth) {
 			} else {
 				this.parkedActivities.splice(position, 1, activity);
 			}
-		} else {	
+		} else {
 			//error message
 			console.log("error in replaceactivity");
 		}
@@ -108,7 +108,7 @@ meetingPlannerApp.factory('Meeting', function ($resource, Auth) {
 	// Used to test parkedActivity.
 	this.createTestData = function (){
 		this.addDay();
-		
+
 		this.addActivity(new Activity("Introduction",10,0,"Some description"));
 		this.addActivity(new Activity("Idea 1",30,0,"Some description"));
 		this.addActivity(new Activity("Working in groups",35,1,"Some description"));
@@ -130,6 +130,8 @@ meetingPlannerApp.factory('Meeting', function ($resource, Auth) {
 		console.log("Day End: " + this.days[0].getEnd());
 		console.log("Day Length: " + this.days[0].getTotalLength() + " min");
 	}
+	// Quote API resource
+	this.Quote = $resource('http://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=:numQuotes&callback=my_function');
 
 	//Should only be called once in every client visit!
     this.getDaysData = function() {
@@ -182,10 +184,10 @@ meetingPlannerApp.factory('Meeting', function ($resource, Auth) {
                 var desc = activities[j].description;
                 localAct.push(new Activity(name, len, type, desc));
             }
-              
+
             parent.parkedActivities = localAct;
         });
-    };    
+    };
 
     //Days.. TODO: Day by day ?
     this.updateDayDatabase = function() {
@@ -195,7 +197,7 @@ meetingPlannerApp.factory('Meeting', function ($resource, Auth) {
             var aList = this.days[i]._activities;
             for(var j = 0; j < aList.length; j++) {
                 activities.push({
-                    "name": aList[j].getName(), 
+                    "name": aList[j].getName(),
                     "length": aList[j].getLength(),
                     "typeid": aList[j].getTypeId(),
                     "description": aList[j].getDescription()
@@ -216,11 +218,11 @@ meetingPlannerApp.factory('Meeting', function ($resource, Auth) {
         var activities = [];
         for(var i = 0; i < this.parkedActivities.length; i++) {
             activities.push({
-                    "name": this.parkedActivities[i].getName(), 
+                    "name": this.parkedActivities[i].getName(),
                     "length": this.parkedActivities[i].getLength(),
                     "typeid": this.parkedActivities[i].getTypeId(),
                     "description": this.parkedActivities[i].getDescription()
-            });    
+            });
         }
         ref.child("parkedActivities").set(activities);
     };
