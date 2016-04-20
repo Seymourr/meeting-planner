@@ -1,4 +1,5 @@
-<div ng-show="status == 'ready'" id="main" class="row" help-overlay="showHelp">
+<div ng-show="status == 'ready'" id="main" class="row" ng-controller="ActivityCtrl"  help-overlay="showHelp">
+
 	<!-- Needed for drag and drop -->
 	<div id="activityItem" ng-drag-clone="">
 		<span id="activityLabel">{{clonedData.getLength()}} min </span>

@@ -2,6 +2,9 @@ meetingPlannerApp.controller('DayviewCtrl', function ($scope,$routeParams, ngDia
 
   var dayID = 0; //The id of the day for this controller object
 
+  $scope.getDayID = function() {
+    return dayID;
+  };
   $scope.init = function(id) {
     $scope.setID(id);
     $scope.getTitle();
@@ -59,35 +62,6 @@ meetingPlannerApp.controller('DayviewCtrl', function ($scope,$routeParams, ngDia
     var styles = ["warning","success","danger","info"];
     return styles[type];
   };
-
-  $scope.openDialog = function (activity, index) {
-    activity.position = index;
-    activity.day = dayID;
-    ngDialog.open({
-        template: 'partials/createActivity.html',
-        className: 'ngdialog-theme-plain',
-        controller: 'CreateActivityCtrl',
-        data: activity
-    });
-  };
-
-
-  $scope.onDropComplete = function (activity, $event, index) {
-    // TODO: Make orderable
-    var day = activity.oldDay;
-    if(day === undefined) {
-        day = null;
-    }
-
-    Meeting.moveActivity(day, activity.position, dayID, index);
-  };
-
-  $scope.getDataWithPos = function(activity, index) {
-    activity.position = index;
-    activity.oldDay = dayID;
-    return activity;
-  };
-
   $scope.dt = {
     date: function(newDate) {
      return arguments.length ? (Meeting.days[dayID].setDate(newDate)) : Meeting.days[dayID].getDate();
