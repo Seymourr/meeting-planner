@@ -13,9 +13,20 @@ meetingPlannerApp.controller('DayviewCtrl', function ($scope,$routeParams, ngDia
     $scope.title = Meeting.days[dayID]._title;
   };
 
+  var timer = 0; 
   $scope.setTitle = function(title) {
     Meeting.days[dayID].setTitle(title);
+
+    if(timer != 0) {
+      clearTimeout(timer);
+    }
+
+    timer = setTimeout(function() {
+      Meeting.updateDayDatabase(); //Todo: Update singular day only? 
+    }, 500);
   };
+
+
 
   $scope.setID = function(id) {
       dayID = id;
