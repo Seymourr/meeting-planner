@@ -207,6 +207,7 @@ meetingPlannerApp.factory('Meeting', function ($resource, Auth) {
                     "description": aList[j].getDescription()
                 });
             }
+            console.log(this.days[i]._startTime.getUTCMilliseconds());
             //console.log(this.days[i]._startTime.getUTCMilliseconds());
             data.push({
                 "dayTitle": this.days[i]._title,

@@ -2,8 +2,4 @@ meetingPlannerApp.controller('ParkedActivitiesCtrl', function ($scope,$rootScope
   $scope.getParkedActivities = function() {
     return Meeting.parkedActivities;
   };
-
-  $scope.toggle = function() {
-    $rootScope.showHelp = !$rootScope.showHelp;
-  }
 });
