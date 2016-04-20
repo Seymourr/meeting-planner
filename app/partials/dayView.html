@@ -32,7 +32,9 @@
     </table>
 
     <!-- Distribution graph -->
-    <div class="activityGraphics" data-intro="Some Help description here" data-position="bottom">
+
+
+    <div class="activityGraphics" data-intro="The red mark represent the reccomended percentage of breaks in your current plan. Don't forget coffee!" data-position="bottom">
       <div id="distribution-bar" class="progress">
         <span id="distribution-divider"></span>
         <span class="distribution-component" ng-repeat="component in getDistributionComponents() track by $index">
@@ -41,6 +43,7 @@
         </span>
       </div>
     </div>
+
   </div>
 
   <div ng-if="getDayActivities().length == 0"class="dayview-main" ng-drop="true" ng-drop-success="onDropComplete($data, $event, null, getDayID())"></div>
