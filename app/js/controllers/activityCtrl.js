@@ -1,4 +1,4 @@
-meetingPlannerApp.controller('ActivityCtrl', function ($scope,$routeParams,Meeting, ngDialog) {
+meetingPlannerApp.controller('ActivityCtrl', function ($scope, $rootScope, $routeParams,Meeting, ngDialog) {
   $scope.getDataWithPos = function(activity, index, dayID) {
     activity.position = index;
     if (dayID != undefined)
