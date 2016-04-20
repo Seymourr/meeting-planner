@@ -1,19 +1,20 @@
-<div ng-show="status == 'ready'" id="main" class="row" ng-controller="ActivityCtrl"  help-overlay="showHelp">
 
+<div ng-show="status == 'ready'" id="main" class="row" ng-model="showHelp" help-overlay="showHelp"  help-overlay-stop="toggle()">
+	<span ng-controller="ActivityCtrl">
 	<!-- Needed for drag and drop -->
-	<div id="activityItem" ng-drag-clone="">
+	<div  id="activityItem" ng-drag-clone="">
 		<span id="activityLabel">{{clonedData.getLength()}} min </span>
 		<span id="activityName" class="color-{{getColor(clonedData.getTypeId())}}">{{clonedData.getName()}}</span>
 		<span id="activityIcon"><span class="glyphicon glyphicon-pencil"></span></span>
 	</div>
-
-	<ng-include class="col-lg-2 col-md-3 col-sm-6" src="'partials/parkedActivities.html'" ng-controller="ParkedActivitiesCtrl"></ng-include>
+	<ng-include class="col-lg-2 col-md-3 col-sm-6" src="'partials/parkedActivities.html'" ng-controller="ParkedActivitiesCtrl" ></ng-include>
 
 	<ng-include class="day col-lg-2 col-md-3 col-sm-6" src="'partials/dayView.html'" ng-controller="DayviewCtrl" ng-repeat="day in getDays()" onload="init($index)"></ng-include>
 
 	<div id="new-day" class="col-lg-2 col-md-3 col-sm-6">
         <a ng-click="addDay()" class="btn btn-default">Add day</a>
     </div>
+	</span>
 </div>
 
 <span ng-show="status == 'loading'" us-spinner></span>

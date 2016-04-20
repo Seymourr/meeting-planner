@@ -1,8 +1,10 @@
 <div id="activity-view">
 	<div   id="parkedActivityHeader">
-		<a data-intro="Some Help description here" data-position="bottom" ng-click="showHelp = false; openDialog();" class="btn btn-default">Add activity</a>
+		<a data-intro="Create new activities here" data-position="bottom" ng-click="toggle(); openDialog();" class="btn btn-default">Add activity</a>
 		<button ng-controller="LoginCtrl" class="btn" ng-click="logout()">Log out</button>
-		<button  data-intro="Some Help description here" data-position="bottom" ng-click="showHelp = true" class = "btn">Help</button>
+
+		<button ng-click="toggle()" class = "btn">Help</button>
+
 		<table id="cheat-sheet">
 			<tr>
 				<td><div class="color-blue color-box"></div></td>

@@ -1,4 +1,6 @@
-meetingPlannerApp.controller('MainViewCtrl', function ($scope,$routeParams, $location, Meeting, Auth) {
+meetingPlannerApp.controller('MainViewCtrl', function ($scope,$rootScope, $routeParams, $location, Meeting, Auth) {
+
+  $rootScope.showHelp = false;
 
   $scope.getDays = function() {
     return Meeting.days;
@@ -26,4 +28,12 @@ meetingPlannerApp.controller('MainViewCtrl', function ($scope,$routeParams, $loc
     var style = ["blue", "red", "green", "yellow"];
     return style[id];
   }
+
+
+  $scope.showHelp = $rootScope.showHelp;
+
+  $rootScope.$watch('showHelp', function() {
+    $scope.showHelp = $rootScope.showHelp; 
+  });
+
 });
