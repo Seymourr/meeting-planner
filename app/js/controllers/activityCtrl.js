@@ -17,16 +17,6 @@ meetingPlannerApp.controller('ActivityCtrl', function ($scope,$routeParams,Meeti
       }
       Meeting.moveActivity(day, activity.position, dayID, index);
   };
-  $scope.openDialog = function (activity, index) {
-    activity.position = index;
-    activity.day = dayID;
-    ngDialog.open({
-        template: 'partials/createActivity.html',
-        className: 'ngdialog-theme-plain',
-        controller: 'CreateActivityCtrl',
-        data: activity
-    });
-  };
   $scope.openDialog = function (activity, index, dayID) {
     if(activity != null) {
       if (dayID != undefined) {
