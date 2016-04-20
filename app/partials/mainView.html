@@ -1,5 +1,5 @@
 
-<div ng-show="status == 'ready'" id="main" class="row" ng-model="showHelp" help-overlay="showHelp"  help-overlay-stop="toggle()">
+<div ng-show="status == 'ready'" id="main" class="row" ng-model="showHelp" help-overlay="showHelp"  overlay-stop-callback="$root.showHelp = false">
 	<span ng-controller="ActivityCtrl">
 	<!-- Needed for drag and drop -->
 	<div  id="activityItem" ng-drag-clone="">
