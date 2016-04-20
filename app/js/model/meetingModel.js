@@ -207,11 +207,12 @@ meetingPlannerApp.factory('Meeting', function ($resource, Auth) {
                     "description": aList[j].getDescription()
                 });
             }
-            console.log(this.days[i]._startTime.getUTCMilliseconds());
-            //console.log(this.days[i]._startTime.getUTCMilliseconds());
+            if(this.days[i]._startTime == null) {
+                continue; //Skip to push this day..Good fix?
+            }
             data.push({
                 "dayTitle": this.days[i]._title,
-                "dayTime": this.days[i]._startTime.getUTCMilliseconds(),
+                "dayTime": this.days[i]._startTime.getTime(),
                 "dayActivities": activities
             });
         }

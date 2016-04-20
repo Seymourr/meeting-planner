@@ -75,12 +75,24 @@ meetingPlannerApp.controller('DayviewCtrl', function ($scope,$routeParams, ngDia
   };
   $scope.dt = {
     date: function(newDate) {
-     return arguments.length ? (Meeting.days[dayID].setDate(newDate)) : Meeting.days[dayID].getDate();
+      if(arguments.length) {
+         Meeting.days[dayID].setDate(newDate)
+         Meeting.updateDayDatabase();
+         return;
+      } else {
+        return Meeting.days[dayID].getDate()
+      }
    },
     time: function(newTime) {
-      return arguments.length ? (Meeting.days[dayID].setTime(newTime)) : Meeting.days[dayID].getTime();
+      if(arguments.length) {
+         Meeting.days[dayID].setTime(newTime)
+         Meeting.updateDayDatabase();
+         return;
+      } else {
+        return Meeting.days[dayID].getTime()
+      }
     }
-  };
+    };
   $scope.popup = {
     opened: false
   };
