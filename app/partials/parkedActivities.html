@@ -33,7 +33,7 @@
 						<span ng-show="$index == 0" id="activityName"
 					      class="color-{{getColor(activity.getTypeId())}}" data-intro="Try dragging the activity around!" data-position="bottom">{{activity.getName()}}</span>
 
-						<span ng-show="$index == 0" id="activityIcon" data-intro="Edit activity" data-position="right" ng-show="$index == 0"><span class="glyphicon glyphicon-pencil" ng-click="openDialog(activity, $index)"></span></span>
+						<span ng-show="$index == 0" id="activityIcon" data-intro="Edit activity" data-position="right" ng-show="$index == 0"><span class="glyphicon glyphicon-pencil" ng-click="$root.showHelp = false; openDialog(activity, $index)"></span></span>
 
 						<span ng-show="$index > 0" id="activityName"
 					      class="color-{{getColor(activity.getTypeId())}}">{{activity.getName()}}</span>
