@@ -1,29 +1,32 @@
 <div class="homeDiv">
-    <div "row ">
-        <div class="col-xs-offset-4 col-lg-offset-5">
-            <h1 class="title"> Fleeting Meeting</h1>
-            <div>
-                <button ng-show="status == 'register'" class="btn" ng-click="status = 'login'">Login</button>
-                <button ng-show="status == 'login'" class="btn" ng-click="status = 'register'">Register</button>
-            </div>
+    <!-- Header -->
+    <div class="row">
+        <div class="site-header">
+            <h1> Fleeting Meeting</h1>
         </div>
     </div>
 
+    <!-- Slides -->
     <div class="row">
-        <br>
         <div class="col-xs-9 col-xs-offset-1 col-lg-6 col-lg-offset-3">
             <ng-include src="'partials/slideshow.html'"></ng-include>
         </div>
     </div>
-    <br>
 
-
+    <!-- Error messages -->
     <div class="row">
-        <div class= "col-xs-4 col-xs-offset-4 col-lg-2 col-lg-offset-5" >
+        <div class="col-xs-4 col-xs-offset-4 col-lg-2 col-lg-offset-5 error-messages">
+            <div ng-show="message != null && message != ''"class="alert alert-success">{{message}}</div>
+            <div ng-show="error != null && error != ''" class="alert alert-danger"><strong>Error: </strong> {{error}}</div>
+        </div>
+    </div>
 
+    <!-- Login-->
+    <div class="row">
+        <div class= "col-xs-4 col-xs-offset-4 col-lg-2 col-lg-offset-5 login-container" >
             <div ng-show="status == 'undecided'">
-                <button class="btn" ng-click="status = 'login'">Login</button>
-                <button class="btn" ng-click="status = 'register'">Register</button>
+                <button class="btn btn-default" ng-click="status = 'login'">Login</button>
+                <button class="btn btn-default" ng-click="status = 'register'">Register</button>
             </div>
 
             <form ng-show="status == 'login'" ng-submit="login()" role="form">
@@ -33,7 +36,8 @@
                  <div class="form-group">
                     <input type="password" ng-model="password" class="form-control" placeholder="Password" />
                 </div>
-                <input type="submit" class="btn btn-block" value="Login"/>
+                <input type="submit" class="btn btn-block btn-warning" value="Login"/>
+                <button class="btn btn-block btn-default" ng-click="status = 'undecided'">Back</button>
             </form>
 
              <form ng-show="status == 'register'" ng-submit="createUser()" role="form">
@@ -47,17 +51,10 @@
                  <div class="form-group">
                      <input type="password" ng-model="passwordRepeated" class="form-control" placeholder="Type in your password again" />
                 </div>
-                <input type="submit" class="btn btn-block" value="Register"/>
+                <input type="submit" class="btn btn-block btn-warning" value="Register"/>
+                <button class="btn btn-block btn-default" ng-click="status = 'undecided'">Back</button>
             </form>
 
         </div>
     </div>
-
-    <div class="row">
-        <div class="col-xs-4 col-xs-offset-4 col-lg-2 col-lg-offset-5">
-            <div ng-show="message != null && message != ''"class="alert alert-success">{{message}}</div>
-            <div ng-show="error != null && error != ''" class="alert alert-danger"><strong>Error: </strong> {{error}}</div>
-        </div>
-    </div>
-
 </div>

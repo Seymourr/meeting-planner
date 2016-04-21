@@ -19,11 +19,13 @@ html, body {
 
 /** For horizontal scrolling */
 #main-content > .row {
+  height:100%;
   overflow-x: auto;
   white-space: nowrap;
 }
 
 #main-content > .row [class*="col-lg"], #main-content > .row [class*="col-md"], #main-content > .row [class*="col-sm"] {
+  height: 100%;
   float: none;
   display: inline-block;
   padding: 10px;
@@ -44,12 +46,28 @@ ng-include, #days, #main {
   vertical-align: top;
 }
 
-.dayview-info, #parkedActivityHeader  {
+.activity-header {
   display: table-row;
 }
 
-#parkedActivityHeader {
+.activity-header-centered {
   text-align: center;
+  position: relative;
+}
+
+.activity-header-centered > .glyphicon-question-sign {
+   position: absolute; 
+   left: 0;
+   font-size: 1.8em;
+   color: #434A54;
+   padding: 5px 0 0 5px;
+   text-align: left;
+}
+
+.glyphicon-question-sign:hover{
+  cursor: pointer;
+  color: #ffffff;
+  text-decoration: none;
 }
 
 #cheat-sheet {
@@ -57,14 +75,21 @@ ng-include, #days, #main {
   margin: 10px 0 10px 0;
 }
 
-.dayview-main, #parkedActivityList {
-  display: table-row;
-}
-
 .activityGraphics {
   position:relative;
   padding-top:10px;
   padding-bottom: 1px;
+}
+
+/* Activity-list */
+.activity-list{
+  background-color: #FFF;
+  border-radius: 5px;
+  padding: 10px 10px 0px 10px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  white-space: normal;
+  min-height: 10vh;
 }
 
 #activityItem {
@@ -99,21 +124,7 @@ ng-include, #days, #main {
   width: 100%;
 }
 
-.test-table {
-  display: table;
-  width: 100%;
-  height: 100%;
-}
-
-.test-cell {
-  background-color: #FFF;
-  border-radius: 5px;
-  padding: 10px;
-  overflow-y: auto;
-  overflow-x: hidden;
-  white-space: normal;
-}
-
+/*Activity footer*/
 .activity-footer {
   display: table-row;
   text-align: center;
@@ -121,7 +132,7 @@ ng-include, #days, #main {
 }
 
 .activity-footer > .glyphicon-trash {
-  padding: 10px 0 10px 0;
+  padding-top: 10px;
   font-size: 3em;
 }
 
@@ -229,4 +240,13 @@ tr.text-center:nth-child(3) > td:nth-child(2) {
   .col-md-3{
     width: 25%;
   }
+}
+
+.site-header, .error-messages, .login-container {
+  text-align: center;
+  padding-top: 10px;
+}
+
+.site-header {
+  padding-bottom: 10px;
 }

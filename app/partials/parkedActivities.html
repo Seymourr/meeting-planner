@@ -1,8 +1,8 @@
 <div id="activity-view" >
 	<!--Header-->
-	<div id="parkedActivityHeader">
+	<div class="activity-header-centered">
 		<a data-intro="Create new activities here" data-position="right" ng-click="$root.showHelp = false; openDialog();" class="btn btn-default">Add activity</a>
-		<button ng-click="$root.showHelp = true" class="btn btn-default">Help</button>
+		<a ng-click="$root.showHelp = true" class="glyphicon glyphicon-question-sign"></a>
 
 		<table id="cheat-sheet">
 			<tr>
@@ -21,28 +21,23 @@
 	</div>
 
 	<!-- Body -->
-	<div ng-if="getParkedActivities().length == 0" ng-drop="true" ng-drop-success="onDropComplete($data, $event, null)" id="parkedActivityList"></div>
+	
+	<div ng-if="getParkedActivities().length == 0" ng-drop="true" ng-drop-success="onDropComplete($data, $event, null)" class="activity-list"></div>
 
-	<div class="test-cell">
-		<div class="test-table">
-			<div ng-if="getParkedActivities().length > 0" id="parkedActivityList">
+	<div class="activity-list" ng-show="getParkedActivities().length > 0"ng-if="getParkedActivities().length > 0" > 
+		<div ng-drag="true" ng-drag-data="$root.showHelp = false; getDataWithPos(activity, $index)" ng-drop="true", ng-drop-success="onDropComplete($data,$event, $index)" ng-repeat="activity in getParkedActivities()" id="activityItem">
 
-				<div ng-drag="true" ng-drag-data="$root.showHelp = false; getDataWithPos(activity, $index)" ng-drop="true", ng-drop-success="onDropComplete($data,$event, $index)" ng-repeat="activity in getParkedActivities()" id="activityItem">
+			<span id="activityLabel">{{activity.getLength()}} min </span>
 
-					<span id="activityLabel">{{activity.getLength()}} min </span>
+			<span id="activityName" class="color-{{getColor(activity.getTypeId())}}" ng-attr-data-intro="{{$index == 0 ? 'Try drag the activity around!' : undefined}}" ng-attr-data-position="{{$index == 0 ? 'bottom' : undefined}}">{{activity.getName()}}</span>
 
-					<span id="activityName" class="color-{{getColor(activity.getTypeId())}}" ng-attr-data-intro="{{$index == 0 ? 'Try drag the activity around!' : undefined}}" ng-attr-data-position="{{$index == 0 ? 'bottom' : undefined}}">{{activity.getName()}}</span>
-
-					<span ng-show="$index == 0" id="activityIcon" ng-attr-data-intro="{{$index == 0 ? 'Edit activity' : undefined}}" ng-attr-data-position="{{$index == 0 ? 'right' : undefined}}" ng-show="$index == 0"><span class="glyphicon glyphicon-pencil" ng-click="$root.showHelp = false; openDialog(activity, $index)"></span></span>
-
-				</div>
-			</div>
+			<span ng-show="$index == 0" id="activityIcon" ng-attr-data-intro="{{$index == 0 ? 'Edit activity' : undefined}}" ng-attr-data-position="{{$index == 0 ? 'right' : undefined}}" ng-show="$index == 0"><span class="glyphicon glyphicon-pencil" ng-click="$root.showHelp = false; openDialog(activity, $index)"></span></span>
 		</div>
 	</div>
 
 	<!-- Footer-->
 	<div class="activity-footer">
-		<span class="glyphicon glyphicon-trash gi-5x"></span>
+		<span class="glyphicon glyphicon-trash"></span>
 		<br><button ng-controller="LoginCtrl" class="btn btn-default" ng-click="logout()">Log out</button>
 	</div>
 </div>

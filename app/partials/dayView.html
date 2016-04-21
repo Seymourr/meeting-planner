@@ -1,17 +1,17 @@
 <div class="dayview">
   <!--Header-->
-  <div class="dayview-info">
+  <div class="activity-header ">
 
     <table class="dayview-time">
       <tr class="meeting-info-row">
         <td><span class="bold">Title</span></td>
-        <td><input type="text" ng-change="setTitle(title)" ng-model="title" class="form-control input-sm"></td>
+        <td><input type="text" ng-change="setTitle(title)" ng-model="title" class="form-control"></td>
       </tr>
       <tr class="meeting-info-row">
         <td class="datepicker-container"><span class="bold">Date</span></td>
         <td class="datepicker-container">
           <div>
-            <input type="text" class="form-control input-sm" uib-datepicker-popup={{format}} ng-model="dt.date" ng-model-options="{ getterSetter: true }"
+            <input type="text" class="form-control" uib-datepicker-popup={{format}} ng-model="dt.date" ng-model-options="{ getterSetter: true }"
               show-button-bar="false" is-open="popup.opened" ng-click="open()" ng-required="true" close-text="Close" datepicker-options="dateOptions"/>
           </div>
         </td>
@@ -45,16 +45,15 @@
   </div>
 
   <!-- Body -->
-  <div ng-if="getDayActivities().length == 0"class="dayview-main" ng-drop="true" ng-drop-success="onDropComplete($data, $event, null, getDayID())"></div>
-  <div class="test-cell">
-    <div class="test-table">
-    	<div ng-if="getDayActivities().length > 0" class="dayview-main">
-    		<div ng-drag="true" ng-drag-data="getDataWithPos(activity, $index, getDayID())" ng-repeat="activity in getDayActivities()" id="activityItem" ng-drop="true" ng-drop-success="onDropComplete($data, $event, $index, getDayID())">
-			    <span id="activityLabel">{{getActivityTime($index) | date: 'HH:mm'}}</span>
-    			<span id="activityName" class="color-{{getColor(activity.getTypeId())}}">{{activity.getName()}}</span>
-    			<span id="activityIcon"><span class="glyphicon glyphicon-pencil" ng-click="openDialog(activity, $index, getDayID())"></span></span>
-    		</div>
-      </div>
+
+  <div ng-if="getDayActivities().length == 0" class="activity-list" ng-drop="true" ng-drop-success="onDropComplete($data, $event, null, getDayID())"></div>
+
+  <div class="activity-list" ng-show="getDayActivities().length > 0" ng-if="getDayActivities().length > 0">
+		<div ng-drag="true" ng-drag-data="getDataWithPos(activity, $index, getDayID())" ng-repeat="activity in getDayActivities()" id="activityItem" ng-drop="true" ng-drop-success="onDropComplete($data, $event, $index, getDayID())">
+	    <span id="activityLabel">{{getActivityTime($index) | date: 'HH:mm'}}</span>
+			<span id="activityName" class="color-{{getColor(activity.getTypeId())}}">{{activity.getName()}}</span>
+			<span id="activityIcon"><span class="glyphicon glyphicon-pencil" ng-click="openDialog(activity, $index, getDayID())"></span></span>
+    	
     </div>
   </div>
 
