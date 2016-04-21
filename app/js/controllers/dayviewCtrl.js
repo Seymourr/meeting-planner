@@ -105,4 +105,13 @@ meetingPlannerApp.controller('DayviewCtrl', function ($scope,$routeParams, ngDia
     $scope.popup.opened = true;
   };
   $scope.format = 'yyyy/MM/dd';
+
+  $scope.openDialog = function () {
+    ngDialog.open({
+        template: 'partials/removeDay.html',
+        className: 'ngdialog-theme-plain',
+        controller: 'RemoveDayCtrl',
+        data: {"dayID": dayID}
+        });
+  };
 });
