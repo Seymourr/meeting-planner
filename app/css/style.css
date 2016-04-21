@@ -20,7 +20,7 @@ html, body {
 /** For horizontal scrolling */
 #main-content > .row {
   overflow-x: auto;
-  overflow-y: hidden;
+  white-space: nowrap;
 }
 
 #main-content > .row [class*="col-lg"], #main-content > .row [class*="col-md"], #main-content > .row [class*="col-sm"] {
@@ -106,18 +106,27 @@ ng-include, #days, #main {
 }
 
 .test-cell {
-  display: table-cell;
   background-color: #FFF;
   border-radius: 5px;
   padding: 10px;
   overflow-y: auto;
   overflow-x: hidden;
+  white-space: normal;
 }
 
 .activity-footer {
   display: table-row;
   text-align: center;
   padding top: 10px;
+}
+
+.activity-footer > .glyphicon-trash {
+  padding: 10px 0 10px 0;
+  font-size: 3em;
+}
+
+.activity-footer > .btn-default {
+  margin: 10px 0 10px 0;
 }
 
 
@@ -154,6 +163,10 @@ td{
 .btn-info, .progress-bar-info, .color-blue {
   background-color: #4FC1E9;
   border: 0 none;
+}
+
+.btn-default {
+  border-color: #E8E6E6;
 }
 
 .color-box {
