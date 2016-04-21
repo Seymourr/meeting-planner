@@ -2,7 +2,7 @@
 
 // The possible activity types
 
-meetingPlannerApp.factory('Meeting', function ($resource, Auth) {
+meetingPlannerApp.factory('Meeting', function ($resource, Auth,$route) {
 	var ActivityType = ["Presentation","Group Work","Discussion","Break"];
 
 	// this is our main module that contians days and praked activites
@@ -26,6 +26,13 @@ meetingPlannerApp.factory('Meeting', function ($resource, Auth) {
 		this.updateDayDatabase();
 		return day;
 	};
+
+    this.deleteDay = function(id) {
+        this.days.splice(id, 1);
+        $route.reload(); //Recalculate dayID for all days
+        this.updateDayDatabase();
+        this.updateParkedDatabase();
+    }
 
 	this.replaceActivity = function(activity, day, position) {
 		if(activity != null && position != null) {
