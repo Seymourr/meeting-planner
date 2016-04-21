@@ -59,7 +59,6 @@ ng-include, #days, #main {
 
 .dayview-main, #parkedActivityList {
   display: table-row;
- height: 100px !important;
 }
 
 .activityGraphics {
