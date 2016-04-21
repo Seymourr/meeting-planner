@@ -12,10 +12,9 @@ meetingPlannerApp.controller('RemoveDayCtrl', function ($scope, Meeting) {
   };
 
   $scope.deleteDaySave = function() {
-    console.log(dayID);
       for(var i = Meeting.days[dayID].getActivities().length - 1; i >=0 ; i--) {
 
-        Meeting.moveActivity(dayID, i, null, Meeting.parkedActivity.length -1); //Todo: Better indexing
+        Meeting.moveActivity(dayID, i, null, Meeting.parkedActivities.length); //Todo: Better indexing
       }
       Meeting.deleteDay(dayID);
   };
