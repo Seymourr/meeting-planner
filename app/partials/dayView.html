@@ -1,4 +1,5 @@
 <div class="dayview">
+  <!--Header-->
   <div class="dayview-info">
 
     <table class="dayview-time">
@@ -32,8 +33,6 @@
     </table>
 
     <!-- Distribution graph -->
-
-
     <div class="activityGraphics" ng-attr-data-intro="{{getDayID() == 0 ? 'The red mark represent the reccomended percentage of breaks in your current plan. Don\'t forget coffee!' : undefined}}" ng-attr-data-position="{{getDayID() == 0 ? 'bottom' : undefined}}">
       <div id="distribution-bar" class="progress">
         <span id="distribution-divider"></span>
@@ -43,9 +42,9 @@
         </span>
       </div>
     </div>
-
   </div>
 
+  <!-- Body -->
   <div ng-if="getDayActivities().length == 0"class="dayview-main" ng-drop="true" ng-drop-success="onDropComplete($data, $event, null, getDayID())"></div>
   <div class="test-cell">
     <div class="test-table">
@@ -57,5 +56,10 @@
     		</div>
       </div>
     </div>
+  </div>
+
+  <!--Footer-->
+  <div class="activity-footer">
+    <button class="btn btn-default">Remove day</button>
   </div>
 </div>

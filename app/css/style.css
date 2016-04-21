@@ -30,7 +30,7 @@ html, body {
 }
 
 /** parkedActivities and dayView */
-.dayview, ng-include, #days, #main {
+ng-include, #days, #main {
   height: 100%;
   width: 100%;
   padding: 0;
@@ -38,9 +38,10 @@ html, body {
 }
 
 #activity-view, .dayview {
-  height: 100%;
   width: 100%;
+  max-height: 100%;
   display: table;
+  overflow-y: scroll;
 }
 
 .dayview-info, #parkedActivityHeader  {
@@ -56,15 +57,8 @@ html, body {
   margin: 10px 0 10px 0;
 }
 
-.table-background {
-  display: table-cell;
-  border-radius: 5px;
-  background-color: #FFF;
-}
-
 .dayview-main, #parkedActivityList {
   display: table-row;
-  height: 100%;
 }
 
 .activityGraphics {
@@ -88,6 +82,7 @@ html, body {
   display: table-cell;
   white-space: nowrap;
   padding-right: 10px;
+
 }
 
 #activityIcon{
@@ -106,19 +101,21 @@ html, body {
 
 .test-table {
   display: table;
-  height: 100%;
   width: 100%;
-
 }
 
 .test-cell {
   display: table-cell;
   background-color: #FFF;
-  height: 100%;
   border-radius: 5px;
   padding: 10px;
   overflow-y: auto;
-  overflow-x: hidden;
+}
+
+.activity-footer {
+  display: table-row;
+  text-align: center;
+  padding top: 10px;
 }
 
 
