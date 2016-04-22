@@ -16,9 +16,17 @@ meetingPlannerApp.controller('CreateActivityCtrl', function ($scope,$routeParams
 
   // Creates a new parked activity
   $scope.saveActivity = function (activityTitle, activityLength, activityTypeID, activityDescription) {
-    // For future error messages.
-    if (activityTypeID == undefined) {
-      console.log("Error in createActivity..");
+    $scope.noTitle = false;
+    $scope.noTime = false;
+
+    
+
+    if (activityTitle == '' || activityTitle == undefined) {
+      $scope.noTitle = true;
+    } 
+
+    if (activityLength < 0 || activityLength == undefined) {
+      $scope.noTime = true;
     } else {
       var act = new Activity(activityTitle, activityLength, Meeting.getActivityTypes().indexOf(activityTypeID), activityDescription);
       if($scope.ngDialogData) {
@@ -31,7 +39,6 @@ meetingPlannerApp.controller('CreateActivityCtrl', function ($scope,$routeParams
       } else {
         Meeting.addActivity(act);
       }
-
     }
   };
 
@@ -41,6 +48,7 @@ meetingPlannerApp.controller('CreateActivityCtrl', function ($scope,$routeParams
     $scope.activityTypeID = Meeting.getActivityType($scope.ngDialogData.getTypeId());
     $scope.activityDescription = $scope.ngDialogData.getDescription();
   }
+
   // Load a new quote
   $scope.loadQuote = function() {
     // Refresh quote
