@@ -227,6 +227,9 @@ tr.text-center:nth-child(3) > td:nth-child(2) {
 }
 .dragging {
   height: 0;
+  margin-top: -10px;
+  margin-bottom: -10px;
+  visibility: hidden;
 }
 
 .col-centered {
