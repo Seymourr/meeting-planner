@@ -77,15 +77,7 @@ meetingPlannerApp.controller('DayviewCtrl', function ($scope, $rootScope, $route
       } else {
         return Meeting.days[dayID].getDate()
       }
-   },
-    time: function(newTime) {
-      if(arguments.length) {
-        Meeting.days[dayID].setDate(newTime);
-         Meeting.updateDayDatabase();
-      } else {
-        return Meeting.days[dayID].getDate()
-      }
-    }
+   }
     };
   $scope.popup = {
     opened: false
