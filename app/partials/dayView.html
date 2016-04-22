@@ -37,7 +37,7 @@
       <div id="distribution-bar" class="progress">
         <span id="distribution-divider"></span>
         <span class="distribution-component" ng-repeat="component in getDistributionComponents() track by $index">
-          <div class="progress-bar color-{{getColor(distCompTypes[$index])}}" role="progressbar" style="width:{{component}}%">
+          <div class="progress-bar {{getColorClassByTypeID(distCompTypes[$index])}}" role="progressbar" style="width:{{component}}%">
           </div>
         </span>
       </div>
@@ -48,7 +48,7 @@
 	<div class="activity-list">
 		<div ng-drag="true" ng-drag-data="getDataWithPos(activity, $index, getDayID())" ng-repeat="activity in getDayActivities()" id="activityItem" ng-drop="true" ng-drop-success="onDropComplete($data, $event, $index, getDayID())">
 			<span id="activityLabel">{{getActivityTime($index) | date: 'HH:mm'}}</span>
-			<span id="activityName" class="color-{{getColor(activity.getTypeId())}}">{{activity.getName()}}</span>
+			<span id="activityName" class="{{getColorClassByTypeID(activity.getTypeId())}}">{{activity.getName()}}</span>
 			<span id="activityIcon"><span class="glyphicon glyphicon-pencil" ng-click="openEditActivityDialog(activity, $index, getDayID())"></span></span>
 		</div>
 		<div class="placeholder-activity" ng-drop="true" ng-drop-success="onDropComplete($data, $event, null, getDayID())"></div>

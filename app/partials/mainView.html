@@ -4,7 +4,7 @@
 	<!-- Needed for drag and drop -->
 	<div  id="activityItem" ng-drag-clone="">
 		<span id="activityLabel">{{clonedData.getLength()}} min </span>
-		<span id="activityName" class="color-{{getColor(clonedData.getTypeId())}}">{{clonedData.getName()}}</span>
+		<span id="activityName" class="{{getColorClassByTypeID(clonedData.getTypeId())}}">{{clonedData.getName()}}</span>
 		<span id="activityIcon"><span class="glyphicon glyphicon-pencil"></span></span>
 	</div>
 	<ng-include class="col-lg-2 col-md-3 col-sm-6" src="'partials/parkedActivities.html'" ng-controller="ParkedActivitiesCtrl" ></ng-include>
