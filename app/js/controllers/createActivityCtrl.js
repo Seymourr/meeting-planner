@@ -20,6 +20,8 @@ meetingPlannerApp.controller('CreateActivityCtrl', function ($scope,$routeParams
     if (activityTypeID == undefined) {
       console.log("Error in createActivity..");
     } else {
+      if(activityDescription == null || activityDescription == undefined) activityDescription = "";
+      
       var act = new Activity(activityTitle, activityLength, Meeting.getActivityTypes().indexOf(activityTypeID), activityDescription);
       if($scope.ngDialogData) {
         if($scope.ngDialogData.day != null) {
