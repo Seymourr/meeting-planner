@@ -155,9 +155,12 @@ ng-include, #days, #main {
   padding-top: 10px;
 }
 
-.activity-footer > .glyphicon-trash {
-  padding-bottom: 10px;
-  font-size: 3em;
+
+.thrashcan-div > .glyphicon-trash {
+  font-size: 6em;
+  background-color: white;
+  padding: 20px;
+  padding-right: 24px;
 }
 
 #new-day, .remove-day{
