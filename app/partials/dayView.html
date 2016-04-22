@@ -49,14 +49,14 @@
 		<div ng-drag="true" ng-drag-data="getDataWithPos(activity, $index, getDayID())" ng-repeat="activity in getDayActivities()" id="activityItem" ng-drop="true" ng-drop-success="onDropComplete($data, $event, $index, getDayID())">
 			<span id="activityLabel">{{getActivityTime($index) | date: 'HH:mm'}}</span>
 			<span id="activityName" class="color-{{getColor(activity.getTypeId())}}">{{activity.getName()}}</span>
-			<span id="activityIcon"><span class="glyphicon glyphicon-pencil" ng-click="openDialog(activity, $index, getDayID())"></span></span>
+			<span id="activityIcon"><span class="glyphicon glyphicon-pencil" ng-click="openEditActivityDialog(activity, $index, getDayID())"></span></span>
 		</div>
 		<div class="placeholder-activity" ng-drop="true"
 		     ng-drop-success="onDropComplete($data, $event, null, getDayID())"></div>
   </div>
 
   <div class="activity-footer">
-	  <button ng-click="$root.showHelp = false; openDialog()"
+	  <button ng-click="$root.showHelp = false; openRemoveDayDialog()"
 	          ng-attr-data-intro="{{getDayID() == 0 ? 'Not happy with your plan? Scratch it here!' : undefined}}"
 	          ng-attr-data-position="{{getDayID() == 0 ? 'right' : undefined}}" class="btn btn-default">Remove day
 	  </button>
