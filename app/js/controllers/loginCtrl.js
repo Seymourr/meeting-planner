@@ -43,7 +43,17 @@ meetingPlannerApp.controller('LoginCtrl', function ($scope, $location, Auth, Mee
     };
 
     $scope.login = function() {
+
       $scope.error = null;
+
+      if($scope.email == null || $scope.email == "") {
+          $scope.error = "You must specify an email address.";
+          return;
+      } else if($scope.password == null || $scope.password == "") {
+          $scope.error = "You must specify a password.";
+          return;
+      }
+      
       Auth.$authWithPassword({
         email: $scope.email,
         password: $scope.password

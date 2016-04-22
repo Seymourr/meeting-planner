@@ -31,13 +31,13 @@
 
 			<span id="activityName" class="color-{{getColor(activity.getTypeId())}}" ng-attr-data-intro="{{$index == 0 ? 'Try drag the activity around!' : undefined}}" ng-attr-data-position="{{$index == 0 ? 'bottom' : undefined}}">{{activity.getName()}}</span>
 
-			<span ng-show="$index == 0" id="activityIcon" ng-attr-data-intro="{{$index == 0 ? 'Edit activity' : undefined}}" ng-attr-data-position="{{$index == 0 ? 'right' : undefined}}" ng-show="$index == 0"><span class="glyphicon glyphicon-pencil" ng-click="$root.showHelp = false; openDialog(activity, $index)"></span></span>
+			<span id="activityIcon" ng-attr-data-intro="{{$index == 0 ? 'Edit activity' : undefined}}" ng-attr-data-position="{{$index == 0 ? 'right' : undefined}}"><span class="glyphicon glyphicon-pencil" ng-click="$root.showHelp = false; openDialog(activity, $index)"></span></span>
 		</div>
 	</div>
 
 	<!-- Footer-->
 	<div class="activity-footer">
-		<span class="glyphicon glyphicon-trash"></span>
+		<span data-intro="Drag activities here to remove them! (Or do it in the edit menu)" data-position="right" class="glyphicon glyphicon-trash"></span>
 		<br><button ng-controller="LoginCtrl" class="btn btn-default" ng-click="logout()">Log out</button>
 	</div>
 </div>

@@ -1,4 +1,4 @@
-meetingPlannerApp.controller('DayviewCtrl', function ($scope,$routeParams, ngDialog, Meeting) {
+meetingPlannerApp.controller('DayviewCtrl', function ($scope, $rootScope, $routeParams, ngDialog, Meeting) {
 
   var dayID = 0; //The id of the day for this controller object
 
