@@ -2,7 +2,6 @@ meetingPlannerApp.controller('LoginCtrl', function ($scope, $location, Auth, Mee
 
     var offAuth = Auth.$onAuth(function(authData) {
       if (authData) {
-        console.log("Authdata changed positive state..", authData);
         $location.path("/main");
       } else {
         console.log("Logged out");
