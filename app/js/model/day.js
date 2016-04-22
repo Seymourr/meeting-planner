@@ -18,14 +18,7 @@ function Day(startH,startM) {
 		return this._startTime;
 	};
 	this.setDate = function(date) {
-		if (date != null)
-			this._startTime = date;
-	};
-	this.getTime = function() {
-		return this._startTime;
-	};
-	this.setTime = function(newTime) {
-		this._startTime = newTime;
+		this._startTime = date;
 	};
 	// returns the total length of the acitivities in
 	// a day in minutes

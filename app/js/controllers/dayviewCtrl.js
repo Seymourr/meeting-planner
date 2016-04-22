@@ -80,10 +80,10 @@ meetingPlannerApp.controller('DayviewCtrl', function ($scope, $rootScope, $route
    },
     time: function(newTime) {
       if(arguments.length) {
-        Meeting.days[dayID].setTime(newTime);
+        Meeting.days[dayID].setDate(newTime);
          Meeting.updateDayDatabase();
       } else {
-        return Meeting.days[dayID].getTime()
+        return Meeting.days[dayID].getDate()
       }
     }
     };
