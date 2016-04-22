@@ -27,7 +27,7 @@ meetingPlannerApp.controller('MainViewCtrl', function ($scope,$rootScope, $route
   $scope.getColor = function (id) {
     var style = ["blue", "red", "green", "yellow"];
     return style[id];
-  }
+  };
 
 
   $scope.showHelp = $rootScope.showHelp;

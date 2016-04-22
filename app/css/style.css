@@ -3,7 +3,6 @@
 html, body {
   height: 100%;
   background-color: #FFF7E9;
-  //background-color: #000;
   font-family: Open Sans, Arial, sans-serif;
   font-size: 14px;
   color: #434A54;
@@ -19,8 +18,9 @@ html, body {
 
 /** For horizontal scrolling */
 #main-content > .row {
-  height:100%;
+  height: 100%;
   overflow-x: auto;
+  overflow-y: hidden;
   white-space: nowrap;
 }
 
@@ -29,9 +29,9 @@ html, body {
   float: none;
   display: inline-block;
   padding: 10px;
+  margin: 0;
 }
 
-/** parkedActivities and dayView */
 ng-include, #days, #main {
   height: 100%;
   width: 100%;
@@ -41,13 +41,16 @@ ng-include, #days, #main {
 
 #activity-view, .dayview {
   width: 100%;
+  min-height: 10%;
   max-height: 100%;
-  display: table;
-  vertical-align: top;
+  display: flex;
+  flex-direction:column;
+  margin: 0;
+  padding: 0;
 }
 
 .activity-header {
-  display: table-row;
+  display: block;
 }
 
 .activity-header-centered {
@@ -81,15 +84,21 @@ ng-include, #days, #main {
   padding-bottom: 1px;
 }
 
+.placeholder-activity {
+  width: 100%;
+  height: 50px;
+}
+
 /* Activity-list */
 .activity-list{
   background-color: #FFF;
   border-radius: 5px;
-  padding: 10px 10px 0px 10px;
+  padding: 10px;
   overflow-y: auto;
   overflow-x: hidden;
   white-space: normal;
-  min-height: 10vh;
+  min-height: 50px;
+  flex:1;
 }
 
 #activityItem {
@@ -126,20 +135,15 @@ ng-include, #days, #main {
 
 /*Activity footer*/
 .activity-footer {
-  display: table-row;
+  display: block;
   text-align: center;
-  padding top: 10px;
+  padding-top: 10px;
 }
 
 .activity-footer > .glyphicon-trash {
-  padding-top: 10px;
+  padding-bottom: 10px;
   font-size: 3em;
 }
-
-.activity-footer > .btn-default {
-  margin: 10px 0 10px 0;
-}
-
 
 #new-day{
   vertical-align: top;
@@ -195,7 +199,6 @@ td{
   border-left: 2px solid #ff0000;
 }
 
-
 /** Hide timepicker buttons **/
 tr.text-center:nth-child(1) > td:nth-child(2) {
   display:none;
@@ -222,11 +225,16 @@ tr.text-center:nth-child(3) > td:nth-child(2) {
 .meeting-info-row input {
   margin-bottom: 4px;
 }
+
 .activity-list .drag-enter:not(.dragging) {
   padding-top: 60px;
 }
+
 .dragging {
   height: 0;
+  margin-top: -10px;
+  margin-bottom: -10px;
+  visibility: hidden;
 }
 
 .col-centered {

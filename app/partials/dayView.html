@@ -45,19 +45,17 @@
   </div>
 
   <!-- Body -->
-
-  <div ng-if="getDayActivities().length == 0" class="activity-list" ng-drop="true" ng-drop-success="onDropComplete($data, $event, null, getDayID())"></div>
-
-  <div class="activity-list" ng-show="getDayActivities().length > 0" ng-if="getDayActivities().length > 0">
+	<div class="activity-list">
 		<div ng-drag="true" ng-drag-data="getDataWithPos(activity, $index, getDayID())" ng-repeat="activity in getDayActivities()" id="activityItem" ng-drop="true" ng-drop-success="onDropComplete($data, $event, $index, getDayID())">
-	    <span id="activityLabel">{{getActivityTime($index) | date: 'HH:mm'}}</span>
+			<span id="activityLabel">{{getActivityTime($index) | date: 'HH:mm'}}</span>
 			<span id="activityName" class="color-{{getColor(activity.getTypeId())}}">{{activity.getName()}}</span>
 			<span id="activityIcon"><span class="glyphicon glyphicon-pencil" ng-click="openDialog(activity, $index, getDayID())"></span></span>
-    	
-    </div>
+		</div>
+		<div class="placeholder-activity" ng-drop="true" ng-drop-success="onDropComplete($data, $event, null, getDayID())"></div>
   </div>
 
   <div class="activity-footer">
-    <button ng-click="openDialog()"class="btn btn-default">Remove day</div>
+	  <button ng-click="$root.showHelp = false; openDialog()" ng-attr-data-intro="{{getDayID() == 0 ? 'Not happy with your plan? Scratch it here!' : undefined}}" ng-attr-data-position="{{getDayID() == 0 ? 'right' : undefined}}" class="btn btn-default">Remove day
+	  </button>
   </div>
 </div>

@@ -37,7 +37,7 @@
                     <input type="password" ng-model="password" class="form-control" placeholder="Password" />
                 </div>
                 <input type="submit" class="btn btn-block btn-warning" value="Login"/>
-                <button class="btn btn-block btn-default" ng-click="status = 'undecided'">Back</button>
+                <button  type="button" class="btn btn-block btn-default" ng-click="status = 'undecided'; email = ''; password = '';">Back</button>
             </form>
 
              <form ng-show="status == 'register'" ng-submit="createUser()" role="form">
@@ -52,7 +52,7 @@
                      <input type="password" ng-model="passwordRepeated" class="form-control" placeholder="Type in your password again" />
                 </div>
                 <input type="submit" class="btn btn-block btn-warning" value="Register"/>
-                <button class="btn btn-block btn-default" ng-click="status = 'undecided'">Back</button>
+                <button type="button" class="btn btn-block btn-default" ng-click="status = 'undecided'; email = ''; password = ''; passwordRepeated = '';">Back</button>
             </form>
 
         </div>

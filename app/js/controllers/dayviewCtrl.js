@@ -1,4 +1,4 @@
-meetingPlannerApp.controller('DayviewCtrl', function ($scope,$routeParams, ngDialog, Meeting) {
+meetingPlannerApp.controller('DayviewCtrl', function ($scope, $rootScope, $routeParams, ngDialog, Meeting) {
 
   var dayID = 0; //The id of the day for this controller object
 
@@ -76,18 +76,16 @@ meetingPlannerApp.controller('DayviewCtrl', function ($scope,$routeParams, ngDia
   $scope.dt = {
     date: function(newDate) {
       if(arguments.length) {
-         Meeting.days[dayID].setDate(newDate)
+        Meeting.days[dayID].setDate(newDate);
          Meeting.updateDayDatabase();
-         return;
       } else {
         return Meeting.days[dayID].getDate()
       }
    },
     time: function(newTime) {
       if(arguments.length) {
-         Meeting.days[dayID].setTime(newTime)
+        Meeting.days[dayID].setTime(newTime);
          Meeting.updateDayDatabase();
-         return;
       } else {
         return Meeting.days[dayID].getTime()
       }

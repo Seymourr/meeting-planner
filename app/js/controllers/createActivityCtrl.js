@@ -16,17 +16,9 @@ meetingPlannerApp.controller('CreateActivityCtrl', function ($scope,$routeParams
 
   // Creates a new parked activity
   $scope.saveActivity = function (activityTitle, activityLength, activityTypeID, activityDescription) {
-    $scope.noTitle = false;
-    $scope.noTime = false;
-
-    
-
-    if (activityTitle == '' || activityTitle == undefined) {
-      $scope.noTitle = true;
-    } 
-
-    if (activityLength < 0 || activityLength == undefined) {
-      $scope.noTime = true;
+    // For future error messages.
+    if (activityTypeID == undefined) {
+      console.log("Error in createActivity..");
     } else {
       var act = new Activity(activityTitle, activityLength, Meeting.getActivityTypes().indexOf(activityTypeID), activityDescription);
       if($scope.ngDialogData) {
