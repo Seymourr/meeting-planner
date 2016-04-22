@@ -224,12 +224,16 @@ meetingPlannerApp.factory('Meeting', function ($resource, Auth,$route) {
                     "description": aList[j].getDescription()
                 });
             }
-            if(this.days[i]._startTime == null) {
-                continue; //Skip to push this day..Good fix?
+            var dayTime = this.days[i]._startTime;
+            if(dayTime == null) {
+                dayTime = new Date(); //Temp fix
+                dayTime.setHours(8); 
+                dayTime.setMinutes(0);
+                //TODO: Use some old value, if present
             }
             data.push({
                 "dayTitle": this.days[i]._title,
-                "dayTime": this.days[i]._startTime.getTime(),
+                "dayTime": dayTime.getTime(),
                 "dayActivities": activities
             });
         }
