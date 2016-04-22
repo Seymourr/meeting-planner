@@ -38,7 +38,7 @@ meetingPlannerApp.controller('CreateActivityCtrl', function ($scope,$routeParams
     }
   };
 
-  $scope.deleteActivity = function() {
+  $scope.deleteActivity = function(day, position) {
     Meeting.deleteActivity($scope.ngDialogData.day, $scope.ngDialogData.position);
   };
 

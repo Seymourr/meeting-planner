@@ -31,4 +31,13 @@ meetingPlannerApp.controller('ActivityCtrl', function ($scope, $rootScope, $rout
         data: activity
         });
   };
+  
+  $scope.dropAndRemoveActivity = function(activity, $event) {
+    var day = activity.oldDay;
+    if(day == undefined) {
+      day == null
+    }
+    Meeting.deleteActivity(day, activity.position);
+  };
+
 });

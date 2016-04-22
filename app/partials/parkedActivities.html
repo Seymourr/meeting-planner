@@ -34,7 +34,7 @@
 
 	<!-- Footer-->
 	<div class="activity-footer">
-		<span data-intro="Drag activities here to remove them! (Or do it in the edit menu)" data-position="right" class="glyphicon glyphicon-trash"></span>
+		<span data-intro="Drag activities here to remove them! (Or do it in the edit menu)" data-position="right" class="glyphicon glyphicon-trash" ng-drop ="true" ng-drop-success="dropAndRemoveActivity($data, $event)"></span>
 		<br><button ng-controller="LoginCtrl" class="btn btn-default" ng-click="logout()">Log out</button>
 	</div>
 </div>
