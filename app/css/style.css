@@ -18,8 +18,9 @@ html, body {
 
 /** For horizontal scrolling */
 #main-content > .row {
-  height:100%;
+  height: 100%;
   overflow-x: auto;
+  overflow-y: hidden;
   white-space: nowrap;
 }
 
@@ -28,9 +29,9 @@ html, body {
   float: none;
   display: inline-block;
   padding: 10px;
+  margin: 0;
 }
 
-/** parkedActivities and dayView */
 ng-include, #days, #main {
   height: 100%;
   width: 100%;
@@ -40,13 +41,16 @@ ng-include, #days, #main {
 
 #activity-view, .dayview {
   width: 100%;
+  min-height: 10%;
   max-height: 100%;
-  display: table;
-  vertical-align: top;
+  display: flex;
+  flex-direction:column;
+  margin: 0;
+  padding: 0;
 }
 
 .activity-header {
-  display: table-row;
+  display: block;
 }
 
 .activity-header-centered {
@@ -82,18 +86,19 @@ ng-include, #days, #main {
 
 .placeholder-activity {
   width: 100%;
-  height: 10vh;
+  height: 50px;
 }
 
 /* Activity-list */
 .activity-list{
   background-color: #FFF;
   border-radius: 5px;
-  padding: 10px 10px 0 10px;
+  padding: 10px;
   overflow-y: auto;
   overflow-x: hidden;
   white-space: normal;
-  min-height: 10vh;
+  min-height: 50px;
+  flex:1;
 }
 
 #activityItem {
@@ -130,18 +135,14 @@ ng-include, #days, #main {
 
 /*Activity footer*/
 .activity-footer {
-  display: table-row;
+  display: block;
   text-align: center;
   padding-top: 10px;
 }
 
 .activity-footer > .glyphicon-trash {
-  padding-top: 10px;
+  padding-bottom: 10px;
   font-size: 3em;
-}
-
-.activity-footer > .btn-default {
-  margin: 10px 0 10px 0;
 }
 
 #new-day{
@@ -225,9 +226,10 @@ tr.text-center:nth-child(3) > td:nth-child(2) {
   margin-bottom: 4px;
 }
 
-.activity-list .drag-enter:not(.dragging), .dayview .drag-enter:not(.dragging) {
+.activity-list .drag-enter:not(.dragging) {
   padding-top: 60px;
 }
+
 .dragging {
   height: 0;
   margin-top: -10px;
@@ -242,7 +244,7 @@ tr.text-center:nth-child(3) > td:nth-child(2) {
     text-align:left;
 }
 
-@media (min-width: 1200px) and (max-width: 1400px){
+@media (min-width: 1100px) and (max-width: 1400px){
   .col-md-3{
     width: 25%;
   }

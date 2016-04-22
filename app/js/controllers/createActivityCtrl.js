@@ -34,7 +34,6 @@ meetingPlannerApp.controller('CreateActivityCtrl', function ($scope,$routeParams
       } else {
         Meeting.addActivity(act);
       }
-
     }
   };
 
@@ -50,6 +49,7 @@ meetingPlannerApp.controller('CreateActivityCtrl', function ($scope,$routeParams
   } else {
     $scope.isNewActivity = true;
   }
+
   // Load a new quote
   $scope.loadQuote = function() {
     // Refresh quote
