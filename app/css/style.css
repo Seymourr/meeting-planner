@@ -54,6 +54,7 @@ ng-include, #days, #main {
 }
 
 .activity-header-centered {
+  display: block;
   text-align: center;
   position: relative;
 }
@@ -145,9 +146,16 @@ ng-include, #days, #main {
   font-size: 3em;
 }
 
-#new-day{
+#new-day, .remove-day{
   vertical-align: top;
   text-align: center;
+  position: relative;
+}
+
+.left-btn {
+  position: absolute; 
+  left: 0;
+  text-align: left;
 }
 
 td{
@@ -188,6 +196,7 @@ td{
   width: 12px;
   height: 12px;
 }
+
 
 /** Distribution diagram */
 #distribution-divider::after {
