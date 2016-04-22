@@ -29,10 +29,9 @@
     <textarea class="form-control" id="description" rows="3" ng-model="activityDescription"></textarea>
   </fieldset>
 
-  <button type="submit" class="btn btn-primary">Save</button>
+  <button type="submit" class="btn btn-info">Save</button>
   <button ng-click="closeThisDialog()" class="btn btn-default">Cancel</button>
 
-  <button ng-show="!isNewActivity" class="btn btn-danger delete-activity"
-          ng-click="deleteActivity(); closeThisDialog()">Delete
+  <button ng-show="!isNewActivity" class="btn btn-danger delete-activity" ng-click="deleteActivity(); closeThisDialog()">Delete
   </button>
 </form>

@@ -54,6 +54,7 @@ ng-include, #days, #main {
 }
 
 .activity-header-centered {
+  display: block;
   text-align: center;
   position: relative;
 }
@@ -99,6 +100,7 @@ ng-include, #days, #main {
   white-space: normal;
   min-height: 50px;
   flex:1;
+  width: 100%;
 }
 
 #activityItem {
@@ -131,6 +133,18 @@ ng-include, #days, #main {
   font-weight: 600;
   display: table-cell;
   width: 100%;
+  word-wrap: break-all;
+  /* Warning: Needed for oldIE support, but words are broken up letter-by-letter */
+   -ms-word-break: break-all;
+   word-break: break-all;
+
+   /* Non standard for webkit */
+   word-break: break-word;
+
+   -webkit-hyphens: auto;
+   -moz-hyphens: auto;
+   -ms-hyphens: auto;
+   hyphens: auto;
 }
 
 /*Activity footer*/
@@ -148,9 +162,16 @@ ng-include, #days, #main {
   padding-right: 24px;
 }
 
-#new-day{
+#new-day, .remove-day{
   vertical-align: top;
   text-align: center;
+  position: relative;
+}
+
+.left-btn {
+  position: absolute; 
+  left: 0;
+  text-align: left;
 }
 
 td{
@@ -264,4 +285,8 @@ tr.text-center:nth-child(3) > td:nth-child(2) {
 
 .delete-activity {
   float: right;
+}
+
+.ngdialog-content {
+  border-radius: 5px;
 }
