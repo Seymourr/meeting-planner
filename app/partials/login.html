@@ -37,7 +37,7 @@
                     <input type="password" ng-model="password" class="form-control" placeholder="Password" />
                 </div>
                 <input type="submit" class="btn btn-block btn-warning" value="Login"/>
-                <button  type="button" row class="btn btn-block btn-default" ng-click="status = 'undecided'; email = ''; password = '';">Back</button>
+                <button  type="button" class="btn btn-block btn-default" ng-click="status = 'undecided'; email = ''; password = '';">Back</button>
             </form>
 
              <form ng-show="status == 'register'" ng-submit="createUser()" role="form">
