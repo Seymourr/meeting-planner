@@ -10,42 +10,42 @@ function Activity(name,length,typeid,description){
 	// sets the name of the activity
 	this.setName = function(name) {
 		_name = name;
-	}
+	};
 
 	// get the name of the activity
 	this.getName = function(name) {
 		return _name;
-	}
+	};
 	
 	// sets the length of the activity
 	this.setLength = function(length) {
 		_length = length;
-	}
+	};
 
 	// get the length of the activity
 	this.getLength = function() {
 		return _length;
-	}
+	};
 	
 	// sets the typeid of the activity
 	this.setTypeId = function(typeid) {
 		_typeid = typeid;
-	}
+	};
 
 	// get the type id of the activity
 	this.getTypeId = function() {
 		return _typeid;
-	}
+	};
 	
 	// sets the description of the activity
 	this.setDescription = function(description) {
 		_description = description;
-	}
+	};
 
 	// get the description of the activity
 	this.getDescription = function() {
 		return _description;
-	}
+	};
 	
 	/*
 	// This method returns the string representation of the

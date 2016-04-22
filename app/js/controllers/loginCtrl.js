@@ -70,7 +70,7 @@ meetingPlannerApp.controller('LoginCtrl', function ($scope, $location, Auth, Mee
       Auth.$unauth();
       Meeting.reset();
       $location.path("/home");
-    }
+    };
 
 
      $scope.$watch('status', function() {

@@ -32,7 +32,7 @@ meetingPlannerApp.factory('Meeting', function ($resource, Auth,$route) {
         $route.reload(); //Recalculate dayID for all days
         this.updateDayDatabase();
         this.updateParkedDatabase();
-    }
+    };
 
 	this.replaceActivity = function(activity, day, position) {
 		if(activity != null && position != null) {
@@ -104,12 +104,12 @@ meetingPlannerApp.factory('Meeting', function ($resource, Auth,$route) {
 	// Return all available activity types
 	this.getActivityTypes = function() {
 		return ActivityType;
-	}
+	};
 
 	// Return an acitivity type of a specific acitivity id
 	this.getActivityType = function(activityTypeId) {
 		return ActivityType[activityTypeId];
-	}
+	};
 
 	// you can use this method to create some test data and test your implementation
 	// Used to test parkedActivity.
@@ -136,7 +136,7 @@ meetingPlannerApp.factory('Meeting', function ($resource, Auth,$route) {
 		console.log("Day Start: " + this.days[0].getStart());
 		console.log("Day End: " + this.days[0].getEnd());
 		console.log("Day Length: " + this.days[0].getTotalLength() + " min");
-	}
+	};
 	// Quote API resource
 	this.Quote = $resource('http://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1?nonce=:'+Math.random());
 

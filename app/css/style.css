@@ -3,7 +3,6 @@
 html, body {
   height: 100%;
   background-color: #FFF7E9;
-  //background-color: #000;
   font-family: Open Sans, Arial, sans-serif;
   font-size: 14px;
   color: #434A54;
@@ -85,7 +84,7 @@ ng-include, #days, #main {
 .activity-list{
   background-color: #FFF;
   border-radius: 5px;
-  padding: 10px 10px 0px 10px;
+  padding: 10px 10px 0 10px;
   overflow-y: auto;
   overflow-x: hidden;
   white-space: normal;
@@ -128,7 +127,7 @@ ng-include, #days, #main {
 .activity-footer {
   display: table-row;
   text-align: center;
-  padding top: 10px;
+  padding-top: 10px;
 }
 
 .activity-footer > .glyphicon-trash {
@@ -139,7 +138,6 @@ ng-include, #days, #main {
 .activity-footer > .btn-default {
   margin: 10px 0 10px 0;
 }
-
 
 #new-day{
   vertical-align: top;
@@ -194,7 +192,6 @@ td{
   left: 30%;
   border-left: 2px solid #ff0000;
 }
-
 
 /** Hide timepicker buttons **/
 tr.text-center:nth-child(1) > td:nth-child(2) {
