@@ -17,7 +17,7 @@ meetingPlannerApp.controller('ActivityCtrl', function ($scope, $rootScope, $rout
       }
       Meeting.moveActivity(day, activity.position, dayID, index);
   };
-  $scope.openDialog = function (activity, index, dayID) {
+  $scope.openEditActivityDialog = function (activity, index, dayID) {
     if(activity != null) {
       if (dayID != undefined) {
         activity.day = dayID;

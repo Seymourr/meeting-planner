@@ -8,14 +8,15 @@
 </div>
 
 <!--Form-->
-<form>
+<form ng-submit="saveActivity(activityTitle, activityLength, activityTypeID, activityDescription); closeThisDialog();">
+
   <fieldset class="form-group">
     <label for="title">Title</label>
-    <input type="text" class="form-control" id="title" ng-model="activityTitle"></input>
+    <input type="text" class="form-control" id="title" ng-model="activityTitle" required></input>
   </fieldset>
   <fieldset class="form-group">
     <label for="length">Length (min)</label>
-    <input type="number" class="form-control" id="length" ng-model="activityLength"></input>
+    <input type="number" class="form-control" id="length" ng-model="activityLength" required></input>
   </fieldset>
   <fieldset class="form-group">
     <label for="activityType">Type</label>
@@ -27,6 +28,8 @@
     <label for="description">Description</label>
     <textarea class="form-control" id="description" rows="3" ng-model="activityDescription"></textarea>
   </fieldset>
-  <a ng-click="closeThisDialog()" class="btn btn-default">Cancel</a>
-  <a ng-click="saveActivity(activityTitle, activityLength, activityTypeID, activityDescription);" class="btn btn-warning">Save</a>
+
+  <a type="button" ng-click="closeThisDialog()" class="btn btn-default">Cancel</a>
+  <input type="submit" class="btn btn-warning" value="Save">
+  <button ng-show="!isNewActivity" type="button" class="btn btn-danger delete-activity" ng-click="deleteActivity(); closeThisDialog()">Delete</button>
 </form>

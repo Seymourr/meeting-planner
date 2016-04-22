@@ -64,6 +64,16 @@ meetingPlannerApp.factory('Meeting', function ($resource, Auth,$route) {
         this.updateParkedDatabase();
 	};
 
+    this.deleteActivity = function(day, position) {
+        if(day == null) {
+            this.removeParkedActivity(position);
+            this.updateParkedDatabase();
+        } else {
+            this.days[day]._removeActivity(position);
+            this.updateDayDatabase();
+        }
+    };
+
 	// add an activity to parked activities
 	this.addParkedActivity = function(activity, position){
 		this.addActivity(activity,null,position);
@@ -73,9 +83,9 @@ meetingPlannerApp.factory('Meeting', function ($resource, Auth,$route) {
 	// remove an activity on provided position from parked activites
 	this.removeParkedActivity = function(position) {
 		act = this.parkedActivities.splice(position,1)[0];
-        this.updateParkedDatabase();
 		return act;
 	};
+
 
 	// moves activity between the days, or day and parked activities.
 	// to park activity you need to set the new day to null

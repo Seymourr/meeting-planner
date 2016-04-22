@@ -104,7 +104,7 @@ meetingPlannerApp.controller('DayviewCtrl', function ($scope, $rootScope, $route
   };
   $scope.format = 'yyyy/MM/dd';
 
-  $scope.openDialog = function () {
+  $scope.openRemoveDayDialog = function () {
     ngDialog.open({
         template: 'partials/removeDay.html',
         className: 'ngdialog-theme-plain',
