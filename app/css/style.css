@@ -80,6 +80,11 @@ ng-include, #days, #main {
   padding-bottom: 1px;
 }
 
+.placeholder-activity {
+  width: 100%;
+  height: 10vh;
+}
+
 /* Activity-list */
 .activity-list{
   background-color: #FFF;
