@@ -227,7 +227,7 @@ meetingPlannerApp.factory('Meeting', function ($resource, Auth,$route) {
             var dayTime = this.days[i]._startTime;
             if(dayTime == null) {
                 dayTime = new Date(); //Temp fix
-                dayTime.setHours(8); 
+                dayTime.setHours(8);
                 dayTime.setMinutes(0);
                 //TODO: Use some old value, if present
             }
@@ -263,7 +263,18 @@ meetingPlannerApp.factory('Meeting', function ($resource, Auth,$route) {
         var userstr = Auth.$getAuth().uid + "/";
         ref = new Firebase(firebaseString + userstr);
     };
-
+		this.typeIdToName = function(typeID) {
+			if (typeID < ActivityType.length) {
+				return ActivityType[typeID];
+			}
+			else return undefined;
+		}
+		this.typeIdToCondensedName = function(typeID) {
+			if (typeID < ActivityType.length) {
+				return ActivityType[typeID].toLowerCase().replace(/\s+/g, '');
+			}
+			else return undefined;
+		}
 
   //  this.loginUser(); //Login the current user in Auth (Sets ref to new firebase db)
 

@@ -24,7 +24,7 @@
 	<div class="activity-list">
 		<div ng-drag="true" ng-drag-data="$root.showHelp = false; getDataWithPos(activity, $index)" ng-drop="true" ng-drop-success="onDropComplete($data,$event, $index)" ng-repeat="activity in getParkedActivities()" id="activityItem">
 			<span id="activityLabel">{{activity.getLength()}} min </span>
-			<span id="activityName" class="color-{{getColor(activity.getTypeId())}}" ng-attr-data-intro="{{$index == 0 ? 'Try drag the activity around!' : undefined}}" ng-attr-data-position="{{$index == 0 ? 'bottom' : undefined}}">{{activity.getName()}}</span>
+			<span id="activityName" class="{{getColorClassByTypeID(activity.getTypeId())}}" ng-attr-data-intro="{{$index == 0 ? 'Try drag the activity around!' : undefined}}" ng-attr-data-position="{{$index == 0 ? 'bottom' : undefined}}">{{activity.getName()}}</span>
 			<span id="activityIcon" ng-attr-data-intro="{{$index == 0 ? 'Edit activity' : undefined}}" ng-attr-data-position="{{$index == 0 ? 'right' : undefined}}"><span class="glyphicon glyphicon-pencil" ng-click="$root.showHelp = false; openEditActivityDialog(activity, $index)"></span></span>
 		</div>
 		<div class="placeholder-activity" ng-drop="true" ng-drop-success="onDropComplete($data, $event, null)"></div>

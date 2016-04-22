@@ -47,6 +47,7 @@ meetingPlannerApp.controller('DayviewCtrl', function ($scope, $rootScope, $route
   };
   $scope.distCompTypes = [];
   $scope.getDistributionComponents = function() {
+    $scope.distCompTypes = [];
     // Get the total length of the day
     var totalLength = Meeting.days[dayID].getTotalLength();
 
@@ -54,6 +55,7 @@ meetingPlannerApp.controller('DayviewCtrl', function ($scope, $rootScope, $route
     var distributionComponents = [];
 
     // Check that we dont divide by zero (if we only have zero-length components this would happen)
+    // Unshift the condensed type (lower case and cleared spaces) to distCompTypes
     if (totalLength != 0) {
       $.each(Meeting.getActivityTypes(), function(index, type) {
         distributionComponents.unshift(Meeting.days[dayID].getLengthByType(index) * 100 / totalLength);
@@ -67,6 +69,7 @@ meetingPlannerApp.controller('DayviewCtrl', function ($scope, $rootScope, $route
         $scope.distCompTypes.unshift(index);
       });
     }
+    console.log($scope.distCompTypes);
     return distributionComponents;
   };
   $scope.dt = {

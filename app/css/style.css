@@ -183,23 +183,23 @@ td{
 }
 
 /** Buttons and colors */
-.btn-danger, .progress-bar-danger, .color-red{
+.btn-danger, .progress-bar-danger, .color-red, .color-groupwork{
   background-color: #ED5565;
   border: 0 none;
 }
 
 /** Break */
-.btn-warning, .progress-bar-warning, .color-yellow{
+.btn-warning, .progress-bar-warning, .color-yellow, .color-break{
   background-color: #FFCE54;
   border: 0 none;
 }
 
-.btn-success, .progress-bar-success, .color-green{
+.btn-success, .progress-bar-success, .color-green, .color-discussion{
   background-color: #A0D468;
   border: 0 none;
 }
 
-.btn-info, .progress-bar-info, .color-blue {
+.btn-info, .progress-bar-info, .color-blue, .color-presentation {
   background-color: #4FC1E9;
   border: 0 none;
 }
