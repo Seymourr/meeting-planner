@@ -13,7 +13,7 @@ meetingPlannerApp.controller('DayviewCtrl', function ($scope, $rootScope, $route
     $scope.title = Meeting.days[dayID]._title;
   };
 
-  var timer = 0; 
+  var timer = 0;
   $scope.setTitle = function(title) {
     Meeting.days[dayID].setTitle(title);
 
@@ -22,7 +22,7 @@ meetingPlannerApp.controller('DayviewCtrl', function ($scope, $rootScope, $route
     }
 
     timer = setTimeout(function() {
-      Meeting.updateDayDatabase(); //Todo: Update singular day only? 
+      Meeting.updateDayDatabase(); //Todo: Update singular day only?
     }, 500);
   };
 
@@ -45,7 +45,7 @@ meetingPlannerApp.controller('DayviewCtrl', function ($scope, $rootScope, $route
   $scope.getActivityTime = function(index) {
     return Meeting.days[dayID].getActivityStart(index);
   };
-
+  $scope.distCompTypes = [];
   $scope.getDistributionComponents = function() {
     // Get the total length of the day
     var totalLength = Meeting.days[dayID].getTotalLength();
@@ -57,21 +57,17 @@ meetingPlannerApp.controller('DayviewCtrl', function ($scope, $rootScope, $route
     if (totalLength != 0) {
       $.each(Meeting.getActivityTypes(), function(index, type) {
         distributionComponents.unshift(Meeting.days[dayID].getLengthByType(index) * 100 / totalLength);
+        $scope.distCompTypes.unshift(index);
       });
     }
     // If we only have zero lengths on all activities, add 0's to all
     else {
       $.each(Meeting.getActivityTypes(), function(index, type) {
         distributionComponents.unshift(0);
+        $scope.distCompTypes.unshift(index);
       });
     }
-
     return distributionComponents;
-  };
-
-  $scope.getComponentStyle = function(type) {
-    var styles = ["warning","success","danger","info"];
-    return styles[type];
   };
   $scope.dt = {
     date: function(newDate) {

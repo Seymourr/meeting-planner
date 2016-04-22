@@ -37,7 +37,7 @@
       <div id="distribution-bar" class="progress">
         <span id="distribution-divider"></span>
         <span class="distribution-component" ng-repeat="component in getDistributionComponents() track by $index">
-          <div class="progress-bar progress-bar-{{getComponentStyle($index)}}" role="progressbar" style="width:{{component}}%">
+          <div class="progress-bar color-{{getColor(distCompTypes[$index])}}" role="progressbar" style="width:{{component}}%">
           </div>
         </span>
       </div>
