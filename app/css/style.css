@@ -219,7 +219,8 @@ tr.text-center:nth-child(3) > td:nth-child(2) {
 .meeting-info-row input {
   margin-bottom: 4px;
 }
-#parkedActivityList .drag-enter:not(.dragging), .dayview .drag-enter:not(.dragging) {
+
+.activity-list .drag-enter:not(.dragging), .dayview .drag-enter:not(.dragging) {
   padding-top: 60px;
 }
 .dragging {

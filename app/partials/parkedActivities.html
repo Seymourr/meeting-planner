@@ -24,7 +24,7 @@
 	
 	<div ng-if="getParkedActivities().length == 0" ng-drop="true" ng-drop-success="onDropComplete($data, $event, null)" class="activity-list"></div>
 
-	<div class="activity-list" ng-show="getParkedActivities().length > 0"ng-if="getParkedActivities().length > 0" > 
+	<div class="activity-list" ng-show="getParkedActivities().length > 0" ng-if="getParkedActivities().length > 0">
 		<div ng-drag="true" ng-drag-data="$root.showHelp = false; getDataWithPos(activity, $index)" ng-drop="true", ng-drop-success="onDropComplete($data,$event, $index)" ng-repeat="activity in getParkedActivities()" id="activityItem">
 
 			<span id="activityLabel">{{activity.getLength()}} min </span>
