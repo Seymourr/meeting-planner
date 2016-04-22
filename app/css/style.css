@@ -256,3 +256,7 @@ tr.text-center:nth-child(3) > td:nth-child(2) {
 .site-header {
   padding-bottom: 10px;
 }
+
+.delete-activity {
+  float: right;
+}

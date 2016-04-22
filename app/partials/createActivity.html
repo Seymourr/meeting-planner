@@ -24,6 +24,7 @@
     <label for="description">Description</label>
     <textarea class="form-control" id="description" rows="3" ng-model="activityDescription"></textarea>
   </fieldset>
-  <a type="button" ng-click="closeThisDialog()" class="btn btn-default">Cancel</a>
+  <a type="button" ng-click="closeThisDialog()" class="btn btn-success">Cancel</a>
   <input type="submit" class="btn btn-warning" value="Save">
+  <button ng-show="!isNewActivity" type="button" class="btn btn-danger delete-activity" ng-click="deleteActivity(); closeThisDialog()">Delete</button>
 </form>

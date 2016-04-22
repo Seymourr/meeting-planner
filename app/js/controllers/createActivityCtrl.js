@@ -9,6 +9,7 @@ meetingPlannerApp.controller('CreateActivityCtrl', function ($scope,$routeParams
   $scope.quote = "";
   $scope.author = "";
   $scope.showSpinner = false;
+  $scope.isNewActivity = false;
   var quoteLengthLimit = 300;
 
   // Fixes the empty row bug in the dropdown
@@ -21,7 +22,7 @@ meetingPlannerApp.controller('CreateActivityCtrl', function ($scope,$routeParams
       console.log("Error in createActivity..");
     } else {
       if(activityDescription == null || activityDescription == undefined) activityDescription = "";
-      
+
       var act = new Activity(activityTitle, activityLength, Meeting.getActivityTypes().indexOf(activityTypeID), activityDescription);
       if($scope.ngDialogData) {
         if($scope.ngDialogData.day != null) {
@@ -37,11 +38,17 @@ meetingPlannerApp.controller('CreateActivityCtrl', function ($scope,$routeParams
     }
   };
 
+  $scope.deleteActivity = function() {
+    Meeting.deleteActivity($scope.ngDialogData.day, $scope.ngDialogData.position);
+  };
+
   if($scope.ngDialogData){
     $scope.activityTitle = $scope.ngDialogData.getName();
     $scope.activityLength = $scope.ngDialogData.getLength();
     $scope.activityTypeID = Meeting.getActivityType($scope.ngDialogData.getTypeId());
     $scope.activityDescription = $scope.ngDialogData.getDescription();
+  } else {
+    $scope.isNewActivity = true;
   }
   // Load a new quote
   $scope.loadQuote = function() {
