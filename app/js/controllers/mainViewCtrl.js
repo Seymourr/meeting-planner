@@ -28,12 +28,10 @@ meetingPlannerApp.controller('MainViewCtrl', function ($scope,$rootScope, $route
     var style = ["blue", "red", "green", "yellow"];
     return style[id];
   };
-
-
   $scope.showHelp = $rootScope.showHelp;
 
   $rootScope.$watch('showHelp', function() {
-    $scope.showHelp = $rootScope.showHelp; 
+    $scope.showHelp = $rootScope.showHelp;
   });
 
 });

@@ -19,7 +19,7 @@
 	    <tr class="meeting-info-row">
 		    <td><span class="bold">Start time</span></td>
 		    <td class="timepicker-container">
-            <uib-timepicker ng-model="dt.time" ng-blur="setTime()" ng-model-options="{ getterSetter: true }" hour-step="1" minute-step="1" show-meridian="false"></uib-timepicker>
+            <uib-timepicker ng-model="dt.date" ng-blur="setTime()" ng-model-options="{ getterSetter: true }" hour-step="1" minute-step="1" show-meridian="false"></uib-timepicker>
         </td>
 	    </tr>
 	    <tr>
@@ -37,7 +37,7 @@
       <div id="distribution-bar" class="progress">
         <span id="distribution-divider"></span>
         <span class="distribution-component" ng-repeat="component in getDistributionComponents() track by $index">
-          <div class="progress-bar progress-bar-{{getComponentStyle($index)}}" role="progressbar" style="width:{{component}}%">
+          <div class="progress-bar color-{{getColor(distCompTypes[$index])}}" role="progressbar" style="width:{{component}}%">
           </div>
         </span>
       </div>
