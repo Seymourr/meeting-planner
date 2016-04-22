@@ -271,3 +271,7 @@ tr.text-center:nth-child(3) > td:nth-child(2) {
 .delete-activity {
   float: right;
 }
+
+.ngdialog-content {
+  border-radius: 5px;
+}
