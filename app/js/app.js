@@ -33,4 +33,5 @@ meetingPlannerApp.config(['$routeProvider',
       otherwise({
         redirectTo: '/'
       });
-  }]);
+  }
+]);

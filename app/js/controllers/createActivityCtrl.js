@@ -1,21 +1,28 @@
 meetingPlannerApp.controller('CreateActivityCtrl', function ($scope,$routeParams, $location, Meeting) {
-  // Get all available activity types.
+
+  /*
+  * Get all available activity types.
+  */
   $scope.getActivityTypes = function() {
     return Meeting.getActivityTypes();
   };
 
-  // Quote status, list of quotes for slides, and authors
+  
+  /*
+  * Quote status, list of quotes for slides, authors, and control variables
+  */
   $scope.qStatus = "";
   $scope.quote = "";
   $scope.author = "";
-  $scope.showSpinner = false;
-  $scope.isNewActivity = false;
+  $scope.showSpinner = false; //For the loading-status spinner
+  $scope.isNewActivity = false; 
   var quoteLengthLimit = 300;
 
-  // Fixes the empty row bug in the dropdown
-  $scope.activityTypeID = Meeting.getActivityTypes()[0];
+  $scope.activityTypeID = Meeting.getActivityTypes()[0]; // Fixes the empty row bug in the dropdown
 
-  // Creates a new parked activity
+  /*
+  * Creates a new parked activity
+  */ 
   $scope.saveActivity = function (activityTitle, activityLength, activityTypeID, activityDescription) {
     // For future error messages.
     if (activityTypeID == undefined) {
@@ -37,10 +44,16 @@ meetingPlannerApp.controller('CreateActivityCtrl', function ($scope,$routeParams
     }
   };
 
+  /*
+  * Delete a parked activity, specified by day (null for parked-activities) and position
+  */
   $scope.deleteActivity = function(day, position) {
     Meeting.deleteActivity($scope.ngDialogData.day, $scope.ngDialogData.position);
   };
 
+  /*
+  * Load data sent to this controller/dialog
+  */
   if($scope.ngDialogData){
     $scope.activityTitle = $scope.ngDialogData.getName();
     $scope.activityLength = $scope.ngDialogData.getLength();
@@ -50,7 +63,9 @@ meetingPlannerApp.controller('CreateActivityCtrl', function ($scope,$routeParams
     $scope.isNewActivity = true;
   }
 
-  // Load a new quote
+  /*
+  * Load a new quote
+  */
   $scope.loadQuote = function() {
     // Refresh quote
     Meeting.refreshQuote();
@@ -77,6 +92,6 @@ meetingPlannerApp.controller('CreateActivityCtrl', function ($scope,$routeParams
       $scope.showSpinner = false;
     });
   };
-  // Load a new quote
+
   $scope.loadQuote();
 });

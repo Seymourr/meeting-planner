@@ -1,22 +1,25 @@
 meetingPlannerApp.controller('LoginCtrl', function ($scope, $location, Auth, Meeting) {
 
+    /*
+    * A listener which react whenever authentication state changes - used to quickly log in cookied' users
+    */
     var offAuth = Auth.$onAuth(function(authData) {
       if (authData) {
-        $location.path("/main");
+        $location.path("/main"); //Proceed to main view
       } else {
         console.log("Logged out");
         $scope.error = "";
       }
     });
 
-    offAuth(); //Try to see if the user is loggedin ?
+    offAuth(); //Try to see if the user is loggedin
 
     $scope.status = "undecided";
 
+    /*
+    * Create a user, given input of type email and password's
+    */
     $scope.createUser = function() {
-      $scope.message = null;
-      $scope.error = null;
-
       if($scope.email == null || $scope.email == "") {
           $scope.error = "You must specify an email address.";
           return;
@@ -35,14 +38,18 @@ meetingPlannerApp.controller('LoginCtrl', function ($scope, $location, Auth, Mee
           $scope.message = "User profile created! Please log in to proceed!";
           $scope.status = "login";
           $scope.error = null;
+          $scope.passwordRepeated = "";
+
       }).catch(function(error) {
          $scope.error = "The email is either occupied or in the wrong format.";
          $scope.message = null;
       });
     };
 
+    /*
+    * Login a user given credentials in the form of email and password
+    */
     $scope.login = function() {
-
       $scope.error = null;
 
       if($scope.email == null || $scope.email == "") {
@@ -65,15 +72,20 @@ meetingPlannerApp.controller('LoginCtrl', function ($scope, $location, Auth, Mee
       });
     };
 
+    /*
+    * Logout a user and reset the model's (Meetings) variables.
+    */
     $scope.logout = function() {
       Auth.$unauth();
       Meeting.reset();
-      $location.path("/home");
+      $location.path("/home"); //Redirect to login-screen
     };
 
-
-     $scope.$watch('status', function() {
+    /*
+    * Intercept changes on the status variable, and reset system variables if needed
+    */
+    $scope.$watch('status', function() {
         $scope.error = null;
-        $scope.message = null;
+        if($scope.status == "undecided") $scope.message = null;
     });
 });
