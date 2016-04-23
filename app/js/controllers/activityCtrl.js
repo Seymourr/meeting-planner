@@ -1,4 +1,8 @@
 meetingPlannerApp.controller('ActivityCtrl', function ($scope, $rootScope, $routeParams,Meeting, ngDialog) {
+
+  /*
+  * Return a modified activity object that also contain its index in its container and day (if in one)
+  */
   $scope.getDataWithPos = function(activity, index, dayID) {
     activity.position = index;
     if (dayID != undefined)
@@ -9,6 +13,10 @@ meetingPlannerApp.controller('ActivityCtrl', function ($scope, $rootScope, $rout
   };
 
 	var justDropped = false;
+
+  /*
+  * Action to take when the drop of an activity is done
+  */
   $scope.onDropComplete = function (activity, $event, index, dayID) {
 	  // This function is sometimes fired twice, probably because of overlapping dropzones.
 	  // There is a pull request that attempts to fix this bug:
@@ -31,6 +39,10 @@ meetingPlannerApp.controller('ActivityCtrl', function ($scope, $rootScope, $rout
 		  Meeting.moveActivity(day, activity.position, dayID, index);
       }
   };
+
+  /*
+  * Open a dialog which allow the user to modify the specified activity
+  */
   $scope.openEditActivityDialog = function (activity, index, dayID) {
     if(activity != null) {
       if (dayID != undefined) {
@@ -46,6 +58,9 @@ meetingPlannerApp.controller('ActivityCtrl', function ($scope, $rootScope, $rout
         });
   };
 
+  /*
+  * Removes the activity dropped down to the html tag with this function attached to it via ng-draggable attributes
+  */
   $scope.dropAndRemoveActivity = function(activity, $event) {
     var day = activity.oldDay;
     if(day == undefined) {
@@ -53,4 +68,5 @@ meetingPlannerApp.controller('ActivityCtrl', function ($scope, $rootScope, $rout
     }
     Meeting.deleteActivity(day, activity.position);
   };
+  
 });
