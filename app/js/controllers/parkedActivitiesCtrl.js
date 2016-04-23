@@ -7,4 +7,8 @@ meetingPlannerApp.controller('ParkedActivitiesCtrl', function ($scope,$rootScope
   	if(index == 0) return "Hej";
   	return undefined;
   };
+
+  
+ 
+  
 });

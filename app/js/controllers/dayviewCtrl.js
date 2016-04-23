@@ -69,7 +69,7 @@ meetingPlannerApp.controller('DayviewCtrl', function ($scope, $rootScope, $route
         $scope.distCompTypes.unshift(index);
       });
     }
-    console.log($scope.distCompTypes);
+   // console.log($scope.distCompTypes);
     return distributionComponents;
   };
   $scope.dt = {

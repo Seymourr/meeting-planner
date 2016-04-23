@@ -14,8 +14,6 @@ meetingPlannerApp.controller('LoginCtrl', function ($scope, $location, Auth, Mee
     $scope.status = "undecided";
 
     $scope.createUser = function() {
-      $scope.message = null;
-      $scope.error = null;
 
       if($scope.email == null || $scope.email == "") {
           $scope.error = "You must specify an email address.";
@@ -35,6 +33,8 @@ meetingPlannerApp.controller('LoginCtrl', function ($scope, $location, Auth, Mee
           $scope.message = "User profile created! Please log in to proceed!";
           $scope.status = "login";
           $scope.error = null;
+          $scope.passwordRepeated = "";
+
       }).catch(function(error) {
          $scope.error = "The email is either occupied or in the wrong format.";
          $scope.message = null;
@@ -74,6 +74,6 @@ meetingPlannerApp.controller('LoginCtrl', function ($scope, $location, Auth, Mee
 
      $scope.$watch('status', function() {
         $scope.error = null;
-        $scope.message = null;
+        if($scope.status == "undecided") $scope.message = null;
     });
 });

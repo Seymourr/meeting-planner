@@ -154,6 +154,18 @@ meetingPlannerApp.factory('Meeting', function ($resource, Auth,$route) {
 	this.refreshQuote = function() {
 		this.Quote = $resource('http://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1?nonce=:'+Math.random());
 	};
+
+    this.getUserData = function() {
+        return ref.child("userInfo").once("value");
+    };
+
+    this.setUserData = function() {
+       var userData = {
+            "firstTimeLogin": false
+        };
+        ref.child("userInfo").set(userData);
+    };
+
 	//Should only be called once in every client visit!
     this.getDaysData = function() {
         var d;
@@ -263,18 +275,19 @@ meetingPlannerApp.factory('Meeting', function ($resource, Auth,$route) {
         var userstr = Auth.$getAuth().uid + "/";
         ref = new Firebase(firebaseString + userstr);
     };
-		this.typeIdToName = function(typeID) {
-			if (typeID < ActivityType.length) {
-				return ActivityType[typeID];
-			}
-			else return undefined;
+
+	this.typeIdToName = function(typeID) {
+		if (typeID < ActivityType.length) {
+			return ActivityType[typeID];
 		}
-		this.typeIdToCondensedName = function(typeID) {
-			if (typeID < ActivityType.length) {
-				return ActivityType[typeID].toLowerCase().replace(/\s+/g, '');
-			}
-			else return undefined;
+		else return undefined;
+	}
+	this.typeIdToCondensedName = function(typeID) {
+		if (typeID < ActivityType.length) {
+			return ActivityType[typeID].toLowerCase().replace(/\s+/g, '');
 		}
+		else return undefined;
+	}
 
   //  this.loginUser(); //Login the current user in Auth (Sets ref to new firebase db)
 
