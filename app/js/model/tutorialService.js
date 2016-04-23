@@ -1,5 +1,6 @@
 meetingPlannerApp.factory('TutorialService', function () { 
-    return {
+	// Toggles the tutorial window
+  return {
     showHelp: false,
     toggle: function() {
       // Improve this method as needed
