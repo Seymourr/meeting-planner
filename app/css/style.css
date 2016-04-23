@@ -7,8 +7,45 @@ html, body {
   font-size: 14px;
   color: #434A54;
   font-weight: 400;
+  max-height: 334;
 }
 
+/* Front page*/
+.site-header, .error-messages, .login-container {
+  text-align: center;
+  padding-top: 10px;
+}
+
+.site-header {
+  padding-bottom: 10px;
+}
+
+.ngdialog-content {
+  border-radius: 5px;
+}
+
+.carousel-control.left, .carousel-control.right {
+    background-image: none
+}
+
+h3 {
+  color: #FFF;
+}
+
+.carousel-caption {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+  padding-top: 20px;
+  padding-bottom: 50px;
+  color: silver;
+  text-align: center;
+  background: rgba(0,0,0,0.4);
+}
+
+/* Wrappers*/
 #main-content, #wrapper, ng-include, #main{
   height: 100%;
   width: 100%;
@@ -32,24 +69,7 @@ html, body {
   float: none;
 }
 
-.test {
-  position: relative;
-  height: 100%;
-  width: 100%;
-  display: table;
-}
-
-.test > .activity-footer {
-  display: table-row;
-  position: fixed;
-  bottom: 0px;
-  text-align: center;
-}
-.test2{
-  display: table-row;
-  min-height: 10%;
-}
-
+/* Activity view and Day view */
  #activity-view, .dayview {
   width: 100%;
   min-height: 10%;
@@ -60,6 +80,7 @@ html, body {
   padding: 0;
 }
 
+/* Headers */
 .activity-header {
   display: block;
 }
@@ -90,16 +111,23 @@ html, body {
   margin: 10px 0 10px 0;
 }
 
+.color-box {
+  width: 12px;
+  height: 12px;
+}
+
+
 .activityGraphics {
-  position:relative;
+  position: relative;
   padding-top:10px;
   padding-bottom: 1px;
 }
 
-.placeholder-activity {
-  width: 100%;
-  height: 50px;
+.datepicker-container .ng-invalid-date {
+  border-color: #843534;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #ce8483;
 }
+
 
 /* Activity-list */
 .activity-list{
@@ -152,11 +180,15 @@ html, body {
 
   /* Non standard for webkit */
   word-break: break-word;
-
   -webkit-hyphens: auto;
   -moz-hyphens: auto;
   -ms-hyphens: auto;
   hyphens: auto;
+}
+
+.placeholder-activity {
+  width: 100%;
+  height: 50px;
 }
 
 /*Activity footer*/
@@ -166,7 +198,7 @@ html, body {
   padding: 10px 0 20px 0;
 }
 
- #activity-view > .activity-footer {
+#activity-view > .activity-footer {
   padding-bottom: 150px;
  }
 
@@ -183,13 +215,14 @@ html, body {
   position: relative;
 }
 
-.carousel-control.left, .carousel-control.right {
-    background-image: none
+
+.navbar-fixed-bottom {
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  text-align: center;
 }
 
-h3 {
-  color: #FFF;
-}
+
 td{
   padding-right: 10px;
 }
@@ -224,17 +257,6 @@ td{
   border-color: #E8E6E6;
 }
 
-.color-box {
-  width: 12px;
-  height: 12px;
-}
-
-.navbar-fixed-bottom {
-  margin-bottom: 15px;
-  text-align: center;
-  padding-bottom: 10px;
-}
-
 /** Distribution diagram */
 #distribution-divider::after {
   content:"";
@@ -258,16 +280,19 @@ tr.text-center:nth-child(3) > td:nth-child(2) {
 .timepicker-container .uib-increment, .uib-decrement {
   display: none;
 }
+
 .timepicker-container input {
   height:30px;
   font-size:12px;
 }
+
 .uib-separator {
   padding-right:3px;
 }
 .form-group.uib-time.hours {
   padding-right: 3px;
 }
+
 .meeting-info-row input {
   margin-bottom: 4px;
 }
@@ -312,40 +337,5 @@ tr.text-center:nth-child(3) > td:nth-child(2) {
 @media (min-width: 1400px){
   .navbar-fixed-bottom {
     width: 16%;
-  }
-}
-
-.site-header, .error-messages, .login-container {
-  text-align: center;
-  padding-top: 10px;
-}
-
-.site-header {
-  padding-bottom: 10px;
-}
-
-.delete-activity {
-  float: right;
-}
-
-.ngdialog-content {
-  border-radius: 5px;
-}
-.datepicker-container .ng-invalid-date {
-  border-color: #843534;
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #ce8483;
-}
-
-.carousel-caption
-{
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 10;
-  padding-top: 20px;
-  padding-bottom: 50px;
-  color: silver;
-  text-align: center;
-  background: rgba(0,0,0,0.4);
+  } 
 }
