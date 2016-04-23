@@ -18,7 +18,7 @@
 	    <tr class="meeting-info-row">
 		    <td><span class="bold">Start time</span></td>
 		    <td class="timepicker-container">
-            <uib-timepicker ng-model="dt.time" ng-blur="setTime()" ng-model-options="{ getterSetter: true }" hour-step="1" minute-step="1" show-meridian="false"></uib-timepicker>
+            <uib-timepicker ng-model="dt.date" ng-blur="setTime()" ng-model-options="{ getterSetter: true }" hour-step="1" minute-step="1" show-meridian="false"></uib-timepicker>
         </td>
 	    </tr>
 	    <tr>
@@ -36,7 +36,7 @@
       <div id="distribution-bar" class="progress">
         <span id="distribution-divider"></span>
         <span class="distribution-component" ng-repeat="component in getDistributionComponents() track by $index">
-          <div class="progress-bar progress-bar-{{getComponentStyle($index)}}" role="progressbar" style="width:{{component}}%">
+          <div class="progress-bar {{getColorClassByTypeID(distCompTypes[$index])}}" role="progressbar" style="width:{{component}}%">
           </div>
         </span>
       </div>
@@ -47,7 +47,7 @@
 	<div class="activity-list">
 		<div ng-drag="true" ng-drag-data="getDataWithPos(activity, $index, getDayID())" ng-repeat="activity in getDayActivities()" id="activityItem" ng-drop="true" ng-drop-success="onDropComplete($data, $event, $index, getDayID())">
 			<span id="activityLabel">{{getActivityTime($index) | date: 'HH:mm'}}</span>
-			<span id="activityName" class="color-{{getColor(activity.getTypeId())}}">{{activity.getName()}}</span>
+			<span id="activityName" class="{{getColorClassByTypeID(activity.getTypeId())}}">{{activity.getName()}}</span>
 			<span id="activityIcon"><span class="glyphicon glyphicon-pencil" ng-click="openEditActivityDialog(activity, $index, getDayID())"></span></span>
 		</div>
 		<div class="placeholder-activity" ng-drop="true" ng-drop-success="onDropComplete($data, $event, null, getDayID())"></div>

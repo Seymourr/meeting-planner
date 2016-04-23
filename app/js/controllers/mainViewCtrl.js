@@ -23,17 +23,12 @@ meetingPlannerApp.controller('MainViewCtrl', function ($scope,$rootScope, $route
   }, function(error) {
     console.log("Could not get days data");
   });
-
-  $scope.getColor = function (id) {
-    var style = ["blue", "red", "green", "yellow"];
-    return style[id];
-  };
-
-
   $scope.showHelp = $rootScope.showHelp;
-
+  $scope.getColorClassByTypeID = function(typeID) {
+    return "color-"+Meeting.typeIdToCondensedName(typeID);
+  }
   $rootScope.$watch('showHelp', function() {
-    $scope.showHelp = $rootScope.showHelp; 
+    $scope.showHelp = $rootScope.showHelp;
   });
 
 });

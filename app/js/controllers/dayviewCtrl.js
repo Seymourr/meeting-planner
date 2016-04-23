@@ -13,7 +13,7 @@ meetingPlannerApp.controller('DayviewCtrl', function ($scope, $rootScope, $route
     $scope.title = Meeting.days[dayID]._title;
   };
 
-  var timer = 0; 
+  var timer = 0;
   $scope.setTitle = function(title) {
     Meeting.days[dayID].setTitle(title);
 
@@ -22,7 +22,7 @@ meetingPlannerApp.controller('DayviewCtrl', function ($scope, $rootScope, $route
     }
 
     timer = setTimeout(function() {
-      Meeting.updateDayDatabase(); //Todo: Update singular day only? 
+      Meeting.updateDayDatabase(); //Todo: Update singular day only?
     }, 500);
   };
 
@@ -45,8 +45,9 @@ meetingPlannerApp.controller('DayviewCtrl', function ($scope, $rootScope, $route
   $scope.getActivityTime = function(index) {
     return Meeting.days[dayID].getActivityStart(index);
   };
-
+  $scope.distCompTypes = [];
   $scope.getDistributionComponents = function() {
+    $scope.distCompTypes = [];
     // Get the total length of the day
     var totalLength = Meeting.days[dayID].getTotalLength();
 
@@ -54,24 +55,22 @@ meetingPlannerApp.controller('DayviewCtrl', function ($scope, $rootScope, $route
     var distributionComponents = [];
 
     // Check that we dont divide by zero (if we only have zero-length components this would happen)
+    // Unshift the condensed type (lower case and cleared spaces) to distCompTypes
     if (totalLength != 0) {
       $.each(Meeting.getActivityTypes(), function(index, type) {
         distributionComponents.unshift(Meeting.days[dayID].getLengthByType(index) * 100 / totalLength);
+        $scope.distCompTypes.unshift(index);
       });
     }
     // If we only have zero lengths on all activities, add 0's to all
     else {
       $.each(Meeting.getActivityTypes(), function(index, type) {
         distributionComponents.unshift(0);
+        $scope.distCompTypes.unshift(index);
       });
     }
-
+    console.log($scope.distCompTypes);
     return distributionComponents;
-  };
-
-  $scope.getComponentStyle = function(type) {
-    var styles = ["warning","success","danger","info"];
-    return styles[type];
   };
   $scope.dt = {
     date: function(newDate) {
@@ -81,15 +80,7 @@ meetingPlannerApp.controller('DayviewCtrl', function ($scope, $rootScope, $route
       } else {
         return Meeting.days[dayID].getDate()
       }
-   },
-    time: function(newTime) {
-      if(arguments.length) {
-        Meeting.days[dayID].setTime(newTime);
-         Meeting.updateDayDatabase();
-      } else {
-        return Meeting.days[dayID].getTime()
-      }
-    }
+   }
     };
   $scope.popup = {
     opened: false

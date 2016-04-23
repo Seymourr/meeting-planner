@@ -1,12 +1,11 @@
 <div ng-show="status == 'ready'" id="main" class="row" ng-model="showHelp" help-overlay="showHelp"  overlay-stop-callback="$root.showHelp = false">
 	<span ng-controller="ActivityCtrl">
-		<!-- Needed for drag and drop -->
+	<!-- Needed for drag and drop -->
 		<div  id="activityItem" ng-drag-clone="">
 			<span id="activityLabel">{{clonedData.getLength()}} min </span>
-			<span id="activityName" class="color-{{getColor(clonedData.getTypeId())}}">{{clonedData.getName()}}</span>
+			<span id="activityName" class="{{getColorClassByTypeID(clonedData.getTypeId())}}">{{clonedData.getName()}}</span>
 			<span id="activityIcon"><span class="glyphicon glyphicon-pencil"></span></span>
 		</div>
-
 		<ng-include class="col-lg-2 col-md-3 col-sm-6" src="'partials/parkedActivities.html'" ng-controller="ParkedActivitiesCtrl" ></ng-include>
 
 		<ng-include class="day col-lg-2 col-md-3 col-sm-6" src="'partials/dayView.html'" ng-controller="DayviewCtrl" ng-repeat="day in getDays()" onload="init($index)"></ng-include>
