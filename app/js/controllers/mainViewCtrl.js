@@ -1,4 +1,4 @@
-meetingPlannerApp.controller('MainViewCtrl', function ($scope,$rootScope, $routeParams, $location, Meeting, Auth) {
+meetingPlannerApp.controller('MainViewCtrl', function ($scope,$rootScope, $routeParams, $location, Meeting, Auth, $timeout) {
 
   /*
   * Fetch the days containing activities from Meeting
@@ -28,12 +28,14 @@ meetingPlannerApp.controller('MainViewCtrl', function ($scope,$rootScope, $route
         if(val == null || val == undefined || val.firstTimeLogin == true) {
           $scope.firstTimeInit();
           $scope.$apply();
-          $scope.triggerClick();
+          //$timeout($scope.triggerClick(),600, false); TODO for future versions: Fix bug (external)
+        } else {
+          $scope.$apply();
         }
       }, function() {
         console.log("Unexpected error in fetching user data");
       });
-      $scope.$apply();
+    //  $scope.$apply();
 
     }, function(error) {
       console.log("Could not get parked data");
@@ -65,9 +67,7 @@ meetingPlannerApp.controller('MainViewCtrl', function ($scope,$rootScope, $route
   * Controls tutorial button in parkedActivities.html (Must be called here along with the loading of user data)
   */
   $scope.triggerClick = function () {
-        setTimeout(function() {
-        angular.element('#showhelp-button').trigger('click');
-         }, 400);
+      $rootScope.showHelp = true;
   };
 
  

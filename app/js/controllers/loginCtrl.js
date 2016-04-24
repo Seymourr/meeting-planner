@@ -7,7 +7,6 @@ meetingPlannerApp.controller('LoginCtrl', function ($scope, $location, Auth, Mee
     if (authData) {
       $location.path("/main"); //Proceed to main view
     } else {
-      console.log("Logged out");
       $scope.error = "";
     }
   });
@@ -64,7 +63,6 @@ meetingPlannerApp.controller('LoginCtrl', function ($scope, $location, Auth, Mee
       email: $scope.email,
       password: $scope.password
     }).then(function(authData) {
-      console.log("Logged in as:", authData.uid);
       $location.path("/main");
     }, function(error) {
        $scope.error = "Your credentials are incorrect, please correct them and try again.";
