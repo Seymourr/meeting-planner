@@ -32,7 +32,7 @@
     </table>
 
     <!-- Distribution graph -->
-    <div class="activityGraphics" ng-attr-data-intro="{{getDayID() == 0 ? 'The red mark represent the reccomended percentage of breaks in your current plan. Don\'t forget coffee!' : undefined}}" ng-attr-data-position="{{getDayID() == 0 ? 'bottom' : undefined}}">
+    <div class="activityGraphics" ng-attr-data-intro="{{getDayID() == 0 ? 'The red mark represent the reccomended percentage of breaks in your current plan. Don\'t forget coffee!' : undefined}}" ng-attr-data-position="{{getDayID() == 0 ? 'right' : undefined}}">
       <div id="distribution-bar" class="progress">
         <span id="distribution-divider"></span>
         <span class="distribution-component" ng-repeat="component in getDistributionComponents() track by $index">
